@@ -1,0 +1,359 @@
+[
+  {
+    "name": "Pilsner",
+    "style": "Pilsner",
+    "description": "A crisp and light-bodied beer with a clean malt profile and floral hop aroma.",
+    "batchSize": "20 liters",
+    "ingredients": {
+      "malts": [{ "name": "Pilsner Malt", "amount": "4 kg" }],
+      "hops": [
+        { "name": "Saaz", "amount": "30 g", "time": "60 minutes" },
+        { "name": "Saaz", "amount": "20 g", "time": "15 minutes" },
+        { "name": "Saaz", "amount": "20 g", "time": "5 minutes" }
+      ],
+      "yeast": "Czech Lager"
+    },
+    "instructions": [
+      "Mash the Pilsner malt with hot water at 65°C for 60 minutes.",
+      "Boil the wort and add Saaz hops for bittering at 60 minutes.",
+      "Add Saaz hops at 15 minutes remaining in the boil.",
+      "Add Saaz hops at 5 minutes remaining in the boil.",
+      "Cool the wort and transfer to a fermentation vessel.",
+      "Pitch the Czech Lager yeast and ferment at 10-12°C for one to two weeks.",
+      "Bottle or keg the beer, carbonate, and enjoy!"
+    ]
+  },
+  {
+    "name": "IPA",
+    "style": "India Pale Ale",
+    "description": "A hop-forward beer with strong hop bitterness, floral and citrusy hop flavors, and a balanced malt profile.",
+    "batchSize": "20 liters",
+    "ingredients": {
+      "malts": [
+        { "name": "Pale Malt", "amount": "4 kg" },
+        { "name": "Crystal Malt", "amount": "0.5 kg" }
+      ],
+      "hops": [
+        { "name": "Cascade", "amount": "30 g", "time": "60 minutes" },
+        { "name": "Cascade", "amount": "30 g", "time": "15 minutes" },
+        { "name": "Cascade", "amount": "30 g", "time": "5 minutes" }
+      ],
+      "yeast": "American Ale"
+    },
+    "instructions": [
+      "Mash the Pale Malt and Crystal Malt with hot water at 66°C for 60 minutes.",
+      "Boil the wort and add Cascade hops for bittering at 60 minutes.",
+      "Add Cascade hops at 15 minutes remaining in the boil.",
+      "Add Cascade hops at 5 minutes remaining in the boil.",
+      "Cool the wort and transfer to a fermentation vessel.",
+      "Pitch the American Ale yeast and ferment at 18-20°C for one to two weeks.",
+      "Dry hop with Cascade hops for additional aroma and flavor (optional).",
+      "Bottle or keg the beer, carbonate, and enjoy!"
+    ]
+  },
+  {
+    "name": "Porter",
+    "style": "Porter",
+    "description": "A dark and roasty beer with flavors of chocolate and coffee, medium bitterness, and a smooth finish.",
+    "batchSize": "20 liters",
+    "ingredients": {
+      "malts": [
+        { "name": "Pale Malt", "amount": "3 kg" },
+        { "name": "Brown Malt", "amount": "0.5 kg" },
+        { "name": "Chocolate Malt", "amount": "0.3 kg" },
+        { "name": "Roasted Barley", "amount": "0.2 kg" }
+      ],
+      "hops": [
+        { "name": "Fuggle", "amount": "30 g", "time": "60 minutes" },
+        { "name": "Fuggle", "amount": "20 g", "time": "15 minutes" }
+      ],
+      "yeast": "English Ale"
+    },
+    "instructions": [
+      "Mash the Pale Malt, Brown Malt, Chocolate Malt, and Roasted Barley with hot water at 67°C for 60 minutes.",
+      "Boil the wort and add Fuggle hops for bittering at 60 minutes.",
+      "Add Fuggle hops at 15 minutes remaining in the boil.",
+      "Cool the wort and transfer to a fermentation vessel.",
+      "Pitch the English Ale yeast and ferment at 18-20°C for one to two weeks.",
+      "Bottle or keg the beer, carbonate, and enjoy!"
+    ]
+  },
+  {
+    "name": "Stout",
+    "style": "Stout",
+    "description": "A rich and dark beer with flavors of roasted malt, coffee, and chocolate, balanced bitterness, and a creamy mouthfeel.",
+    "batchSize": "20 liters",
+    "ingredients": {
+      "malts": [
+        { "name": "Pale Malt", "amount": "4 kg" },
+        { "name": "Roasted Barley", "amount": "0.5 kg" },
+        { "name": "Chocolate Malt", "amount": "0.3 kg" },
+        { "name": "Black Patent Malt", "amount": "0.2 kg" }
+      ],
+      "hops": [
+        { "name": "Fuggle", "amount": "30 g", "time": "60 minutes" },
+        { "name": "Fuggle", "amount": "20 g", "time": "15 minutes" }
+      ],
+      "yeast": "English Ale"
+    },
+    "instructions": [
+      "Mash the Pale Malt, Roasted Barley, Chocolate Malt, and Black Patent Malt with hot water at 67°C for 60 minutes.",
+      "Boil the wort and add Fuggle hops for bittering at 60 minutes.",
+      "Add Fuggle hops at 15 minutes remaining in the boil.",
+      "Cool the wort and transfer to a fermentation vessel.",
+      "Pitch the English Ale yeast and ferment at 18-20°C for one to two weeks.",
+      "Bottle or keg the beer, carbonate, and enjoy!"
+    ]
+  },
+  {
+    "name": "Amber Ale",
+    "style": "Amber Ale",
+    "description": "A balanced beer with a moderate malt sweetness, caramel notes, and a touch of hop bitterness.",
+    "batchSize": "20 liters",
+    "ingredients": {
+      "malts": [
+        { "name": "Pale Malt", "amount": "4 kg" },
+        { "name": "Crystal Malt", "amount": "0.5 kg" },
+        { "name": "Munich Malt", "amount": "0.3 kg" }
+      ],
+      "hops": [
+        { "name": "Cascade", "amount": "30 g", "time": "60 minutes" },
+        { "name": "Cascade", "amount": "20 g", "time": "15 minutes" }
+      ],
+      "yeast": "American Ale"
+    },
+    "instructions": [
+      "Mash the Pale Malt, Crystal Malt, and Munich Malt with hot water at 67°C for 60 minutes.",
+      "Boil the wort and add Cascade hops for bittering at 60 minutes.",
+      "Add Cascade hops at 15 minutes remaining in the boil.",
+      "Cool the wort and transfer to a fermentation vessel.",
+      "Pitch the American Ale yeast and ferment at 18-20°C for one to two weeks.",
+      "Bottle or keg the beer, carbonate, and enjoy!"
+    ]
+  },
+  {
+    "name": "Belgian Witbier",
+    "style": "Belgian Witbier",
+    "description": "A refreshing and citrusy wheat beer with flavors of orange peel and coriander.",
+    "batchSize": "20 liters",
+    "ingredients": {
+      "malts": [
+        { "name": "Wheat Malt", "amount": "3 kg" },
+        { "name": "Pilsner Malt", "amount": "2 kg" }
+      ],
+      "hops": [
+        { "name": "Saaz", "amount": "20 g", "time": "60 minutes" },
+        { "name": "Saaz", "amount": "10 g", "time": "15 minutes" }
+      ],
+      "yeast": "Belgian Witbier"
+    },
+    "instructions": [
+      "Mash the Wheat Malt and Pilsner Malt with hot water at 66°C for 60 minutes.",
+      "Boil the wort and add Saaz hops for bittering at 60 minutes.",
+      "Add Saaz hops at 15 minutes remaining in the boil.",
+      "Cool the wort and transfer to a fermentation vessel.",
+      "Pitch the Belgian Witbier yeast and ferment at 18-20°C for one to two weeks.",
+      "Bottle or keg the beer, carbonate, and enjoy!"
+    ]
+  },
+  {
+    "name": "Belgian Dubbel",
+    "style": "Belgian Dubbel",
+    "description": "A rich and malty Belgian ale with dark fruit flavors and a touch of spice.",
+    "batchSize": "20 liters",
+    "ingredients": {
+      "malts": [
+        { "name": "Pilsner Malt", "amount": "4 kg" },
+        { "name": "Munich Malt", "amount": "0.5 kg" },
+        { "name": "Special B Malt", "amount": "0.3 kg" }
+      ],
+      "hops": [
+        { "name": "Tettnang", "amount": "30 g", "time": "60 minutes" },
+        { "name": "Tettnang", "amount": "20 g", "time": "15 minutes" }
+      ],
+      "yeast": "Belgian Ale"
+    },
+    "instructions": [
+      "Mash the Pilsner Malt, Munich Malt, and Special B Malt with hot water at 66°C for 60 minutes.",
+      "Boil the wort and add Tettnang hops for bittering at 60 minutes.",
+      "Add Tettnang hops at 15 minutes remaining in the boil.",
+      "Cool the wort and transfer to a fermentation vessel.",
+      "Pitch the Belgian Ale yeast and ferment at 18-20°C for one to two weeks.",
+      "Bottle or keg the beer, carbonate, and enjoy!"
+    ]
+  },
+  {
+    "name": "Saison",
+    "style": "Saison",
+    "description": "A rustic and refreshing farmhouse ale with fruity and spicy notes, high carbonation, and a dry finish.",
+    "batchSize": "20 liters",
+    "ingredients": {
+      "malts": [
+        { "name": "Pilsner Malt", "amount": "4 kg" },
+        { "name": "Munich Malt", "amount": "0.5 kg" }
+      ],
+      "hops": [
+        { "name": "Saaz", "amount": "30 g", "time": "60 minutes" },
+        { "name": "Saaz", "amount": "20 g", "time": "15 minutes" }
+      ],
+      "yeast": "Belgian Saison"
+    },
+    "instructions": [
+      "Mash the Pilsner Malt and Munich Malt with hot water at 66°C for 60 minutes.",
+      "Boil the wort and add Saaz hops for bittering at 60 minutes.",
+      "Add Saaz hops at 15 minutes remaining in the boil.",
+      "Cool the wort and transfer to a fermentation vessel.",
+      "Pitch the Belgian Saison yeast and ferment at 22-24°C for one to two weeks.",
+      "Bottle or keg the beer, carbonate, and enjoy!"
+    ]
+  },
+  {
+    "name": "Irish Red Ale",
+    "style": "Irish Red Ale",
+    "description": "A malty and smooth beer with a deep amber color, caramel flavors, and a hint of toffee.",
+    "batchSize": "20 liters",
+    "ingredients": {
+      "malts": [
+        { "name": "Pale Malt", "amount": "3.5 kg" },
+        { "name": "Caramel Malt", "amount": "0.5 kg" },
+        { "name": "Roasted Barley", "amount": "0.2 kg" }
+      ],
+      "hops": [
+        {
+          "name": "East Kent Goldings",
+          "amount": "30 g",
+          "time": "60 minutes"
+        },
+        { "name": "East Kent Goldings", "amount": "20 g", "time": "15 minutes" }
+      ],
+      "yeast": "Irish Ale"
+    },
+    "instructions": [
+      "Mash the Pale Malt, Caramel Malt, and Roasted Barley with hot water at 66°C for 60 minutes.",
+      "Boil the wort and add East Kent Goldings hops for bittering at 60 minutes.",
+      "Add East Kent Goldings hops at 15 minutes remaining in the boil.",
+      "Cool the wort and transfer to a fermentation vessel.",
+      "Pitch the Irish Ale yeast and ferment at 18-20°C for one to two weeks.",
+      "Bottle or keg the beer, carbonate, and enjoy!"
+    ]
+  },
+  {
+    "name": "American Brown Ale",
+    "style": "American Brown Ale",
+    "description": "A malty and moderately hoppy beer with flavors of caramel, toffee, and a balanced bitterness.",
+    "batchSize": "20 liters",
+    "ingredients": {
+      "malts": [
+        { "name": "Pale Malt", "amount": "4 kg" },
+        { "name": "Crystal Malt", "amount": "0.5 kg" },
+        { "name": "Chocolate Malt", "amount": "0.3 kg" }
+      ],
+      "hops": [
+        { "name": "Cascade", "amount": "30 g", "time": "60 minutes" },
+        { "name": "Cascade", "amount": "20 g", "time": "15 minutes" }
+      ],
+      "yeast": "American Ale"
+    },
+    "instructions": [
+      "Mash the Pale Malt, Crystal Malt, and Chocolate Malt with hot water at 67°C for 60 minutes.",
+      "Boil the wort and add Cascade hops for bittering at 60 minutes.",
+      "Add Cascade hops at 15 minutes remaining in the boil.",
+      "Cool the wort and transfer to a fermentation vessel.",
+      "Pitch the American Ale yeast and ferment at 18-20°C for one to two weeks.",
+      "Bottle or keg the beer, carbonate, and enjoy!"
+    ]
+  },
+  {
+    "name": "Scotch Ale",
+    "style": "Scotch Ale",
+    "description": "A rich and malty beer with notes of caramel, toffee, and a hint of smoke.",
+    "batchSize": "20 liters",
+    "ingredients": {
+      "malts": [
+        { "name": "Pale Malt", "amount": "4 kg" },
+        { "name": "Munich Malt", "amount": "1 kg" },
+        { "name": "Crystal Malt", "amount": "0.5 kg" },
+        { "name": "Peated Malt", "amount": "0.3 kg" }
+      ],
+      "hops": [
+        {
+          "name": "East Kent Goldings",
+          "amount": "30 g",
+          "time": "60 minutes"
+        },
+        { "name": "East Kent Goldings", "amount": "20 g", "time": "15 minutes" }
+      ],
+      "yeast": "Scottish Ale"
+    },
+    "instructions": [
+      "Mash the Pale Malt, Munich Malt, Crystal Malt, and Peated Malt with hot water at 65°C for 60 minutes.",
+      "Boil the wort and add East Kent Goldings hops for bittering at 60 minutes.",
+      "Add East Kent Goldings hops at 15 minutes remaining in the boil.",
+      "Cool the wort and transfer to a fermentation vessel.",
+      "Pitch the Scottish Ale yeast and ferment at 18-20°C for one to two weeks.",
+      "Bottle or keg the beer, carbonate, and enjoy!"
+    ]
+  },
+  {
+    "name": "English Bitter",
+    "style": "English Bitter",
+    "description": "A balanced and sessionable ale with a caramel malt backbone and a moderate hop bitterness.",
+    "batchSize": "20 liters",
+    "ingredients": {
+      "malts": [
+        { "name": "Maris Otter", "amount": "4 kg" },
+        { "name": "Crystal Malt", "amount": "0.3 kg" }
+      ],
+      "hops": [
+        { "name": "Fuggle", "amount": "30 g", "time": "60 minutes" },
+        { "name": "Fuggle", "amount": "20 g", "time": "15 minutes" }
+      ],
+      "yeast": "English Ale"
+    },
+    "instructions": [
+      "Mash the Maris Otter and Crystal Malt with hot water at 67°C for 60 minutes.",
+      "Boil the wort and add Fuggle hops for bittering at 60 minutes.",
+      "Add Fuggle hops at 15 minutes remaining in the boil.",
+      "Cool the wort and transfer to a fermentation vessel.",
+      "Pitch the English Ale yeast and ferment at 18-20°C for one to two weeks.",
+      "Bottle or keg the beer, carbonate, and enjoy!"
+    ]
+  },
+  {
+    "name": "Munich Dunkel",
+    "style": "Munich Dunkel",
+    "description": "A dark and smooth lager with flavors of toasted malt, chocolate, and a subtle sweetness.",
+    "batchSize": "20 liters",
+    "ingredients": {
+      "malts": [
+        { "name": "Munich Malt", "amount": "4 kg" },
+        { "name": "Pilsner Malt", "amount": "1 kg" },
+        { "name": "Caramel Munich", "amount": "0.5 kg" },
+        { "name": "Carafa Special II", "amount": "0.2 kg" }
+      ],
+      "hops": [
+        {
+          "name": "Hallertauer Mittelfrüh",
+          "amount": "30 g",
+          "time": "60 minutes"
+        },
+        {
+          "name": "Hallertauer Mittelfrüh",
+          "amount": "20 g",
+          "time": "10 minutes"
+        }
+      ],
+      "yeast": "German Lager"
+    },
+    "instructions": [
+      "Mash the Munich Malt, Pilsner Malt, Caramel Munich, and Carafa Special II with hot water at 67°C for 60 minutes.",
+      "Boil the wort and add Hallertauer Mittelfrüh hops for bittering at 60 minutes.",
+      "Add Hallertauer Mittelfrüh hops at 10 minutes remaining in the boil.",
+      "Cool the wort and transfer to a fermentation vessel.",
+      "Pitch the German Lager yeast and ferment at 10-12°C for two to three weeks.",
+      "Perform a diacetyl rest at 18-20°C for 2-3 days.",
+      "Lager the beer at near-freezing temperatures (0-4°C) for 4-6 weeks.",
+      "Bottle or keg the beer, carbonate, and enjoy!"
+    ]
+  }
+]
