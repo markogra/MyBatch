@@ -1,0 +1,56 @@
+.inventoryPage h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.inventoryPage h2 {
+  margin-bottom: 20px;
+}
+.inventoryPage ul {
+  list-style-type: none;
+}
+
+.inventoryPage ul li {
+  font-size: 20px;
+}
+
+.container-for-ul-and-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.row1 {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.row2 {
+  display: flex;
+  justify-content: space-around;
+}
+
+.ingridients {
+  border: 2px solid #fbb117;
+  padding: 20px 40px;
+  border-radius: 10px;
+  width: 40%;
+}
+
+.form-for-adding select {
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.form-for-adding input {
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.form-for-adding button {
+  padding: 4px 12px;
+  background-color: #fb8b17;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+}
