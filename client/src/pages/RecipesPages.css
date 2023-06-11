@@ -1,0 +1,27 @@
+.our-recipes {
+  display: flex;
+  justify-content: space-around;
+}
+
+.our-recipes h2 {
+  margin-bottom: 15px;
+}
+
+.contaners {
+  border: 2px solid #fbb117;
+  width: 35%;
+  border-radius: 18px;
+  padding: 20px 40px;
+}
+
+.recipe-list ul {
+  list-style-type: none;
+}
+
+.recipe-list ul li {
+  margin-bottom: 10px;
+}
+
+.ourRecipes li:hover {
+  background-color: #555;
+}

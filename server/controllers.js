@@ -31,7 +31,13 @@ exports.deleteIngredient = async (req, res) => {};
 exports.getOurRecipes = async (req, res) => {
   try {
     const response = await beerRecipe.find();
-    console.log(response);
+    // console.log(
+    //   "**************************Start of response*************************"
+    // );
+    // console.log(response);
+    // console.log(
+    //   "**************************End of response*************************"
+    // );
     res.status = 200;
     res.send(response);
   } catch (error) {

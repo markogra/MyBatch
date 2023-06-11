@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createIngredients, getAllIngredients } from "../utils/ApiService";
 import "./InventoryPage.css";
 
 function InventoryPage() {
+  const [ingredients, setIngredients] = useState([]);
+  useEffect(() => {
+    getAllIngredients().then((fetchedIngredients) => {
+      console.log(fetchedIngredients);
+      setIngredients(fetchedIngredients);
+    });
+  }, []);
   const [hopsQuantity, setHopsQuantity] = useState("");
+
   // functions to add ingridients(we are posting the topic to backend and update state)
   const addHops = () => {
     const hopsName = document.querySelector(".form-for-adding select").value;
-
-    console.log(hopsName, hopsQuantity);
+    // Post ingridient to backend
+    createIngredients(hopsName, hopsQuantity).then((hopsinfo) =>
+      console.log(hopsinfo)
+    );
   };
+
   return (
     <div className="inventoryPage">
       <h1>Your Inventory</h1>
@@ -17,22 +29,24 @@ function InventoryPage() {
           <h2>Hops</h2>
           <div className="container-for-ul-and-form">
             <ul className="yourHops">
-              <li>
-                Saaz 24g <button>Delete</button>
-              </li>
-              <li>
-                First Gold 12g <button>Delete</button>
-              </li>
-              <li>
-                Fuggles 8g <button>Delete</button>
-              </li>
+              {ingredients.map((ingredient) => (
+                <li key={ingredient._id}>
+                  {ingredient.name} {ingredient.amount}
+                  <button className="deleteButton">Delete</button>
+                </li>
+              ))}
             </ul>
             <div className="form-for-adding">
               <select className="hops-dd">
                 <option value></option>
                 <option value="Saaz">Saaz</option>
-                <option value="First Gold">First Gold</option>
-                <option value="Fuggles">Fuggles</option>
+                <option value="Cascade">Cascade</option>
+                <option value="Fuggle">Fuggle</option>
+                <option value="Tettnang">Tettnang</option>
+                <option value="East Kent Goldings">East Kent Goldings</option>
+                <option value="Hallertauer Mittelfrüh">
+                  Hallertauer Mittelfrüh
+                </option>
               </select>
               <br />
               <input

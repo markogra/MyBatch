@@ -9,16 +9,22 @@ export const getAllIngredients = async () => {
   }
 };
 
-export const createIngredients = (data) =>
+export const createIngredients = (ingName, ingAmount) =>
   fetch(baseUrl, {
     method: "POST",
     mode: "cors",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
+    body: JSON.stringify({
+      name: ingName,
+      amount: ingAmount,
+    }),
   });
 
 export async function getOurRecipes() {
-  const response = await fetch("http://localhost:3500/our-recipes");
-  const json = response.json();
-  return json;
+  try {
+    const response = await fetch("http://localhost:3500/our-recipes");
+    return response.json();
+  } catch (err) {
+    console.log(err);
+  }
 }
