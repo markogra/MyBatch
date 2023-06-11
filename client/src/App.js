@@ -6,8 +6,17 @@ import OurRecipesPage from "./pages/OurRecipesPage";
 import HowToBrew from "./pages/HowToBrewPage";
 import MyRecipesPage from "./pages/MyRecipesPage";
 import Homepage from "./pages/HomePage";
+import { getOurRecipes } from "./utils/ApiService";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [allRecipes, setAllRecipes] = useState(null);
+  useEffect(() => {
+    getOurRecipes().then((fetchedRecipes) => {
+      setAllRecipes(fetchedRecipes);
+    });
+  }, []);
+
   return (
     <div className="App">
       <NavBar></NavBar>
@@ -15,11 +24,11 @@ function App() {
         <Route path="/" element={<Homepage></Homepage>}></Route>
         <Route
           path="/inventory"
-          element={<InventoryPage></InventoryPage>}
+          element={<InventoryPage allRecipes={allRecipes}></InventoryPage>}
         ></Route>
         <Route
           path="/our-recipes"
-          element={<OurRecipesPage></OurRecipesPage>}
+          element={<OurRecipesPage allRecipes={allRecipes}></OurRecipesPage>}
         ></Route>
         <Route path="/how-to-brew" element={<HowToBrew></HowToBrew>}></Route>
         <Route

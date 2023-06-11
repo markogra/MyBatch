@@ -11,7 +11,7 @@ router.get("/", function (req, res) {
 
 router.get("/inventory", controller.getAllIngredients);
 router.post("/inventory", controller.createIngredients);
-router.delete("/inventory:id", controller.deleteIngredient);
+router.delete("/inventory/:id", controller.deleteIngredient);
 router.get("/our-recipes", controller.getOurRecipes);
 
 module.exports = router;

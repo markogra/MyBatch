@@ -9,7 +9,7 @@ export const getAllIngredients = async () => {
   }
 };
 
-export const createIngredients = (ingName, ingAmount) =>
+export const createIngredients = (ingName, ingAmount, ingType) =>
   fetch(baseUrl, {
     method: "POST",
     mode: "cors",
@@ -17,6 +17,7 @@ export const createIngredients = (ingName, ingAmount) =>
     body: JSON.stringify({
       name: ingName,
       amount: ingAmount,
+      type: ingType,
     }),
   });
 
@@ -27,4 +28,19 @@ export async function getOurRecipes() {
   } catch (err) {
     console.log(err);
   }
+}
+
+export async function deleteIngredient(ingredientId) {
+  fetch("http://localhost:3500/inventory/" + ingredientId, {
+    method: "DELETE",
+    mode: "cors",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data); // Optional: handle the response data
+      // Refresh the ingredients list or update state as needed
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 }

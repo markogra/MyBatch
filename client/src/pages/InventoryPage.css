@@ -37,17 +37,17 @@
   width: 40%;
 }
 
-.form-for-adding select {
+.forms select {
   margin-bottom: 30px;
   font-size: 14px;
 }
 
-.form-for-adding input {
+.forms input {
   margin-bottom: 30px;
   font-size: 14px;
 }
 
-.form-for-adding button {
+.forms button {
   padding: 4px 12px;
   background-color: #fb8b17;
   color: white;

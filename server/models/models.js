@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const addIngredientSchema = new Schema({
   name: String,
   amount: String,
+  type: String,
 });
 
 const maltSchema = new Schema({

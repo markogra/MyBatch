@@ -25,3 +25,32 @@
 .ourRecipes li:hover {
   background-color: #555;
 }
+
+/* MyRecipes.js Styles  */
+.container {
+  display: flex;
+  justify-content: space-around;
+}
+.first-half {
+  width: 40%;
+  height: 100%;
+}
+.my-recipes-form {
+  border: 2px solid #fbb117;
+  padding: 10px 15px;
+  height: 450px;
+  margin-bottom: 40px;
+  border-radius: 12px;
+}
+.my-recipe-list {
+  border: 2px solid #fbb117;
+  height: 250px;
+  padding: 10px 20px;
+  border-radius: 12px;
+}
+.my-recipe-details {
+  border: 2px solid #fbb117;
+  width: 40%;
+  padding: 10px 20px;
+  border-radius: 12px;
+}

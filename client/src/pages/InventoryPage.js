@@ -1,8 +1,29 @@
 import { useState, useEffect } from "react";
-import { createIngredients, getAllIngredients } from "../utils/ApiService";
+import {
+  createIngredients,
+  getAllIngredients,
+  deleteIngredient,
+} from "../utils/ApiService";
 import "./InventoryPage.css";
 
-function InventoryPage() {
+function InventoryPage({ allRecipes }) {
+  const ourRecipes = allRecipes;
+  // Options for DropDown lists
+  const allHops = new Set();
+  const allMalts = new Set();
+  const allYeast = new Set();
+
+  if (ourRecipes) {
+    ourRecipes.forEach((recipe) => {
+      recipe.ingredients.hops.forEach((hop) => {
+        allHops.add(hop.name);
+      });
+      recipe.ingredients.malts.forEach((malt) => {
+        allMalts.add(malt.name);
+      });
+      allYeast.add(recipe.ingredients.yeast);
+    });
+  }
   const [ingredients, setIngredients] = useState([]);
   useEffect(() => {
     getAllIngredients().then((fetchedIngredients) => {
@@ -11,14 +32,77 @@ function InventoryPage() {
     });
   }, []);
   const [hopsQuantity, setHopsQuantity] = useState("");
+  const [maltsQuantity, setMaltsQuantity] = useState("");
+  const [yeastQuantity, setYeastQuantity] = useState("");
+  const [additionalQuantity, setAdditionalQuantity] = useState("");
 
   // functions to add ingridients(we are posting the topic to backend and update state)
   const addHops = () => {
-    const hopsName = document.querySelector(".form-for-adding select").value;
+    const hopsName = document.querySelector(
+      ".form-for-adding-hops select"
+    ).value;
     // Post ingridient to backend
-    createIngredients(hopsName, hopsQuantity).then((hopsinfo) =>
+    createIngredients(hopsName, hopsQuantity, "hops").then((hopsinfo) =>
       console.log(hopsinfo)
     );
+    refreshIngredients();
+  };
+
+  const addMalts = () => {
+    const maltsName = document.querySelector(
+      ".form-for-adding-malts select"
+    ).value;
+    createIngredients(maltsName, maltsQuantity, "malts").then((maltsinfo) =>
+      console.log(maltsinfo)
+    );
+    refreshIngredients();
+  };
+
+  const addYeast = () => {
+    const yeastName = document.querySelector(
+      ".form-for-adding-yeast select"
+    ).value;
+    createIngredients(yeastName, yeastQuantity, "yeast").then((yeastinfo) =>
+      console.log(yeastinfo)
+    );
+    refreshIngredients();
+  };
+
+  const addAddtionalIngredients = () => {
+    const additionalIngredientName = document.querySelector(
+      ".form-for-adding-additions select"
+    ).value;
+    createIngredients(
+      additionalIngredientName,
+      additionalQuantity,
+      "additions"
+    ).then((additionalinfo) => console.log(additionalinfo));
+    refreshIngredients();
+  };
+
+  const handleDelete = (ingredientId) => {
+    deleteIngredient(ingredientId)
+      .then((response) => {
+        setIngredients((prevIngredients) =>
+          prevIngredients.filter(
+            (ingredient) => ingredient._id !== ingredientId
+          )
+        );
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
+  const refreshIngredients = () => {
+    getAllIngredients()
+      .then((fetchedIngredients) => {
+        console.log(fetchedIngredients);
+        setIngredients(fetchedIngredients);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
@@ -29,24 +113,28 @@ function InventoryPage() {
           <h2>Hops</h2>
           <div className="container-for-ul-and-form">
             <ul className="yourHops">
-              {ingredients.map((ingredient) => (
-                <li key={ingredient._id}>
-                  {ingredient.name} {ingredient.amount}
-                  <button className="deleteButton">Delete</button>
-                </li>
-              ))}
+              {ingredients.map((ingredient) =>
+                ingredient.type === "hops" ? (
+                  <li key={ingredient._id}>
+                    {ingredient.name} {ingredient.amount}
+                    <button
+                      className="deleteButton"
+                      onClick={() => handleDelete(ingredient._id)}
+                    >
+                      Delete
+                    </button>
+                  </li>
+                ) : null
+              )}
             </ul>
-            <div className="form-for-adding">
+            <div className="form-for-adding-hops forms">
               <select className="hops-dd">
-                <option value></option>
-                <option value="Saaz">Saaz</option>
-                <option value="Cascade">Cascade</option>
-                <option value="Fuggle">Fuggle</option>
-                <option value="Tettnang">Tettnang</option>
-                <option value="East Kent Goldings">East Kent Goldings</option>
-                <option value="Hallertauer Mittelfrüh">
-                  Hallertauer Mittelfrüh
-                </option>
+                <option></option>
+                {Array.from(allHops).map((hop) => (
+                  <option key={hop} value={hop}>
+                    {hop}
+                  </option>
+                ))}
               </select>
               <br />
               <input
@@ -66,21 +154,40 @@ function InventoryPage() {
           <h2>Malts</h2>
           <div className="container-for-ul-and-form">
             <ul className="yourmalts">
-              <li>Munich 2.4kg</li>
-              <li>Caramalt 3.2g</li>
-              <li>Dark Crystal 1.8g</li>
+              {ingredients.map((ingredient) =>
+                ingredient.type === "malts" ? (
+                  <li key={ingredient._id}>
+                    {ingredient.name} {ingredient.amount}
+                    <button
+                      className="deleteButton"
+                      onClick={() => handleDelete(ingredient._id)}
+                    >
+                      Delete
+                    </button>
+                  </li>
+                ) : null
+              )}
             </ul>
-            <div className="form-for-adding">
+            <div className="form-for-adding-malts forms">
               <select>
                 <option></option>
-                <option>Munich</option>
-                <option>Caramalt</option>
-                <option>Dark Crystal</option>
+                {Array.from(allMalts).map((malt) => (
+                  <option key={malt} value={malt}>
+                    {malt}
+                  </option>
+                ))}
               </select>
               <br />
-              <input type="text" placeholder="Quatity in kg"></input>
+              <input
+                type="text"
+                placeholder="Quatity in kg"
+                value={maltsQuantity}
+                onChange={(e) => {
+                  setMaltsQuantity(e.target.value);
+                }}
+              ></input>
               <br />
-              <button>Add</button>
+              <button onClick={addMalts}>Add</button>
             </div>
           </div>
         </div>
@@ -91,43 +198,79 @@ function InventoryPage() {
           <h2>Yeast</h2>
           <div className="container-for-ul-and-form">
             <ul className="youryeast">
-              <li>CL-0670 12g</li>
-              <li>Y08 22g</li>
-              <li>US-04 10g</li>
+              {ingredients.map((ingredient) =>
+                ingredient.type === "yeast" ? (
+                  <li key={ingredient._id}>
+                    {ingredient.name} {ingredient.amount}
+                    <button
+                      className="deleteButton"
+                      onClick={() => handleDelete(ingredient._id)}
+                    >
+                      Delete
+                    </button>
+                  </li>
+                ) : null
+              )}
             </ul>
-            <div className="form-for-adding">
+            <div className="form-for-adding-yeast forms">
               <select>
                 <option></option>
-                <option>CL-0670</option>
-                <option>Y08</option>
-                <option>US-04</option>
+                {Array.from(allYeast).map((yeast) => (
+                  <option key={yeast} value={yeast}>
+                    {yeast}
+                  </option>
+                ))}
               </select>
               <br />
-              <input type="text" placeholder="Quatity in grams"></input>
+              <input
+                type="text"
+                placeholder="Quatity in grams"
+                value={yeastQuantity}
+                onChange={(e) => {
+                  setYeastQuantity(e.target.value);
+                }}
+              ></input>
               <br />
-              <button>Add</button>
+              <button onClick={addYeast}>Add</button>
             </div>
           </div>
         </div>
         <div className="Additions ingridients">
           <h2>Additional Ingredients</h2>
           <div className="container-for-ul-and-form">
-            <ul className="yourmalts">
-              <li>Cinnamon Stick 12g</li>
-              <li>Ginger Root 23g</li>
-              <li>Peach puree</li>
+            <ul className="yourAdditions">
+              {ingredients.map((ingredient) =>
+                ingredient.type === "additions" ? (
+                  <li key={ingredient._id}>
+                    {ingredient.name} {ingredient.amount}
+                    <button
+                      className="deleteButton"
+                      onClick={() => handleDelete(ingredient._id)}
+                    >
+                      Delete
+                    </button>
+                  </li>
+                ) : null
+              )}
             </ul>
-            <div className="form-for-adding">
+            <div className="form-for-adding-additions forms">
               <select>
                 <option></option>
-                <option>Cinnamon Stick</option>
-                <option>Ginger Root</option>
-                <option>Peach puree</option>
+                <option value="Cinnamon Stick">Cinnamon Stick</option>
+                <option value="Ginger Root">Ginger Root</option>
+                <option value="Peach puree">Peach puree</option>
               </select>
               <br />
-              <input type="text" placeholder="Quatity in grams"></input>
+              <input
+                type="text"
+                placeholder="Quatity in grams"
+                value={additionalQuantity}
+                onChange={(e) => {
+                  setAdditionalQuantity(e.target.value);
+                }}
+              ></input>
               <br />
-              <button>Add</button>
+              <button onClick={addAddtionalIngredients}>Add</button>
             </div>
           </div>
         </div>

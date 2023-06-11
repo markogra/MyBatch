@@ -2,31 +2,10 @@ import { getOurRecipes } from "../utils/ApiService";
 import { useState, useEffect } from "react";
 import "./RecipesPages.css";
 
-function OurRecipesPage() {
-  let allHops = new Set();
-  let allMalts = new Set();
-  let allYeast = new Set();
+function OurRecipesPage({ allRecipes }) {
+  const ourRecipes = allRecipes;
 
-  const [recipes, setRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
-  useEffect(() => {
-    getOurRecipes().then((fetchedRecipes) => {
-      console.log(fetchedRecipes);
-      setRecipes(fetchedRecipes);
-      fetchedRecipes.forEach((recipe) => {
-        recipe.ingredients.hops.forEach((hop) => {
-          allHops.add(hop.name);
-        });
-        recipe.ingredients.malts.forEach((malt) => {
-          allMalts.add(malt.name);
-        });
-        allYeast.add(recipe.ingredients.yeast);
-      });
-      console.log(allHops);
-      console.log(allMalts);
-      console.log(allYeast);
-    });
-  }, []);
 
   const handleRecipeClick = (recipe) => {
     setSelectedRecipe(recipe);
@@ -36,14 +15,16 @@ function OurRecipesPage() {
     <div className="our-recipes ">
       <div className="recipe-list contaners">
         <h2>Here are some one our most popular recipes</h2>
-        <ul className="ourRecipes">
-          {recipes.map((recipe) => (
-            <li key={recipe._id} onClick={() => handleRecipeClick(recipe)}>
-              <h3>{recipe.name}</h3>
-              <p>{recipe.description}</p>
-            </li>
-          ))}
-        </ul>
+        {ourRecipes && (
+          <ul className="ourRecipes">
+            {allRecipes.map((recipe) => (
+              <li key={recipe._id} onClick={() => handleRecipeClick(recipe)}>
+                <h3>{recipe.name}</h3>
+                <p>{recipe.description}</p>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
       <div className="recipe-instruction contaners">
         <h2>Ingredients</h2>
