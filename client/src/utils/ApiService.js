@@ -37,10 +37,37 @@ export async function deleteIngredient(ingredientId) {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data); // Optional: handle the response data
-      // Refresh the ingredients list or update state as needed
+      console.log(data);
     })
     .catch((error) => {
       console.error("Error:", error);
     });
+}
+
+export const getMyRecipes = async () => {
+  try {
+    const response = await fetch("http://localhost:3500/my-recipes");
+    if (!response.ok) {
+      throw new Error("Failed to fetch recipes");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export async function postMyRecipe(recipeData) {
+  try {
+    const response = await fetch("http://localhost:3500/my-recipes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(recipeData),
+    });
+    return response.json();
+  } catch (err) {
+    console.log(err);
+  }
 }

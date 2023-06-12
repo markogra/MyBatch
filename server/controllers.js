@@ -1,4 +1,4 @@
-const { beerRecipe, addIngredient } = require("./models/models");
+const { beerRecipe, addIngredient, myRecipe } = require("./models/models");
 
 exports.getAllIngredients = async (req, res) => {
   try {
@@ -58,5 +58,34 @@ exports.getOurRecipes = async (req, res) => {
     res.send(response);
   } catch (error) {
     console.log("ERROR!!!! " + error);
+  }
+};
+
+exports.getMyRecipes = async (req, res) => {
+  try {
+    const response = await myRecipe.find();
+    console.log("Response on my recipes");
+    console.log(response);
+    res.status(200).send(response);
+  } catch (error) {
+    console.log("ERROR!!!! " + error);
+  }
+};
+
+exports.postMyRecipe = async (req, res) => {
+  console.log(req.body);
+  try {
+    const { name, style, ingredients, instructions } = req.body;
+    const newRecipe = new myRecipe({
+      name,
+      style,
+      ingredients,
+      instructions,
+    });
+    const savedRecipe = await newRecipe.save();
+    res.status(201).json(savedRecipe);
+  } catch (error) {
+    console.log("ERROR!!! " + error);
+    res.status(500);
   }
 };
