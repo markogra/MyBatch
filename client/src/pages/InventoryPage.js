@@ -26,11 +26,9 @@ function InventoryPage({ allRecipes }) {
   }
   const [ingredients, setIngredients] = useState([]);
   useEffect(() => {
-    getAllIngredients().then((fetchedIngredients) => {
-      console.log(fetchedIngredients);
-      setIngredients(fetchedIngredients);
-    });
+    refreshIngredients();
   }, []);
+
   const [hopsQuantity, setHopsQuantity] = useState("");
   const [maltsQuantity, setMaltsQuantity] = useState("");
   const [yeastQuantity, setYeastQuantity] = useState("");
