@@ -15,6 +15,7 @@
   border-bottom: 2px solid #fbb117;
   margin-bottom: 30px;
 }
+
 .mainNav ul {
   display: flex;
   justify-content: space-between;
@@ -33,4 +34,8 @@
 
 .mainNav a:hover {
   color: red;
+}
+
+.mainNav .active-link {
+  border-top: 2px solid #fbb117;
 }

@@ -18,7 +18,11 @@ function OurRecipesPage({ allRecipes }) {
         {ourRecipes && (
           <ul className="ourRecipes">
             {allRecipes.map((recipe) => (
-              <li key={recipe._id} onClick={() => handleRecipeClick(recipe)}>
+              <li
+                key={recipe._id}
+                onClick={() => handleRecipeClick(recipe)}
+                className={selectedRecipe === recipe ? "active-recipe" : ""}
+              >
                 <h3>{recipe.name}</h3>
                 <p>{recipe.description}</p>
               </li>
@@ -27,40 +31,36 @@ function OurRecipesPage({ allRecipes }) {
         )}
       </div>
       <div className="recipe-instruction contaners">
-        <h2>Ingredients</h2>
-        <h3>Hops</h3>
+        <h2>Details</h2>
         {selectedRecipe && (
-          <ul>
-            {selectedRecipe.ingredients.hops.map((hop) => (
-              <li key={hop._id}>
-                {hop.name} {hop.amount} Adding time: {hop.time}
-              </li>
-            ))}
-          </ul>
-        )}
-        <h3>Yeast</h3>
-        {selectedRecipe && (
-          <ul>
-            <li>{selectedRecipe.ingredients.yeast}</li>
-          </ul>
-        )}
-        <h3>Malts</h3>
-        {selectedRecipe && (
-          <ul>
-            {selectedRecipe.ingredients.malts.map((malt) => (
-              <li key={malt._id}>
-                {malt.name} {malt.amount}
-              </li>
-            ))}
-          </ul>
-        )}
-        <h2>Recipe instructions</h2>
-        {selectedRecipe && (
-          <ul>
-            {selectedRecipe.instructions.map((instruction) => (
-              <li>{instruction}</li>
-            ))}
-          </ul>
+          <div className="ing-details">
+            <h3>Hops</h3>
+            <ul className="ing-ul">
+              {selectedRecipe.ingredients.hops.map((hop) => (
+                <li key={hop._id}>
+                  {hop.name} {hop.amount} Adding time: {hop.time}
+                </li>
+              ))}
+            </ul>
+            <h3>Yeast</h3>
+            <ul className="ing-ul">
+              <li>{selectedRecipe.ingredients.yeast}</li>
+            </ul>
+            <h3>Malts</h3>
+            <ul className="ing-ul">
+              {selectedRecipe.ingredients.malts.map((malt) => (
+                <li key={malt._id}>
+                  {malt.name} {malt.amount}
+                </li>
+              ))}
+            </ul>
+            <h2>Recipe instructions</h2>
+            <ul>
+              {selectedRecipe.instructions.map((instruction) => (
+                <li key={instruction}>{instruction}</li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
     </div>

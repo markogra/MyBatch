@@ -22,8 +22,36 @@
   margin-bottom: 10px;
 }
 
-.ourRecipes li:hover {
-  background-color: #555;
+.recipe-list ul li:hover,
+.recipe-list ul li.active-recipe:hover {
+  cursor: pointer;
+}
+.recipe-list ul li:hover h3 {
+  color: red;
+}
+
+.recipe-list ul li.active-recipe {
+  border-left: 2px solid #fbb117;
+  padding-left: 20px;
+  /* Add any other styles for the active recipe */
+}
+
+.recipe-instruction li {
+  font-size: 20px;
+}
+
+.recipe-instruction h3 {
+  margin-bottom: 5px;
+  margin-top: 10px;
+  font-size: 140%;
+  color: #fb8b17;
+}
+
+.recipe-instruction h2 {
+  margin-bottom: 5px;
+  margin-top: 10px;
+  font-size: 170%;
+  color: #fb8b17;
 }
 
 /* MyRecipes.js Styles  */
@@ -100,4 +128,7 @@
 
 .right-side input {
   width: 80px;
+}
+.ing-ul {
+  list-style-type: none;
 }

@@ -39,43 +39,80 @@ function InventoryPage({ allRecipes }) {
     const hopsName = document.querySelector(
       ".form-for-adding-hops select"
     ).value;
-    // Post ingridient to backend
-    createIngredients(hopsName, hopsQuantity, "hops").then((hopsinfo) =>
-      console.log(hopsinfo)
-    );
-    refreshIngredients();
+    if (hopsName === "" || hopsQuantity === "") {
+      alert("Please enter proper name and quantity for hops");
+      return;
+    }
+
+    createIngredients(hopsName, hopsQuantity, "hops")
+      .then((hopsinfo) => {
+        console.log(hopsinfo);
+        refreshIngredients(); // Call refreshIngredients after the new ingredient is created
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   const addMalts = () => {
     const maltsName = document.querySelector(
       ".form-for-adding-malts select"
     ).value;
-    createIngredients(maltsName, maltsQuantity, "malts").then((maltsinfo) =>
-      console.log(maltsinfo)
-    );
-    refreshIngredients();
+    if (maltsName === "" || maltsQuantity === "") {
+      alert("Please enter proper name and quantity for malts");
+      return;
+    }
+
+    createIngredients(maltsName, maltsQuantity, "malts")
+      .then((maltsinfo) => {
+        console.log(maltsinfo);
+        refreshIngredients();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   const addYeast = () => {
     const yeastName = document.querySelector(
       ".form-for-adding-yeast select"
     ).value;
-    createIngredients(yeastName, yeastQuantity, "yeast").then((yeastinfo) =>
-      console.log(yeastinfo)
-    );
-    refreshIngredients();
+
+    if (yeastName === "" || yeastQuantity === "") {
+      alert("Please enter proper name and quantity for yeast");
+      return;
+    }
+
+    createIngredients(yeastName, yeastQuantity, "yeast")
+      .then((yeastinfo) => {
+        console.log(yeastinfo);
+        refreshIngredients();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   const addAddtionalIngredients = () => {
     const additionalIngredientName = document.querySelector(
       ".form-for-adding-additions select"
     ).value;
-    createIngredients(
-      additionalIngredientName,
-      additionalQuantity,
-      "additions"
-    ).then((additionalinfo) => console.log(additionalinfo));
-    refreshIngredients();
+
+    if (additionalIngredientName === "" || setAdditionalQuantity === "") {
+      alert(
+        "Please enter proper name and quantity for additional ingreadients"
+      );
+      return;
+    }
+
+    createIngredients(additionalIngredientName, additionalQuantity, "additions")
+      .then((additionalinfo) => {
+        console.log(additionalinfo);
+        refreshIngredients();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   const handleDelete = (ingredientId) => {
@@ -110,7 +147,7 @@ function InventoryPage({ allRecipes }) {
         <div className="hops ingridients">
           <h2>Hops</h2>
           <div className="container-for-ul-and-form">
-            <ul className="yourHops">
+            <ul className="yourHops" key="hops-list">
               {ingredients.map((ingredient) =>
                 ingredient.type === "hops" ? (
                   <li key={ingredient._id}>
@@ -126,7 +163,7 @@ function InventoryPage({ allRecipes }) {
               )}
             </ul>
             <div className="form-for-adding-hops forms">
-              <select className="hops-dd">
+              <select className="hops-dd" required>
                 <option></option>
                 {Array.from(allHops).map((hop) => (
                   <option key={hop} value={hop}>

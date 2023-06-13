@@ -1,24 +1,56 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 function NavBar() {
+  const location = useLocation();
+
   return (
     <nav className="mainNav">
       <ul>
         <li>
-          <Link to="/">MyBatch</Link>
+          <NavLink
+            exact
+            to="/"
+            className={location.pathname === "/" ? "active-link" : ""}
+          >
+            MyBatch
+          </NavLink>
         </li>
         <li>
-          <Link to="/inventory">Inventory</Link>
+          <NavLink
+            to="/inventory"
+            className={location.pathname === "/inventory" ? "active-link" : ""}
+          >
+            Inventory
+          </NavLink>
         </li>
         <li>
-          <Link to="/our-recipes">Our recipes</Link>
+          <NavLink
+            to="/our-recipes"
+            className={
+              location.pathname === "/our-recipes" ? "active-link" : ""
+            }
+          >
+            Our recipes
+          </NavLink>
         </li>
         <li>
-          <Link to="/how-to-brew">How to Brew</Link>
+          <NavLink
+            to="/how-to-brew"
+            className={
+              location.pathname === "/how-to-brew" ? "active-link" : ""
+            }
+          >
+            How to Brew
+          </NavLink>
         </li>
         <li>
-          <Link to="/my-recipes">My recipes</Link>
+          <NavLink
+            to="/my-recipes"
+            className={location.pathname === "/my-recipes" ? "active-link" : ""}
+          >
+            My recipes
+          </NavLink>
         </li>
       </ul>
     </nav>
