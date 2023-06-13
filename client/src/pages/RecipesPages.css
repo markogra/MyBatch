@@ -20,6 +20,8 @@
 
 .recipe-list ul li {
   margin-bottom: 10px;
+  border-bottom: 1px solid white;
+  padding-bottom: 5px;
 }
 
 .recipe-list ul li:hover,
@@ -131,4 +133,37 @@
 }
 .ing-ul {
   list-style-type: none;
+}
+
+.your-list-li {
+  list-style-type: none;
+  font-size: 20px;
+  margin-top: 10px;
+  border-bottom: 1px solid white;
+}
+.your-list-li:hover {
+  cursor: pointer;
+}
+
+.my-recipe-name {
+  color: #fb8b17;
+}
+.my-recipe-style {
+  font-style: oblique;
+}
+
+.my-recipe-details h1 {
+  color: #fb8b17;
+  font-style: oblique;
+}
+.my-recipe-details h2,
+h3 {
+  margin-top: 20px;
+  font-family: cursive;
+}
+
+.my-recipe-details li,
+p {
+  list-style-type: none;
+  font-size: 130%;
 }

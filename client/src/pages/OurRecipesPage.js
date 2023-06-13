@@ -14,7 +14,9 @@ function OurRecipesPage({ allRecipes }) {
   return (
     <div className="our-recipes ">
       <div className="recipe-list contaners">
-        <h2>Here are some one our most popular recipes</h2>
+        <h2 style={{ fontFamily: "cursive" }}>
+          Here are some one our most popular recipes
+        </h2>
         {ourRecipes && (
           <ul className="ourRecipes">
             {allRecipes.map((recipe) => (

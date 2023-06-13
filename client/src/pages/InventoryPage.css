@@ -57,3 +57,13 @@
 .deleteButton {
   margin-left: 20px;
 }
+
+.inventoryPage h1,
+h2 {
+  color: #fb8b17;
+}
+
+.deleteIcon {
+  height: 15px;
+  width: 25px;
+}

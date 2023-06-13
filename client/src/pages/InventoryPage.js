@@ -5,6 +5,7 @@ import {
   deleteIngredient,
 } from "../utils/ApiService";
 import "./InventoryPage.css";
+import { FaTrash } from "react-icons/fa";
 
 function InventoryPage({ allRecipes }) {
   const ourRecipes = allRecipes;
@@ -34,6 +35,13 @@ function InventoryPage({ allRecipes }) {
   const [yeastQuantity, setYeastQuantity] = useState("");
   const [additionalQuantity, setAdditionalQuantity] = useState("");
 
+  const resetFormInputs = () => {
+    setHopsQuantity("");
+    setMaltsQuantity("");
+    setYeastQuantity("");
+    setAdditionalQuantity("");
+  };
+
   // functions to add ingridients(we are posting the topic to backend and update state)
   const addHops = () => {
     const hopsName = document.querySelector(
@@ -47,7 +55,8 @@ function InventoryPage({ allRecipes }) {
     createIngredients(hopsName, hopsQuantity, "hops")
       .then((hopsinfo) => {
         console.log(hopsinfo);
-        refreshIngredients(); // Call refreshIngredients after the new ingredient is created
+        refreshIngredients();
+        resetFormInputs();
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -67,6 +76,7 @@ function InventoryPage({ allRecipes }) {
       .then((maltsinfo) => {
         console.log(maltsinfo);
         refreshIngredients();
+        resetFormInputs();
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -87,6 +97,7 @@ function InventoryPage({ allRecipes }) {
       .then((yeastinfo) => {
         console.log(yeastinfo);
         refreshIngredients();
+        resetFormInputs();
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -109,6 +120,7 @@ function InventoryPage({ allRecipes }) {
       .then((additionalinfo) => {
         console.log(additionalinfo);
         refreshIngredients();
+        resetFormInputs();
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -156,7 +168,7 @@ function InventoryPage({ allRecipes }) {
                       className="deleteButton"
                       onClick={() => handleDelete(ingredient._id)}
                     >
-                      Delete
+                      <FaTrash className="deleteIcon" />
                     </button>
                   </li>
                 ) : null
@@ -197,7 +209,7 @@ function InventoryPage({ allRecipes }) {
                       className="deleteButton"
                       onClick={() => handleDelete(ingredient._id)}
                     >
-                      Delete
+                      <FaTrash className="deleteIcon" />
                     </button>
                   </li>
                 ) : null
@@ -241,7 +253,7 @@ function InventoryPage({ allRecipes }) {
                       className="deleteButton"
                       onClick={() => handleDelete(ingredient._id)}
                     >
-                      Delete
+                      <FaTrash className="deleteIcon" />
                     </button>
                   </li>
                 ) : null
@@ -282,7 +294,7 @@ function InventoryPage({ allRecipes }) {
                       className="deleteButton"
                       onClick={() => handleDelete(ingredient._id)}
                     >
-                      Delete
+                      <FaTrash className="deleteIcon" />
                     </button>
                   </li>
                 ) : null

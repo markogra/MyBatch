@@ -34,16 +34,7 @@ function NavBar() {
             Our recipes
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to="/how-to-brew"
-            className={
-              location.pathname === "/how-to-brew" ? "active-link" : ""
-            }
-          >
-            How to Brew
-          </NavLink>
-        </li>
+
         <li>
           <NavLink
             to="/my-recipes"

@@ -34,10 +34,14 @@ function App() {
           path="/our-recipes"
           element={<OurRecipesPage allRecipes={allRecipes}></OurRecipesPage>}
         ></Route>
-        <Route path="/how-to-brew" element={<HowToBrew></HowToBrew>}></Route>
         <Route
           path="/my-recipes"
-          element={<MyRecipesPage allRecipes={allRecipes} myRecipes={myRecipes}></MyRecipesPage>}
+          element={
+            <MyRecipesPage
+              allRecipes={allRecipes}
+              myRecipes={myRecipes}
+            ></MyRecipesPage>
+          }
         ></Route>
       </Routes>
     </div>

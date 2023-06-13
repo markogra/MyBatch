@@ -64,7 +64,9 @@ function MyRecipesPage({ myRecipes, allRecipes }) {
     <div className="container">
       <div className="first-half">
         <div className="my-recipes-form">
-          <h2>Release creativity, create your own recipe</h2>
+          <h2 style={{ fontFamily: "cursive" }}>
+            Release creativity, create your own recipe
+          </h2>
           {/* Form */}
           <form onSubmit={handleSubmit} className="new-recipe-form">
             <div className="left-side">
@@ -177,23 +179,29 @@ function MyRecipesPage({ myRecipes, allRecipes }) {
           <ul className="my-recipes">
             {allMyRecipes &&
               allMyRecipes.map((recipe) => (
-                <li key={recipe._id} onClick={() => setSelectedRecipe(recipe)}>
-                  <span>
+                <li
+                  className="your-list-li"
+                  key={recipe._id}
+                  onClick={() => setSelectedRecipe(recipe)}
+                >
+                  <span className="my-recipe-name">
                     {recipe.name}
                     <br />
                   </span>
-                  <span>Style: {recipe.style}</span>
+                  <span className="my-recipe-style">{recipe.style}</span>
                 </li>
               ))}
           </ul>
         </div>
       </div>
       <div class="my-recipe-details">
-        <h1>Details of each recipe that is clicked on list</h1>
+        <h1>Details</h1>
         {selectedRecipe && (
           <div>
-            <h2>{selectedRecipe.name}</h2>
-            <p>Style: {selectedRecipe.style}</p>
+            <h2>
+              {selectedRecipe.name}({selectedRecipe.style})
+            </h2>
+
             <h3>Ingredients:</h3>
             <ul>
               {selectedRecipe.ingredients.hops.map((hop, index) => (
