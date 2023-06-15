@@ -1,3 +1,6 @@
+import { BeerRecipe } from "../types/BeerRecipe";
+import { InputRecipe } from "../types/InputRecipe";
+
 const baseUrl = "http://localhost:3500/inventory";
 
 export const getAllIngredients = async () => {
@@ -9,7 +12,11 @@ export const getAllIngredients = async () => {
   }
 };
 
-export const createIngredients = (ingName, ingAmount, ingType) =>
+export const createIngredients = (
+  ingName: string,
+  ingAmount: string,
+  ingType: string
+) => {
   fetch(baseUrl, {
     method: "POST",
     mode: "cors",
@@ -20,6 +27,7 @@ export const createIngredients = (ingName, ingAmount, ingType) =>
       type: ingType,
     }),
   });
+};
 
 export async function getOurRecipes() {
   try {
@@ -30,7 +38,7 @@ export async function getOurRecipes() {
   }
 }
 
-export async function deleteIngredient(ingredientId) {
+export async function deleteIngredient(ingredientId: string) {
   fetch("http://localhost:3500/inventory/" + ingredientId, {
     method: "DELETE",
     mode: "cors",
@@ -53,11 +61,15 @@ export const getMyRecipes = async () => {
     const data = await response.json();
     return data;
   } catch (error) {
-    throw new Error(error.message);
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error("An unexpected error occurred.");
+    }
   }
 };
 
-export async function postMyRecipe(recipeData) {
+export async function postMyRecipe(recipeData: InputRecipe) {
   try {
     const response = await fetch("http://localhost:3500/my-recipes", {
       method: "POST",

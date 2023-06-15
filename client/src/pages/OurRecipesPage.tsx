@@ -1,19 +1,23 @@
-import { getOurRecipes } from "../utils/ApiService";
-import { useState, useEffect } from "react";
+import React, { useState, FC } from "react";
 import "./RecipesPages.css";
+import { BeerRecipe } from "../types/BeerRecipe";
 
-function OurRecipesPage({ allRecipes }) {
+interface OurRecipesPageProps {
+  allRecipes: BeerRecipe[];
+}
+
+const OurRecipesPage: FC<OurRecipesPageProps> = ({ allRecipes }) => {
   const ourRecipes = allRecipes;
 
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [selectedRecipe, setSelectedRecipe] = useState<BeerRecipe | null>(null);
 
-  const handleRecipeClick = (recipe) => {
+  const handleRecipeClick = (recipe: BeerRecipe) => {
     setSelectedRecipe(recipe);
   };
 
   return (
     <div className="our-recipes ">
-      <div className="recipe-list contaners">
+      <div className="recipe-list containers">
         <h2 style={{ fontFamily: "cursive" }}>
           Here are some one our most popular recipes
         </h2>
@@ -32,7 +36,7 @@ function OurRecipesPage({ allRecipes }) {
           </ul>
         )}
       </div>
-      <div className="recipe-instruction contaners">
+      <div className="recipe-instruction containers">
         <h2>Details</h2>
         {selectedRecipe && (
           <div className="ing-details">
@@ -67,6 +71,6 @@ function OurRecipesPage({ allRecipes }) {
       </div>
     </div>
   );
-}
+};
 
 export default OurRecipesPage;
