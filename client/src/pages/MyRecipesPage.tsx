@@ -1,42 +1,56 @@
-import { useEffect, useState } from "react";
-import "./RecipesPages.css";
-import { postMyRecipe } from "../utils/ApiService";
+import React, { useEffect, useState, FC, FormEvent } from 'react';
+import './RecipesPages.css';
+import { postMyRecipe } from '../utils/ApiService';
+import { MyRecipe } from '../types/MyRecipe';
+import { BeerRecipe } from '../types/BeerRecipe';
 
-function MyRecipesPage({ myRecipes, allRecipes }) {
-  const [allMyRecipes, setMyRecipes] = useState([myRecipes]);
-  const [recipeName, setRecipeName] = useState("");
-  const [beerStyle, setBeerStyle] = useState("");
+interface MyRecipesPageProps {
+  myRecipes: MyRecipe[];
+  allRecipes: BeerRecipe[];
+}
 
-  const allHops = new Set();
-  const allMalts = new Set();
-  const allYeast = new Set();
-
-  if (allRecipes) {
-    allRecipes.forEach((recipe) => {
-      recipe.ingredients.hops.forEach((hop) => {
-        allHops.add(hop.name);
-      });
-      recipe.ingredients.malts.forEach((malt) => {
-        allMalts.add(malt.name);
-      });
-      allYeast.add(recipe.ingredients.yeast);
-    });
-  }
-  const [instructions, setInstructions] = useState("");
-  const [hopsName, setHopsName] = useState("");
-  const [hopsQuantity, setHopsQuantity] = useState("");
-  const [maltsName, setMaltsName] = useState("");
-  const [maltsQuantity, setMaltsQuantity] = useState("");
-  const [yeastName, setYeastName] = useState("");
-  const [yeastQuantity, setYeastQuantity] = useState("");
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
+const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
+  const [allMyRecipes, setMyRecipes] = useState(myRecipes);
+  const [recipeName, setRecipeName] = useState('');
+  const [beerStyle, setBeerStyle] = useState('');
+  const [allHops, setAllHops] = useState(new Set());
+  const [allMalts, setAllMalts] = useState(new Set());
+  const [allYeast, setAllYeast] = useState(new Set());
 
   useEffect(() => {
-    setMyRecipes(myRecipes);
-  }, [myRecipes]);
+    const hops = new Set();
+    const malts = new Set();
+    const yeast = new Set();
+
+    if (allRecipes) {
+      allRecipes.forEach((recipe) => {
+        recipe.ingredients.hops.forEach((hop) => {
+          allHops.add(hop.name);
+        });
+        recipe.ingredients.malts.forEach((malt) => {
+          allMalts.add(malt.name);
+        });
+        allYeast.add(recipe.ingredients.yeast);
+      });
+    }
+
+    setAllHops(hops);
+    setAllMalts(malts);
+    setAllYeast(yeast);
+  }, [allRecipes]);
+
+  const [instructions, setInstructions] = useState('');
+  const [hopsName, setHopsName] = useState('');
+  const [hopsQuantity, setHopsQuantity] = useState('');
+  const [maltsName, setMaltsName] = useState('');
+  const [maltsQuantity, setMaltsQuantity] = useState('');
+  const [yeastName, setYeastName] = useState('');
+  const [yeastQuantity, setYeastQuantity] = useState('');
+  const [selectedRecipe, setSelectedRecipe] = useState<MyRecipe | null>(null);
+
   console.log(allMyRecipes);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const recipeData = {
       name: recipeName,
@@ -56,7 +70,8 @@ function MyRecipesPage({ myRecipes, allRecipes }) {
       console.log(err);
     }
   };
-  const handleRecipeClick = (recipe) => {
+
+  const handleRecipeClick = (recipe: MyRecipe) => {
     setSelectedRecipe(recipe);
   };
 
@@ -64,7 +79,7 @@ function MyRecipesPage({ myRecipes, allRecipes }) {
     <div className="container">
       <div className="first-half">
         <div className="my-recipes-form">
-          <h2 style={{ fontFamily: "cursive" }}>
+          <h2 style={{ fontFamily: 'cursive' }}>
             Release creativity, create your own recipe
           </h2>
           {/* Form */}
@@ -115,7 +130,7 @@ function MyRecipesPage({ myRecipes, allRecipes }) {
                 required
               >
                 <option></option>
-                {Array.from(allHops).map((hop) => (
+                {Array.from(allHops as Set<string>).map((hop) => (
                   <option key={hop} value={hop}>
                     {hop}
                   </option>
@@ -136,7 +151,7 @@ function MyRecipesPage({ myRecipes, allRecipes }) {
                 required
               >
                 <option></option>
-                {Array.from(allMalts).map((malt) => (
+                {Array.from(allMalts as Set<string>).map((malt) => (
                   <option key={malt} value={malt}>
                     {malt}
                   </option>
@@ -157,7 +172,7 @@ function MyRecipesPage({ myRecipes, allRecipes }) {
                 required
               >
                 <option></option>
-                {Array.from(allYeast).map((yeast) => (
+                {Array.from(allYeast as Set<string>).map((yeast) => (
                   <option key={yeast} value={yeast}>
                     {yeast}
                   </option>
@@ -194,7 +209,7 @@ function MyRecipesPage({ myRecipes, allRecipes }) {
           </ul>
         </div>
       </div>
-      <div class="my-recipe-details">
+      <div className="my-recipe-details">
         <h1>Details</h1>
         {selectedRecipe && (
           <div>
@@ -215,7 +230,7 @@ function MyRecipesPage({ myRecipes, allRecipes }) {
                 </li>
               ))}
               <li>
-                Yeast: {selectedRecipe.ingredients.yeast[0].name},{" "}
+                Yeast: {selectedRecipe.ingredients.yeast[0].name},{' '}
                 {selectedRecipe.ingredients.yeast[0].amount}
               </li>
             </ul>
@@ -226,6 +241,6 @@ function MyRecipesPage({ myRecipes, allRecipes }) {
       </div>
     </div>
   );
-}
+};
 
 export default MyRecipesPage;
