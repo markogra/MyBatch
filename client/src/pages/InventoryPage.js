@@ -14,6 +14,10 @@ function InventoryPage({ allRecipes }) {
   const allMalts = new Set();
   const allYeast = new Set();
 
+  useEffect(() => {
+    console.log(allRecipes);
+  }, [allRecipes])
+
   if (ourRecipes) {
     ourRecipes.forEach((recipe) => {
       recipe.ingredients.hops.forEach((hop) => {

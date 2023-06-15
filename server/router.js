@@ -15,5 +15,5 @@ router.delete("/inventory/:id", controller.deleteIngredient);
 router.get("/our-recipes", controller.getOurRecipes);
 router.get("/my-recipes", controller.getMyRecipes);
 router.post("/my-recipes", controller.postMyRecipe);
-
+router.post('/our-recipes', controller.postOurRecipe);
 module.exports = router;

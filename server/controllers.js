@@ -83,3 +83,22 @@ exports.postMyRecipe = async (req, res) => {
     res.status(500);
   }
 };
+
+exports.postOurRecipe = async (req, res) => {
+  try {
+    const { name, style, description, batchSize, ingredients, instructions} = req.body;
+    const newRecipe = new beerRecipe({
+      name,
+      style,
+      description,
+      batchSize,
+      ingredients,
+      instructions,
+    });
+    const savedRecipe = await newRecipe.save();
+    res.status(201).json(savedRecipe);
+  } catch(err) {
+    console.error(err);
+    res.status(500);
+  }
+}
