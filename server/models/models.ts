@@ -44,7 +44,9 @@ const myRecipeSchema = new Schema({
 });
 
 const beerRecipe = mongoose.model("beerRecipe", beerRecipeSchema, "ourrecipes");
+
 const addIngredient = mongoose.model("addIngredient", addIngredientSchema);
+
 const myRecipe = mongoose.model("myRecipe", myRecipeSchema, "myrecipes");
 
 module.exports = { beerRecipe, addIngredient, myRecipe };
