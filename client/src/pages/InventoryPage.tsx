@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, FC } from "react";
 import {
   createIngredients,
   getAllIngredients,
@@ -6,8 +6,14 @@ import {
 } from "../utils/ApiService";
 import "./InventoryPage.css";
 import { FaTrash } from "react-icons/fa";
+import { BeerRecipe } from "../types/BeerRecipe";
+import { Ingredient } from "../types/Ingredient";
 
-function InventoryPage({ allRecipes }) {
+interface InventoryPageProps {
+  allRecipes: BeerRecipe[] | null;
+}
+
+const InventoryPage: FC<InventoryPageProps> = ({ allRecipes }) => {
   const ourRecipes = allRecipes;
   // Options for DropDown lists
   const allHops = new Set();
@@ -16,7 +22,7 @@ function InventoryPage({ allRecipes }) {
 
   useEffect(() => {
     console.log(allRecipes);
-  }, [allRecipes])
+  }, [allRecipes]);
 
   if (ourRecipes) {
     ourRecipes.forEach((recipe) => {
@@ -29,7 +35,9 @@ function InventoryPage({ allRecipes }) {
       allYeast.add(recipe.ingredients.yeast);
     });
   }
-  const [ingredients, setIngredients] = useState([]);
+
+  const [ingredients, setIngredients] = useState<Ingredient[]>([]);
+
   useEffect(() => {
     refreshIngredients();
   }, []);
@@ -46,92 +54,101 @@ function InventoryPage({ allRecipes }) {
     setAdditionalQuantity("");
   };
 
-  // functions to add ingridients(we are posting the topic to backend and update state)
-  const addHops = () => {
-    const hopsName = document.querySelector(
+  // functions to add ingredients(we are posting the topic to backend and update state)
+  const addHops = async () => {
+    const hopsSelectElement = document.querySelector(
       ".form-for-adding-hops select"
-    ).value;
+    ) as HTMLSelectElement;
+    const hopsName = hopsSelectElement.value;
     if (hopsName === "" || hopsQuantity === "") {
       alert("Please enter proper name and quantity for hops");
       return;
     }
 
-    createIngredients(hopsName, hopsQuantity, "hops")
-      .then((hopsinfo) => {
-        console.log(hopsinfo);
-        refreshIngredients();
-        resetFormInputs();
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    try {
+      const hopsInfo = await createIngredients(hopsName, hopsQuantity, "hops");
+      console.log(hopsInfo);
+      refreshIngredients();
+      resetFormInputs();
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
-  const addMalts = () => {
-    const maltsName = document.querySelector(
+  const addMalts = async () => {
+    const maltsSelectElement = document.querySelector(
       ".form-for-adding-malts select"
-    ).value;
+    ) as HTMLSelectElement;
+    const maltsName = maltsSelectElement.value;
     if (maltsName === "" || maltsQuantity === "") {
       alert("Please enter proper name and quantity for malts");
       return;
     }
 
-    createIngredients(maltsName, maltsQuantity, "malts")
-      .then((maltsinfo) => {
-        console.log(maltsinfo);
-        refreshIngredients();
-        resetFormInputs();
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    try {
+      const maltsInfo = await createIngredients(
+        maltsName,
+        maltsQuantity,
+        "malts"
+      );
+      console.log(maltsInfo);
+      refreshIngredients();
+      resetFormInputs();
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
-  const addYeast = () => {
-    const yeastName = document.querySelector(
+  const addYeast = async () => {
+    const yeastSelectElement = document.querySelector(
       ".form-for-adding-yeast select"
-    ).value;
-
+    ) as HTMLSelectElement;
+    const yeastName = yeastSelectElement.value;
     if (yeastName === "" || yeastQuantity === "") {
       alert("Please enter proper name and quantity for yeast");
       return;
     }
 
-    createIngredients(yeastName, yeastQuantity, "yeast")
-      .then((yeastinfo) => {
-        console.log(yeastinfo);
-        refreshIngredients();
-        resetFormInputs();
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    try {
+      const yeastInfo = await createIngredients(
+        yeastName,
+        yeastQuantity,
+        "yeast"
+      );
+      console.log(yeastInfo);
+      refreshIngredients();
+      resetFormInputs();
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
-  const addAddtionalIngredients = () => {
-    const additionalIngredientName = document.querySelector(
+  const addAdditionalIngredients = async () => {
+    const ingredientSelectElement = document.querySelector(
       ".form-for-adding-additions select"
-    ).value;
+    ) as HTMLSelectElement;
+    const additionalIngredientName = ingredientSelectElement.value;
 
-    if (additionalIngredientName === "" || setAdditionalQuantity === "") {
-      alert(
-        "Please enter proper name and quantity for additional ingreadients"
-      );
+    if (additionalIngredientName === "" || additionalQuantity === "") {
+      alert("Please enter proper name and quantity for additional ingredients");
       return;
     }
 
-    createIngredients(additionalIngredientName, additionalQuantity, "additions")
-      .then((additionalinfo) => {
-        console.log(additionalinfo);
-        refreshIngredients();
-        resetFormInputs();
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    try {
+      const additionalInfo = await createIngredients(
+        additionalIngredientName,
+        additionalQuantity,
+        "additions"
+      );
+      console.log(additionalInfo);
+      refreshIngredients();
+      resetFormInputs();
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
-  const handleDelete = (ingredientId) => {
+  const handleDelete = (ingredientId: string) => {
     deleteIngredient(ingredientId)
       .then((response) => {
         setIngredients((prevIngredients) =>
@@ -160,7 +177,7 @@ function InventoryPage({ allRecipes }) {
     <div className="inventoryPage">
       <h1>Your Inventory</h1>
       <div className="row1">
-        <div className="hops ingridients">
+        <div className="hops ingredients">
           <h2>Hops</h2>
           <div className="container-for-ul-and-form">
             <ul className="yourHops" key="hops-list">
@@ -181,7 +198,7 @@ function InventoryPage({ allRecipes }) {
             <div className="form-for-adding-hops forms">
               <select className="hops-dd" required>
                 <option></option>
-                {Array.from(allHops).map((hop) => (
+                {Array.from(allHops as Set<string>).map((hop) => (
                   <option key={hop} value={hop}>
                     {hop}
                   </option>
@@ -201,7 +218,7 @@ function InventoryPage({ allRecipes }) {
             </div>
           </div>
         </div>
-        <div className="malts ingridients">
+        <div className="malts ingredients">
           <h2>Malts</h2>
           <div className="container-for-ul-and-form">
             <ul className="yourmalts">
@@ -222,7 +239,7 @@ function InventoryPage({ allRecipes }) {
             <div className="form-for-adding-malts forms">
               <select>
                 <option></option>
-                {Array.from(allMalts).map((malt) => (
+                {Array.from(allMalts as Set<string>).map((malt) => (
                   <option key={malt} value={malt}>
                     {malt}
                   </option>
@@ -231,7 +248,7 @@ function InventoryPage({ allRecipes }) {
               <br />
               <input
                 type="text"
-                placeholder="Quatity in kg"
+                placeholder="Quantity in kg"
                 value={maltsQuantity}
                 onChange={(e) => {
                   setMaltsQuantity(e.target.value);
@@ -245,7 +262,7 @@ function InventoryPage({ allRecipes }) {
       </div>
       {/* **************** */}
       <div className="row2">
-        <div className="yeast ingridients">
+        <div className="yeast ingredients">
           <h2>Yeast</h2>
           <div className="container-for-ul-and-form">
             <ul className="youryeast">
@@ -266,7 +283,7 @@ function InventoryPage({ allRecipes }) {
             <div className="form-for-adding-yeast forms">
               <select>
                 <option></option>
-                {Array.from(allYeast).map((yeast) => (
+                {Array.from(allYeast as Set<string>).map((yeast) => (
                   <option key={yeast} value={yeast}>
                     {yeast}
                   </option>
@@ -275,7 +292,7 @@ function InventoryPage({ allRecipes }) {
               <br />
               <input
                 type="text"
-                placeholder="Quatity in grams"
+                placeholder="Quantity in grams"
                 value={yeastQuantity}
                 onChange={(e) => {
                   setYeastQuantity(e.target.value);
@@ -286,7 +303,7 @@ function InventoryPage({ allRecipes }) {
             </div>
           </div>
         </div>
-        <div className="Additions ingridients">
+        <div className="Additions ingredients">
           <h2>Additional Ingredients</h2>
           <div className="container-for-ul-and-form">
             <ul className="yourAdditions">
@@ -314,20 +331,20 @@ function InventoryPage({ allRecipes }) {
               <br />
               <input
                 type="text"
-                placeholder="Quatity in grams"
+                placeholder="Quantity in grams"
                 value={additionalQuantity}
                 onChange={(e) => {
                   setAdditionalQuantity(e.target.value);
                 }}
               ></input>
               <br />
-              <button onClick={addAddtionalIngredients}>Add</button>
+              <button onClick={addAdditionalIngredients}>Add</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default InventoryPage;

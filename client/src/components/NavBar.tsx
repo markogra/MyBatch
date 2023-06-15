@@ -9,7 +9,6 @@ function NavBar() {
       <ul>
         <li>
           <NavLink
-            exact
             to="/"
             className={location.pathname === "/" ? "active-link" : ""}
           >
