@@ -1,4 +1,4 @@
-const { beerRecipe, addIngredient, myRecipe } = require("./models/models");
+import { beerRecipe, addIngredient, myRecipe } from "./models/models";
 import { Request, Response } from 'express';
 import {
   Ingredient,
@@ -9,7 +9,7 @@ import {
   PostedOurRecipe
 } from './types';
 
-exports.getAllIngredients = async (req: Request, res: Response): Promise<void> => {
+export const getAllIngredients = async (req: Request, res: Response): Promise<void> => {
   try {
     const response: Ingredient[] = await addIngredient.find();
     console.log(response);
@@ -20,7 +20,7 @@ exports.getAllIngredients = async (req: Request, res: Response): Promise<void> =
   }
 };
 
-exports.createIngredients = async (req: Request, res: Response): Promise<void> => {
+export const createIngredients = async (req: Request, res: Response): Promise<void> => {
   console.log(req.body);
   const { name, amount, type } = req.body;
   try {
@@ -36,7 +36,7 @@ exports.createIngredients = async (req: Request, res: Response): Promise<void> =
   }
 };
 
-exports.deleteIngredient = async (req: Request, res: Response): Promise<void> => {
+export const deleteIngredient = async (req: Request, res: Response): Promise<void> => {
   try {
     const ingredientId = req.params.id;
     const ingredient = await addIngredient.findById(ingredientId);
@@ -53,7 +53,7 @@ exports.deleteIngredient = async (req: Request, res: Response): Promise<void> =>
   }
 };
 
-exports.getOurRecipes = async (req: Request, res: Response): Promise<void> => {
+export const getOurRecipes = async (req: Request, res: Response): Promise<void> => {
   try {
     const response: Recipe = await beerRecipe.find();
 
@@ -64,7 +64,7 @@ exports.getOurRecipes = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-exports.getMyRecipes = async (req: Request, res: Response): Promise<void> => {
+export const getMyRecipes = async (req: Request, res: Response): Promise<void> => {
   try {
     const response: MyRecipe = await myRecipe.find();
     console.log("Response on my recipes");
@@ -75,7 +75,7 @@ exports.getMyRecipes = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-exports.postMyRecipe = async (req: Request, res: Response): Promise<void> => {
+export const postMyRecipe = async (req: Request, res: Response): Promise<void> => {
   console.log(req.body);
   try {
     const { name, style, ingredients, instructions } = req.body;
@@ -93,7 +93,7 @@ exports.postMyRecipe = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-exports.postOurRecipe = async (req: Request, res: Response): Promise<void> => {
+export const postOurRecipe = async (req: Request, res: Response): Promise<void> => {
   try {
     const { name, style, description, batchSize, ingredients, instructions} = req.body;
     const newRecipe = new beerRecipe({

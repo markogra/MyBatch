@@ -2,8 +2,8 @@ import express, {Express} from "express";
 const app:Express = express();
 
 const PORT:number = 3500;
-const router = require("./router");
-const cors = require("cors");
+import { router } from "./router";
+import cors from "cors";
 
 app.use(cors());
 app.use(express.json());

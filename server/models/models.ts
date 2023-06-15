@@ -1,4 +1,4 @@
-const { mongoose } = require("./db");
+const mongoose = require('./db');
 
 const Schema = mongoose.Schema;
 
@@ -49,4 +49,4 @@ const addIngredient = mongoose.model("addIngredient", addIngredientSchema);
 
 const myRecipe = mongoose.model("myRecipe", myRecipeSchema, "myrecipes");
 
-module.exports = { beerRecipe, addIngredient, myRecipe };
+export { beerRecipe, addIngredient, myRecipe}
