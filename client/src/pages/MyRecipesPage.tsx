@@ -3,6 +3,7 @@ import "./RecipesPages.css";
 import { postMyRecipe } from "../utils/ApiService";
 import { MyRecipe } from "../types/MyRecipe";
 import { BeerRecipe } from "../types/BeerRecipe";
+import { InputRecipe } from "../types/InputRecipe";
 
 interface MyRecipesPageProps {
   myRecipes: MyRecipe[];
@@ -52,7 +53,7 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const recipeData = {
+    const recipeData: InputRecipe = {
       name: recipeName,
       style: beerStyle,
       instructions: instructions,

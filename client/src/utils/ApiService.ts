@@ -1,4 +1,5 @@
 import { BeerRecipe } from "../types/BeerRecipe";
+import { InputRecipe } from "../types/InputRecipe";
 
 const baseUrl = "http://localhost:3500/inventory";
 
@@ -68,7 +69,7 @@ export const getMyRecipes = async () => {
   }
 };
 
-export async function postMyRecipe(recipeData: BeerRecipe) {
+export async function postMyRecipe(recipeData: InputRecipe) {
   try {
     const response = await fetch("http://localhost:3500/my-recipes", {
       method: "POST",
