@@ -1,13 +1,13 @@
-import React, { useState, useEffect, FC } from 'react';
+import React, { useState, useEffect, FC } from "react";
 import {
   createIngredients,
   getAllIngredients,
   deleteIngredient,
-} from '../utils/ApiService';
-import './InventoryPage.css';
-import { FaTrash } from 'react-icons/fa';
-import { BeerRecipe } from '../types/BeerRecipe';
-import { Ingredient } from '../types/Ingredient';
+} from "../utils/ApiService";
+import "./InventoryPage.css";
+import { FaTrash } from "react-icons/fa";
+import { BeerRecipe } from "../types/BeerRecipe";
+import { Ingredient } from "../types/Ingredient";
 
 interface InventoryPageProps {
   allRecipes: BeerRecipe[] | null;
@@ -42,102 +42,110 @@ const InventoryPage: FC<InventoryPageProps> = ({ allRecipes }) => {
     refreshIngredients();
   }, []);
 
-  const [hopsQuantity, setHopsQuantity] = useState('');
-  const [maltsQuantity, setMaltsQuantity] = useState('');
-  const [yeastQuantity, setYeastQuantity] = useState('');
-  const [additionalQuantity, setAdditionalQuantity] = useState('');
+  const [hopsQuantity, setHopsQuantity] = useState("");
+  const [maltsQuantity, setMaltsQuantity] = useState("");
+  const [yeastQuantity, setYeastQuantity] = useState("");
+  const [additionalQuantity, setAdditionalQuantity] = useState("");
 
   const resetFormInputs = () => {
-    setHopsQuantity('');
-    setMaltsQuantity('');
-    setYeastQuantity('');
-    setAdditionalQuantity('');
+    setHopsQuantity("");
+    setMaltsQuantity("");
+    setYeastQuantity("");
+    setAdditionalQuantity("");
   };
 
   // functions to add ingredients(we are posting the topic to backend and update state)
-  const addHops = () => {
+  const addHops = async () => {
     const hopsSelectElement = document.querySelector(
-      '.form-for-adding-hops select'
+      ".form-for-adding-hops select"
     ) as HTMLSelectElement;
     const hopsName = hopsSelectElement.value;
-    if (hopsName === '' || hopsQuantity === '') {
-      alert('Please enter proper name and quantity for hops');
+    if (hopsName === "" || hopsQuantity === "") {
+      alert("Please enter proper name and quantity for hops");
       return;
     }
 
-    createIngredients(hopsName, hopsQuantity, 'hops')
-      .then((hopsinfo) => {
-        console.log(hopsinfo);
-        refreshIngredients();
-        resetFormInputs();
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    try {
+      const hopsInfo = await createIngredients(hopsName, hopsQuantity, "hops");
+      console.log(hopsInfo);
+      refreshIngredients();
+      resetFormInputs();
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
-  const addMalts = () => {
+  const addMalts = async () => {
     const maltsSelectElement = document.querySelector(
-      '.form-for-adding-malts select'
+      ".form-for-adding-malts select"
     ) as HTMLSelectElement;
     const maltsName = maltsSelectElement.value;
-    if (maltsName === '' || maltsQuantity === '') {
-      alert('Please enter proper name and quantity for malts');
+    if (maltsName === "" || maltsQuantity === "") {
+      alert("Please enter proper name and quantity for malts");
       return;
     }
 
-    createIngredients(maltsName, maltsQuantity, 'malts')
-      .then((maltsinfo) => {
-        console.log(maltsinfo);
-        refreshIngredients();
-        resetFormInputs();
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    try {
+      const maltsInfo = await createIngredients(
+        maltsName,
+        maltsQuantity,
+        "malts"
+      );
+      console.log(maltsInfo);
+      refreshIngredients();
+      resetFormInputs();
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
-  const addYeast = () => {
+  const addYeast = async () => {
     const yeastSelectElement = document.querySelector(
-      '.form-for-adding-yeast select'
+      ".form-for-adding-yeast select"
     ) as HTMLSelectElement;
     const yeastName = yeastSelectElement.value;
-    if (yeastName === '' || yeastQuantity === '') {
-      alert('Please enter proper name and quantity for yeast');
+    if (yeastName === "" || yeastQuantity === "") {
+      alert("Please enter proper name and quantity for yeast");
       return;
     }
 
-    createIngredients(yeastName, yeastQuantity, 'yeast')
-      .then((yeastinfo) => {
-        console.log(yeastinfo);
-        refreshIngredients();
-        resetFormInputs();
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    try {
+      const yeastInfo = await createIngredients(
+        yeastName,
+        yeastQuantity,
+        "yeast"
+      );
+      console.log(yeastInfo);
+      refreshIngredients();
+      resetFormInputs();
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
-  const addAdditionalIngredients = () => {
+  const addAdditionalIngredients = async () => {
     const ingredientSelectElement = document.querySelector(
-      '.form-for-adding-additions select'
+      ".form-for-adding-additions select"
     ) as HTMLSelectElement;
     const additionalIngredientName = ingredientSelectElement.value;
 
-    if (additionalIngredientName === '' || additionalQuantity === '') {
-      alert('Please enter proper name and quantity for additional ingredients');
+    if (additionalIngredientName === "" || additionalQuantity === "") {
+      alert("Please enter proper name and quantity for additional ingredients");
       return;
     }
 
-    createIngredients(additionalIngredientName, additionalQuantity, 'additions')
-      .then((additionalinfo) => {
-        console.log(additionalinfo);
-        refreshIngredients();
-        resetFormInputs();
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    try {
+      const additionalInfo = await createIngredients(
+        additionalIngredientName,
+        additionalQuantity,
+        "additions"
+      );
+      console.log(additionalInfo);
+      refreshIngredients();
+      resetFormInputs();
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   const handleDelete = (ingredientId: string) => {
@@ -150,7 +158,7 @@ const InventoryPage: FC<InventoryPageProps> = ({ allRecipes }) => {
         );
       })
       .catch((error) => {
-        console.error('Error:', error);
+        console.error("Error:", error);
       });
   };
 
@@ -161,7 +169,7 @@ const InventoryPage: FC<InventoryPageProps> = ({ allRecipes }) => {
         setIngredients(fetchedIngredients);
       })
       .catch((error) => {
-        console.error('Error:', error);
+        console.error("Error:", error);
       });
   };
 
@@ -174,7 +182,7 @@ const InventoryPage: FC<InventoryPageProps> = ({ allRecipes }) => {
           <div className="container-for-ul-and-form">
             <ul className="yourHops" key="hops-list">
               {ingredients.map((ingredient) =>
-                ingredient.type === 'hops' ? (
+                ingredient.type === "hops" ? (
                   <li key={ingredient._id}>
                     {ingredient.name} {ingredient.amount}
                     <button
@@ -215,7 +223,7 @@ const InventoryPage: FC<InventoryPageProps> = ({ allRecipes }) => {
           <div className="container-for-ul-and-form">
             <ul className="yourmalts">
               {ingredients.map((ingredient) =>
-                ingredient.type === 'malts' ? (
+                ingredient.type === "malts" ? (
                   <li key={ingredient._id}>
                     {ingredient.name} {ingredient.amount}
                     <button
@@ -259,7 +267,7 @@ const InventoryPage: FC<InventoryPageProps> = ({ allRecipes }) => {
           <div className="container-for-ul-and-form">
             <ul className="youryeast">
               {ingredients.map((ingredient) =>
-                ingredient.type === 'yeast' ? (
+                ingredient.type === "yeast" ? (
                   <li key={ingredient._id}>
                     {ingredient.name} {ingredient.amount}
                     <button
@@ -300,7 +308,7 @@ const InventoryPage: FC<InventoryPageProps> = ({ allRecipes }) => {
           <div className="container-for-ul-and-form">
             <ul className="yourAdditions">
               {ingredients.map((ingredient) =>
-                ingredient.type === 'additions' ? (
+                ingredient.type === "additions" ? (
                   <li key={ingredient._id}>
                     {ingredient.name} {ingredient.amount}
                     <button

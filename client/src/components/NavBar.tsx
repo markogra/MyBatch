@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import React from "react";
+import { NavLink, useLocation } from "react-router-dom";
 
 function NavBar() {
   const location = useLocation();
@@ -10,7 +10,7 @@ function NavBar() {
         <li>
           <NavLink
             to="/"
-            className={location.pathname === '/' ? 'active-link' : ''}
+            className={location.pathname === "/" ? "active-link" : ""}
           >
             MyBatch
           </NavLink>
@@ -18,7 +18,7 @@ function NavBar() {
         <li>
           <NavLink
             to="/inventory"
-            className={location.pathname === '/inventory' ? 'active-link' : ''}
+            className={location.pathname === "/inventory" ? "active-link" : ""}
           >
             Inventory
           </NavLink>
@@ -27,7 +27,7 @@ function NavBar() {
           <NavLink
             to="/our-recipes"
             className={
-              location.pathname === '/our-recipes' ? 'active-link' : ''
+              location.pathname === "/our-recipes" ? "active-link" : ""
             }
           >
             Our recipes
@@ -37,7 +37,7 @@ function NavBar() {
         <li>
           <NavLink
             to="/my-recipes"
-            className={location.pathname === '/my-recipes' ? 'active-link' : ''}
+            className={location.pathname === "/my-recipes" ? "active-link" : ""}
           >
             My recipes
           </NavLink>

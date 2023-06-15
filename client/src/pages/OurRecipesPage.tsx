@@ -1,6 +1,6 @@
-import React, { useState, FC } from 'react';
-import './RecipesPages.css';
-import { BeerRecipe } from '../types/BeerRecipe';
+import React, { useState, FC } from "react";
+import "./RecipesPages.css";
+import { BeerRecipe } from "../types/BeerRecipe";
 
 interface OurRecipesPageProps {
   allRecipes: BeerRecipe[];
@@ -18,7 +18,7 @@ const OurRecipesPage: FC<OurRecipesPageProps> = ({ allRecipes }) => {
   return (
     <div className="our-recipes ">
       <div className="recipe-list containers">
-        <h2 style={{ fontFamily: 'cursive' }}>
+        <h2 style={{ fontFamily: "cursive" }}>
           Here are some one our most popular recipes
         </h2>
         {ourRecipes && (
@@ -27,7 +27,7 @@ const OurRecipesPage: FC<OurRecipesPageProps> = ({ allRecipes }) => {
               <li
                 key={recipe._id}
                 onClick={() => handleRecipeClick(recipe)}
-                className={selectedRecipe === recipe ? 'active-recipe' : ''}
+                className={selectedRecipe === recipe ? "active-recipe" : ""}
               >
                 <h3>{recipe.name}</h3>
                 <p>{recipe.description}</p>

@@ -1,4 +1,4 @@
-const { mongoose } = require('./db');
+const { mongoose } = require("./db");
 
 const Schema = mongoose.Schema;
 
@@ -43,8 +43,8 @@ const myRecipeSchema = new Schema({
   instructions: String,
 });
 
-const beerRecipe = mongoose.model('beerRecipe', beerRecipeSchema, 'ourrecipes');
-const addIngredient = mongoose.model('addIngredient', addIngredientSchema);
-const myRecipe = mongoose.model('myRecipe', myRecipeSchema, 'myrecipes');
+const beerRecipe = mongoose.model("beerRecipe", beerRecipeSchema, "ourrecipes");
+const addIngredient = mongoose.model("addIngredient", addIngredientSchema);
+const myRecipe = mongoose.model("myRecipe", myRecipeSchema, "myrecipes");
 
 module.exports = { beerRecipe, addIngredient, myRecipe };

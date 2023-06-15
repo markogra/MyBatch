@@ -1,16 +1,16 @@
-import './App.css';
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import NavBar from './components/NavBar';
-import InventoryPage from './pages/InventoryPage';
-import OurRecipesPage from './pages/OurRecipesPage';
+import "./App.css";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import InventoryPage from "./pages/InventoryPage";
+import OurRecipesPage from "./pages/OurRecipesPage";
 // import HowToBrew from './pages/HowToBrewPage';
-import MyRecipesPage from './pages/MyRecipesPage';
-import Homepage from './pages/HomePage';
-import { getOurRecipes, getMyRecipes } from './utils/ApiService';
-import { useState, useEffect, FC } from 'react';
-import { BeerRecipe } from './types/BeerRecipe';
-import { MyRecipe } from './types/MyRecipe';
+import MyRecipesPage from "./pages/MyRecipesPage";
+import Homepage from "./pages/HomePage";
+import { getOurRecipes, getMyRecipes } from "./utils/ApiService";
+import { useState, useEffect, FC } from "react";
+import { BeerRecipe } from "./types/BeerRecipe";
+import { MyRecipe } from "./types/MyRecipe";
 
 const App: FC = () => {
   const [allRecipes, setAllRecipes] = useState<BeerRecipe[]>([]);

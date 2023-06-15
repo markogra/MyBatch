@@ -1,5 +1,5 @@
-import { Malt } from './Malt';
-import { Hop } from './Hop';
+import { Malt } from "./Malt";
+import { Hop } from "./Hop";
 
 export interface BeerRecipe {
   _id: string;

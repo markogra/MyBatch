@@ -1,8 +1,8 @@
-import React, { useEffect, useState, FC, FormEvent } from 'react';
-import './RecipesPages.css';
-import { postMyRecipe } from '../utils/ApiService';
-import { MyRecipe } from '../types/MyRecipe';
-import { BeerRecipe } from '../types/BeerRecipe';
+import React, { useEffect, useState, FC, FormEvent } from "react";
+import "./RecipesPages.css";
+import { postMyRecipe } from "../utils/ApiService";
+import { MyRecipe } from "../types/MyRecipe";
+import { BeerRecipe } from "../types/BeerRecipe";
 
 interface MyRecipesPageProps {
   myRecipes: MyRecipe[];
@@ -11,8 +11,8 @@ interface MyRecipesPageProps {
 
 const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
   const [allMyRecipes, setMyRecipes] = useState(myRecipes);
-  const [recipeName, setRecipeName] = useState('');
-  const [beerStyle, setBeerStyle] = useState('');
+  const [recipeName, setRecipeName] = useState("");
+  const [beerStyle, setBeerStyle] = useState("");
   const [allHops, setAllHops] = useState(new Set());
   const [allMalts, setAllMalts] = useState(new Set());
   const [allYeast, setAllYeast] = useState(new Set());
@@ -39,13 +39,13 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
     setAllYeast(yeast);
   }, [allRecipes]);
 
-  const [instructions, setInstructions] = useState('');
-  const [hopsName, setHopsName] = useState('');
-  const [hopsQuantity, setHopsQuantity] = useState('');
-  const [maltsName, setMaltsName] = useState('');
-  const [maltsQuantity, setMaltsQuantity] = useState('');
-  const [yeastName, setYeastName] = useState('');
-  const [yeastQuantity, setYeastQuantity] = useState('');
+  const [instructions, setInstructions] = useState("");
+  const [hopsName, setHopsName] = useState("");
+  const [hopsQuantity, setHopsQuantity] = useState("");
+  const [maltsName, setMaltsName] = useState("");
+  const [maltsQuantity, setMaltsQuantity] = useState("");
+  const [yeastName, setYeastName] = useState("");
+  const [yeastQuantity, setYeastQuantity] = useState("");
   const [selectedRecipe, setSelectedRecipe] = useState<MyRecipe | null>(null);
 
   console.log(allMyRecipes);
@@ -79,7 +79,7 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
     <div className="container">
       <div className="first-half">
         <div className="my-recipes-form">
-          <h2 style={{ fontFamily: 'cursive' }}>
+          <h2 style={{ fontFamily: "cursive" }}>
             Release creativity, create your own recipe
           </h2>
           {/* Form */}
@@ -230,7 +230,7 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
                 </li>
               ))}
               <li>
-                Yeast: {selectedRecipe.ingredients.yeast[0].name},{' '}
+                Yeast: {selectedRecipe.ingredients.yeast[0].name},{" "}
                 {selectedRecipe.ingredients.yeast[0].amount}
               </li>
             </ul>
