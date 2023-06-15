@@ -1,11 +1,12 @@
 const router = require("express").Router();
 const controller = require("./controllers");
+import { Request, Response } from 'express';
 
-router.get("/hello", function (req, res) {
+router.get("/hello", function (req: Request, res: Response) {
   res.send("Hellooooo Stranger, what's up?");
 });
 
-router.get("/", function (req, res) {
+router.get("/", function (req: Request, res: Response) {
   res.send("MyBatch express is here");
 });
 
