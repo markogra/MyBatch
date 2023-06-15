@@ -1,9 +1,17 @@
 const { beerRecipe, addIngredient, myRecipe } = require("./models/models");
 import { Request, Response } from 'express';
+import {
+  Ingredient,
+  CreatedIngredient,
+  Recipe,
+  MyRecipe,
+  PostedMyRecipe,
+  PostedOurRecipe
+} from './types';
 
 exports.getAllIngredients = async (req: Request, res: Response): Promise<void> => {
   try {
-    const response = await addIngredient.find();
+    const response: Ingredient[] = await addIngredient.find();
     console.log(response);
     res.status(200);
     res.send(response);
@@ -16,7 +24,7 @@ exports.createIngredients = async (req: Request, res: Response): Promise<void> =
   console.log(req.body);
   const { name, amount, type } = req.body;
   try {
-    const ingredient = await addIngredient({
+    const ingredient: CreatedIngredient = await addIngredient({
       name,
       amount,
       type,
@@ -47,7 +55,7 @@ exports.deleteIngredient = async (req: Request, res: Response): Promise<void> =>
 
 exports.getOurRecipes = async (req: Request, res: Response): Promise<void> => {
   try {
-    const response = await beerRecipe.find();
+    const response: Recipe = await beerRecipe.find();
 
     res.status(200);
     res.send(response);
@@ -58,7 +66,7 @@ exports.getOurRecipes = async (req: Request, res: Response): Promise<void> => {
 
 exports.getMyRecipes = async (req: Request, res: Response): Promise<void> => {
   try {
-    const response = await myRecipe.find();
+    const response: MyRecipe = await myRecipe.find();
     console.log("Response on my recipes");
     console.log(response);
     res.status(200).send(response);
@@ -77,7 +85,7 @@ exports.postMyRecipe = async (req: Request, res: Response): Promise<void> => {
       ingredients,
       instructions,
     });
-    const savedRecipe = await newRecipe.save();
+    const savedRecipe: PostedMyRecipe = await newRecipe.save();
     res.status(201).json(savedRecipe);
   } catch (error) {
     console.log("ERROR!!! " + error);
@@ -96,7 +104,7 @@ exports.postOurRecipe = async (req: Request, res: Response): Promise<void> => {
       ingredients,
       instructions,
     });
-    const savedRecipe = await newRecipe.save();
+    const savedRecipe: PostedOurRecipe = await newRecipe.save();
     res.status(201).json(savedRecipe);
   } catch(err) {
     console.error(err);

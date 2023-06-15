@@ -1,7 +1,7 @@
-const express = require("express");
-const app = express();
+import express, {Express} from "express";
+const app:Express = express();
 
-const PORT = 3500;
+const PORT:number = 3500;
 const router = require("./router");
 const cors = require("cors");
 
