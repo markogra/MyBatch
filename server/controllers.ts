@@ -1,17 +1,18 @@
 const { beerRecipe, addIngredient, myRecipe } = require("./models/models");
+import { Request, Response } from 'express';
 
-exports.getAllIngredients = async (req, res) => {
+exports.getAllIngredients = async (req: Request, res: Response): Promise<void> => {
   try {
     const response = await addIngredient.find();
     console.log(response);
-    res.status = 200;
+    res.status(200);
     res.send(response);
   } catch (err) {
     res.send(err);
   }
 };
 
-exports.createIngredients = async (req, res) => {
+exports.createIngredients = async (req: Request, res: Response): Promise<void> => {
   console.log(req.body);
   const { name, amount, type } = req.body;
   try {
@@ -27,7 +28,7 @@ exports.createIngredients = async (req, res) => {
   }
 };
 
-exports.deleteIngredient = async (req, res) => {
+exports.deleteIngredient = async (req: Request, res: Response): Promise<void> => {
   try {
     const ingredientId = req.params.id;
     const ingredient = await addIngredient.findById(ingredientId);
@@ -44,18 +45,18 @@ exports.deleteIngredient = async (req, res) => {
   }
 };
 
-exports.getOurRecipes = async (req, res) => {
+exports.getOurRecipes = async (req: Request, res: Response): Promise<void> => {
   try {
     const response = await beerRecipe.find();
 
-    res.status = 200;
+    res.status(200);
     res.send(response);
   } catch (error) {
     console.log("ERROR!!!! " + error);
   }
 };
 
-exports.getMyRecipes = async (req, res) => {
+exports.getMyRecipes = async (req: Request, res: Response): Promise<void> => {
   try {
     const response = await myRecipe.find();
     console.log("Response on my recipes");
@@ -66,7 +67,7 @@ exports.getMyRecipes = async (req, res) => {
   }
 };
 
-exports.postMyRecipe = async (req, res) => {
+exports.postMyRecipe = async (req: Request, res: Response): Promise<void> => {
   console.log(req.body);
   try {
     const { name, style, ingredients, instructions } = req.body;
@@ -84,7 +85,7 @@ exports.postMyRecipe = async (req, res) => {
   }
 };
 
-exports.postOurRecipe = async (req, res) => {
+exports.postOurRecipe = async (req: Request, res: Response): Promise<void> => {
   try {
     const { name, style, description, batchSize, ingredients, instructions} = req.body;
     const newRecipe = new beerRecipe({
