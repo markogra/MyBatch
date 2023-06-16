@@ -14,31 +14,22 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
   const [allMyRecipes, setMyRecipes] = useState(myRecipes);
   const [recipeName, setRecipeName] = useState("");
   const [beerStyle, setBeerStyle] = useState("");
-  const [allHops, setAllHops] = useState(new Set());
-  const [allMalts, setAllMalts] = useState(new Set());
-  const [allYeast, setAllYeast] = useState(new Set());
 
-  useEffect(() => {
-    const hops = new Set();
-    const malts = new Set();
-    const yeast = new Set();
+  const allHops = new Set();
+  const allMalts = new Set();
+  const allYeast = new Set();
 
-    if (allRecipes) {
-      allRecipes.forEach((recipe) => {
-        recipe.ingredients.hops.forEach((hop) => {
-          allHops.add(hop.name);
-        });
-        recipe.ingredients.malts.forEach((malt) => {
-          allMalts.add(malt.name);
-        });
-        allYeast.add(recipe.ingredients.yeast);
+  if (allRecipes) {
+    allRecipes.forEach((recipe) => {
+      recipe.ingredients.hops.forEach((hop) => {
+        allHops.add(hop.name);
       });
-    }
-
-    setAllHops(hops);
-    setAllMalts(malts);
-    setAllYeast(yeast);
-  }, [allRecipes]);
+      recipe.ingredients.malts.forEach((malt) => {
+        allMalts.add(malt.name);
+      });
+      allYeast.add(recipe.ingredients.yeast);
+    });
+  }
 
   const [instructions, setInstructions] = useState("");
   const [hopsName, setHopsName] = useState("");
@@ -49,6 +40,9 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
   const [yeastQuantity, setYeastQuantity] = useState("");
   const [selectedRecipe, setSelectedRecipe] = useState<MyRecipe | null>(null);
 
+  useEffect(() => {
+    setMyRecipes(myRecipes);
+  }, [myRecipes]);
   console.log(allMyRecipes);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -72,9 +66,9 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
     }
   };
 
-  const handleRecipeClick = (recipe: MyRecipe) => {
-    setSelectedRecipe(recipe);
-  };
+  // const handleRecipeClick = (recipe: MyRecipe) => {
+  //   setSelectedRecipe(recipe);
+  // };
 
   return (
     <div className="container">

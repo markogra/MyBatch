@@ -1,0 +1,206 @@
+import { render, screen } from "@testing-library/react";
+import {
+  createIngredients,
+  getAllIngredients,
+  getOurRecipes,
+  deleteIngredient,
+  getMyRecipes,
+} from "../utils/ApiService";
+
+describe("API Functions", () => {
+  beforeEach(() => {
+    global.fetch = jest.fn();
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  describe("getAllIngredients", () => {
+    it("should fetch and return ingredients", async () => {
+      const mockResponse = [{ id: 1, name: "Ingredient 1" }];
+      global.fetch.mockResolvedValueOnce({
+        json: jest.fn().mockResolvedValueOnce(mockResponse),
+      });
+
+      const ingredients = await getAllIngredients();
+
+      expect(ingredients).toEqual(mockResponse);
+      expect(global.fetch).toHaveBeenCalledWith(
+        "http://localhost:3500/inventory"
+      );
+    });
+
+    it("should log an error if fetch fails", async () => {
+      const mockError = new Error("Fetch failed");
+      global.fetch.mockRejectedValueOnce(mockError);
+      console.log = jest.fn();
+
+      await getAllIngredients();
+
+      expect(console.log).toHaveBeenCalledWith(mockError);
+    });
+  });
+
+  describe("createIngredient", () => {
+    it("should send a POST request with the ingredient data", () => {
+      const ingName = "Ingredient 1";
+      const ingAmount = "10";
+      const ingType = "Type 1";
+
+      createIngredients(ingName, ingAmount, ingType);
+
+      expect(global.fetch).toHaveBeenCalledWith(
+        "http://localhost:3500/inventory",
+        {
+          method: "POST",
+          mode: "cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: ingName,
+            amount: ingAmount,
+            type: ingType,
+          }),
+        }
+      );
+    });
+  });
+
+  describe("getOurRecipes", () => {
+    it("should fetch and return recipes", async () => {
+      const mockResponse = [{ id: 1, name: "Recipe 1" }];
+      global.fetch.mockResolvedValueOnce({
+        json: jest.fn().mockResolvedValueOnce(mockResponse),
+      });
+
+      const recipes = await getOurRecipes();
+
+      expect(recipes).toEqual(mockResponse);
+      expect(global.fetch).toHaveBeenCalledWith(
+        "http://localhost:3500/our-recipes"
+      );
+    });
+
+    it("should log an error if fetch fails", async () => {
+      const mockError = new Error("Fetch failed");
+      global.fetch.mockRejectedValueOnce(mockError);
+      console.log = jest.fn();
+
+      await getOurRecipes();
+
+      expect(console.log).toHaveBeenCalledWith(mockError);
+    });
+  });
+
+  describe("deleteIngredient", () => {
+    it("should send a DELETE request with the ingredient ID", async () => {
+      const ingredientId = "123";
+
+      global.fetch.mockResolvedValueOnce({
+        json: jest.fn().mockResolvedValueOnce({ success: true }),
+      });
+
+      await deleteIngredient(ingredientId);
+
+      expect(global.fetch).toHaveBeenCalledWith(
+        `http://localhost:3500/inventory/${ingredientId}`,
+        {
+          method: "DELETE",
+          mode: "cors",
+        }
+      );
+    });
+
+    it("should log an error if fetch fails", async () => {
+      const ingredientId = "123";
+      const mockError = new Error("Fetch failed");
+      global.fetch.mockRejectedValueOnce(mockError);
+      console.error = jest.fn();
+
+      await deleteIngredient(ingredientId);
+
+      expect(console.error).toHaveBeenCalledWith("Error:", mockError);
+    });
+  });
+
+  describe("getMyRecipes", () => {
+    it("should fetch and return recipes", async () => {
+      const mockResponse = [{ id: 1, name: "Recipe 1" }];
+      global.fetch.mockResolvedValueOnce({
+        json: jest.fn().mockResolvedValueOnce(mockResponse),
+        ok: true,
+      });
+
+      const recipes = await getMyRecipes();
+
+      expect(recipes).toEqual(mockResponse);
+      expect(global.fetch).toHaveBeenCalledWith(
+        "http://localhost:3500/my-recipes"
+      );
+    });
+
+    it("should throw an error if fetch fails", async () => {
+      const mockError = new Error("Failed to fetch recipes");
+      global.fetch.mockRejectedValueOnce(mockError);
+
+      await expect(getMyRecipes()).rejects.toThrow("Failed to fetch recipes");
+      expect(global.fetch).toHaveBeenCalledWith(
+        "http://localhost:3500/my-recipes"
+      );
+    });
+
+    it("should throw an error if response is not OK", async () => {
+      const mockResponse = { error: "Failed to fetch recipes" };
+      global.fetch.mockResolvedValueOnce({
+        json: jest.fn().mockResolvedValueOnce(mockResponse),
+        ok: false,
+      });
+
+      await expect(getMyRecipes()).rejects.toThrow("Failed to fetch recipes");
+      expect(global.fetch).toHaveBeenCalledWith(
+        "http://localhost:3500/my-recipes"
+      );
+    });
+  });
+
+  describe("getMyRecipes", () => {
+    it("should fetch and return recipes", async () => {
+      const mockResponse = [{ id: 1, name: "Recipe 1" }];
+      global.fetch.mockResolvedValueOnce({
+        json: jest.fn().mockResolvedValueOnce(mockResponse),
+        ok: true,
+      });
+
+      const recipes = await getMyRecipes();
+
+      expect(recipes).toEqual(mockResponse);
+      expect(global.fetch).toHaveBeenCalledWith(
+        "http://localhost:3500/my-recipes"
+      );
+    });
+
+    it("should throw an error if fetch fails", async () => {
+      const mockError = new Error("Fetch failed");
+      global.fetch.mockRejectedValueOnce(mockError);
+
+      await expect(getMyRecipes()).rejects.toThrow("Fetch failed");
+      expect(global.fetch).toHaveBeenCalledWith(
+        "http://localhost:3500/my-recipes"
+      );
+    });
+
+    it("should throw an error if not OK", async () => {
+      const mockResponse = { error: "Failed to fetch recipes" };
+      global.fetch.mockResolvedValueOnce({
+        json: jest.fn().mockResolvedValueOnce(mockResponse),
+        ok: false,
+      });
+
+      await expect(getMyRecipes()).rejects.toThrow("Failed to fetch recipes");
+      expect(global.fetch).toHaveBeenCalledWith(
+        "http://localhost:3500/my-recipes"
+      );
+    });
+  });
+  // Add tests for other functions: postMyRecipe
+});
