@@ -175,6 +175,10 @@ describe('edge cases', () => {
   app.use(router);
   const request = supertest(app);
 
+  afterAll(async() => {
+    await addIngredient.deleteMany({ type: 'hops' });
+  })
+
   it('should return false when delete ingredients request has wrong id', async() => {
 
     const res = await request.delete(`/inventory/648c501c3e9ba690f49116ab`);
@@ -230,11 +234,15 @@ describe('security', () => {
   app.use(router);
   const request = supertest(app);
 
+  afterAll(async() => {
+    await addIngredient.deleteMany({ type: 'security' });
+  })
+
   it('should not be vunreable to MongoDB query injection', async() => {
     const obj = {
       name: '{"$ne": null}',
       ammount: '6',
-      type: 'hops'
+      type: 'security'
     }
 
     const res = await request.post('/inventory').send(obj);
@@ -247,7 +255,20 @@ describe('security', () => {
     const obj = {
       name: '{"$gt": ""}',
       ammount: '6',
-      type: 'hops'
+      type: 'security'
+    }
+
+    const res = await request.post('/inventory').send(obj);
+
+    expect(res.status).toBe(201);
+    expect(res.body).not.toEqual(expect.objectContaining({ name: obj.name }));
+  });
+
+  it('should not be vunreable to Injection of MongoDB specific Operators', async() => {
+    const obj = {
+      name: '{"$eval": "db.collection.deleteMany({})"}',
+      ammount: '6',
+      type: 'security'
     }
 
     const res = await request.post('/inventory').send(obj);
