@@ -12,16 +12,15 @@ import {
 export const getAllIngredients = async (req: Request, res: Response): Promise<void> => {
   try {
     const response: Ingredient[] = await addIngredient.find();
-    console.log(response);
     res.status(200);
     res.send(response);
-  } catch (err) {
-    res.send(err);
+  } catch (error) {
+    console.error(error);
+    res.send(error);
   }
 };
 
 export const createIngredients = async (req: Request, res: Response): Promise<void> => {
-  console.log(req.body);
   const { name, amount, type } = req.body;
   try {
     const ingredient: CreatedIngredient = await addIngredient({
@@ -31,7 +30,7 @@ export const createIngredients = async (req: Request, res: Response): Promise<vo
     }).save();
     res.status(201).send(ingredient);
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(500);
   }
 };
@@ -41,12 +40,11 @@ export const deleteIngredient = async (req: Request, res: Response): Promise<voi
     const ingredientId = req.params.id;
     const ingredient = await addIngredient.findById(ingredientId);
     await ingredient.deleteOne({ _id: ingredientId });
-    console.log("Item deleted");
     res
       .status(200)
       .json({ success: true, message: "Ingredient deleted successfully" });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res
       .status(500)
       .json({ success: false, error: "Failed to delete ingredient" });
@@ -60,23 +58,20 @@ export const getOurRecipes = async (req: Request, res: Response): Promise<void> 
     res.status(200);
     res.send(response);
   } catch (error) {
-    console.log("ERROR!!!! " + error);
+      console.error(error);
   }
 };
 
 export const getMyRecipes = async (req: Request, res: Response): Promise<void> => {
   try {
     const response: MyRecipe = await myRecipe.find();
-    console.log("Response on my recipes");
-    console.log(response);
     res.status(200).send(response);
   } catch (error) {
-    console.log("ERROR!!!! " + error);
+    console.error(error);
   }
 };
 
 export const postMyRecipe = async (req: Request, res: Response): Promise<void> => {
-  console.log(req.body);
   try {
     const { name, style, ingredients, instructions } = req.body;
     const newRecipe = new myRecipe({
@@ -88,7 +83,7 @@ export const postMyRecipe = async (req: Request, res: Response): Promise<void> =
     const savedRecipe: PostedMyRecipe = await newRecipe.save();
     res.status(201).json(savedRecipe);
   } catch (error) {
-    console.log("ERROR!!! " + error);
+    console.error(error);
     res.status(500);
   }
 };
@@ -106,8 +101,8 @@ export const postOurRecipe = async (req: Request, res: Response): Promise<void> 
     });
     const savedRecipe: PostedOurRecipe = await newRecipe.save();
     res.status(201).json(savedRecipe);
-  } catch(err) {
-    console.error(err);
+  } catch(error) {
+    console.error(error);
     res.status(500);
   }
 }
