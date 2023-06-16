@@ -177,6 +177,8 @@ describe('edge cases', () => {
 
   afterAll(async() => {
     await addIngredient.deleteMany({ type: 'hops' });
+    await myRecipe.deleteMany({ style: 'test' });
+    await beerRecipe.deleteMany({ style: 'test' });
   })
 
   it('should return false when delete ingredients request has wrong id', async() => {
