@@ -1,12 +1,7 @@
-import { request } from "express";
-
 const express = require('express');
 const { router } = require('../router');
 const supertest = require('supertest');
 const { beerRecipe, addIngredient, myRecipe } = require("../models/models");
-
-const mongoose = require('mongoose');
-const databaseName = 'testdb';
 
 describe('Ingredient tests', () => {
 
@@ -245,7 +240,7 @@ describe('security', () => {
   it('should not be vunreable to MongoDB query injection', async() => {
     const obj = {
       name: '{"$ne": null}',
-      ammount: '6',
+      amount: '6',
       type: 'security'
     }
 
@@ -258,7 +253,7 @@ describe('security', () => {
   it('should not be vunreable to NoSQL injection', async() => {
     const obj = {
       name: '{"$gt": ""}',
-      ammount: '6',
+      amount: '6',
       type: 'security'
     }
 
@@ -271,7 +266,7 @@ describe('security', () => {
   it('should not be vunreable to Injection of MongoDB specific Operators', async() => {
     const obj = {
       name: '{"$eval": "db.collection.deleteMany({})"}',
-      ammount: '6',
+      amount: '6',
       type: 'security'
     }
 
