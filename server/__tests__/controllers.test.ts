@@ -18,7 +18,7 @@ describe('Ingredient tests', () => {
   it('should save an ingredient to the database', async() => {
     const obj = {
       name: 'test',
-      ammount: '6',
+      amount: '6',
       type: 'hops'
     }
 
@@ -125,6 +125,8 @@ describe('our recipe test', () => {
     const obj = {
       name: 'test3',
       style: 'test',
+      description: 'test',
+      batchSize: 'test',
       ingredients: {
         malts: [],
         hops: [],

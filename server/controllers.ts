@@ -23,6 +23,9 @@ export const getAllIngredients = async (req: Request, res: Response): Promise<vo
 export const createIngredients = async (req: Request, res: Response): Promise<void> => {
   const { name, amount, type } = req.body;
   try {
+    if(!name || !amount || !type) {
+      res.status(400).json({ message: 'Missing required fields' });;
+    }
     const ingredient: CreatedIngredient = await addIngredient({
       name,
       amount,
@@ -74,6 +77,10 @@ export const getMyRecipes = async (req: Request, res: Response): Promise<void> =
 export const postMyRecipe = async (req: Request, res: Response): Promise<void> => {
   try {
     const { name, style, ingredients, instructions } = req.body;
+    if(!name || !style || !ingredients || !instructions) {
+      res.status(400).json({ message: 'Missing required fields' });;
+    }
+
     const newRecipe = new myRecipe({
       name,
       style,
@@ -91,6 +98,10 @@ export const postMyRecipe = async (req: Request, res: Response): Promise<void> =
 export const postOurRecipe = async (req: Request, res: Response): Promise<void> => {
   try {
     const { name, style, description, batchSize, ingredients, instructions} = req.body;
+    if(!name || !style || !description || !batchSize || !ingredients || !instructions) {
+      res.status(400).json({ message: 'Missing required fields' });;
+    }
+
     const newRecipe = new beerRecipe({
       name,
       style,
