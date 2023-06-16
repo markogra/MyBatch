@@ -167,3 +167,93 @@ describe('our recipe test', () => {
     expect(boo).toBe(true);
   })
 })
+
+describe('edge cases', () => {
+
+  const app = express();
+  app.use(express.json());
+  app.use(router);
+  const request = supertest(app);
+
+  it('should return false when delete ingredients request has wrong id', async() => {
+
+    const res = await request.delete(`/inventory/648c501c3e9ba690f49116ab`);
+
+    expect(res.status).toBe(500);
+    expect(res.body.success).toBe(false);
+  })
+
+  it('should not create an ingredient if it does not have the needed feilds', async() => {
+    const obj = {
+      ammount: '6',
+      type: 'hops'
+    }
+
+    const res = await request.post('/inventory').send(obj);
+
+    expect(res.status).toBe(400);
+  });
+
+  it('should not create a post in my recipes if it does not have the needed feilds', async() => {
+    const obj = {
+      style: 'test',
+      ingredients: [],
+      instructions: 'test',
+    }
+
+    const res = await request.post('/my-recipes').send(obj);
+
+    expect(res.status).toBe(400);
+  });
+
+  it('should not create a post in our recipes if it does not have the needed feilds', async() => {
+    const obj = {
+      style: 'test',
+      ingredients: {
+        malts: [],
+        hops: [],
+        yeast: 'test'
+      },
+      instructions: [],
+    }
+
+    const res = await request.post('/our-recipes').send(obj);
+
+    expect(res.status).toBe(400);
+  });
+})
+
+describe('security', () => {
+
+  const app = express();
+  app.use(express.json());
+  app.use(router);
+  const request = supertest(app);
+
+  it('should not be vunreable to MongoDB query injection', async() => {
+    const obj = {
+      name: '{"$ne": null}',
+      ammount: '6',
+      type: 'hops'
+    }
+
+    const res = await request.post('/inventory').send(obj);
+
+    expect(res.status).toBe(201);
+    expect(res.body).not.toEqual(expect.objectContaining({ name: obj.name }));
+  });
+
+  it('should not be vunreable to NoSQL injection', async() => {
+    const obj = {
+      name: '{"$gt": ""}',
+      ammount: '6',
+      type: 'hops'
+    }
+
+    const res = await request.post('/inventory').send(obj);
+
+    expect(res.status).toBe(201);
+    expect(res.body).not.toEqual(expect.objectContaining({ name: obj.name }));
+  });
+})
+
