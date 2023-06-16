@@ -1,3 +1,5 @@
+import { request } from "express";
+
 const express = require('express');
 const { router } = require('../router');
 const supertest = require('supertest');
@@ -6,7 +8,7 @@ const { beerRecipe, addIngredient, myRecipe } = require("../models/models");
 const mongoose = require('mongoose');
 const databaseName = 'testdb';
 
-describe('Integration tests', () => {
+describe('Ingredient tests', () => {
 
   const app = express();
   app.use(express.json());
@@ -44,8 +46,9 @@ describe('Integration tests', () => {
   it('should delete the ingredient in the database', async() => {
     const ingredient = await addIngredient.findOne({ name: 'test' });
     expect(ingredient.name).toBe('test');
+    console.log(1, ingredient._id.toString());
 
-    const res = await request.delete(`/inventory/${ingredient._id}`);
+    const res = await request.delete(`/inventory/${ingredient._id.toString()}`);
 
     expect(res.status).toBe(200);
     expect(res.body.success).toBe(true);
@@ -54,6 +57,56 @@ describe('Integration tests', () => {
     let boo: boolean = true;
     for(const ingredient of resGet.body) {
       if(ingredient.name === 'test') {
+        boo = false;
+      }
+    }
+    expect(boo).toBe(true);
+  })
+})
+
+describe('myrecipes tests', () => {
+
+  const app = express();
+  app.use(express.json());
+  app.use(router);
+  const request = supertest(app);
+  
+  it('should post to the database', async() => {
+    const obj = {
+      name: 'test2',
+      style: 'test',
+      ingredients: [],
+      instructions: 'test',
+    }
+
+    const res = await request.post('/my-recipes').send(obj);
+
+    expect(res.status).toBe(201);
+    expect(res.body.name).toBe('test2');
+  })
+
+  it('should get all of my recipes from the database', async() => {
+    const res = await request.get('/my-recipes');
+
+    expect(res.status).toBe(200);
+    expect(Array.isArray(res.body)).toBe(true);
+
+    let boo: boolean = false;
+    for(const ingredient of res.body) {
+      if(ingredient.name === 'test2') {
+        boo = true;
+      }
+    }
+    expect(boo).toBe(true);
+  })
+
+  it('should remove the posts made during testing from the database', async() => {
+    await myRecipe.deleteMany({name: 'test2'});
+
+    const res = await request.get('/my-recipes');
+    let boo: boolean = true;
+    for(const ingredient of res.body) {
+      if(ingredient.name === 'test2') {
         boo = false;
       }
     }
