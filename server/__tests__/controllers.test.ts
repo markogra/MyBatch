@@ -113,3 +113,57 @@ describe('myrecipes tests', () => {
     expect(boo).toBe(true);
   })
 })
+
+describe('our recipe test', () => {
+
+  const app = express();
+  app.use(express.json());
+  app.use(router);
+  const request = supertest(app);
+
+  it('should post to the database', async() => {
+    const obj = {
+      name: 'test3',
+      style: 'test',
+      ingredients: {
+        malts: [],
+        hops: [],
+        yeast: 'test'
+      },
+      instructions: [],
+    }
+
+    const res = await request.post('/our-recipes').send(obj);
+
+    expect(res.status).toBe(201);
+    expect(res.body.name).toBe('test3');
+  })
+
+  it('should get all recipes from the database', async() => {
+    const res = await request.get('/our-recipes');
+
+    expect(res.status).toBe(200);
+    expect(Array.isArray(res.body)).toBe(true);
+
+    let boo: boolean = false;
+    for(const ingredient of res.body) {
+      if(ingredient.name === 'test3') {
+        boo = true;
+      }
+    }
+    expect(boo).toBe(true);
+  })
+
+  it('should remove all posts made from the databse', async() => {
+    await beerRecipe.deleteMany({name: 'test3'});
+
+    const res = await request.get('/our-recipes');
+    let boo: boolean = true;
+    for(const ingredient of res.body) {
+      if(ingredient.name === 'test3') {
+        boo = false;
+      }
+    }
+    expect(boo).toBe(true);
+  })
+})
