@@ -1,12 +1,7 @@
-import { request } from "express";
-
 const express = require('express');
 const { router } = require('../router');
 const supertest = require('supertest');
-const { beerRecipe, addIngredient, myRecipe } = require("../models/models");
-
-const mongoose = require('mongoose');
-const databaseName = 'testdb';
+const { ourRecipes, Ingredients, myRecipes } = require("../models/models");
 
 describe('Ingredient tests', () => {
 
@@ -18,7 +13,7 @@ describe('Ingredient tests', () => {
   it('should save an ingredient to the database', async() => {
     const obj = {
       name: 'test',
-      ammount: '6',
+      amount: '6',
       type: 'hops'
     }
 
@@ -44,7 +39,7 @@ describe('Ingredient tests', () => {
   })
 
   it('should delete the ingredient in the database', async() => {
-    const ingredient = await addIngredient.findOne({ name: 'test' });
+    const ingredient = await Ingredients.findOne({ name: 'test' });
     expect(ingredient.name).toBe('test');
     console.log(1, ingredient._id.toString());
 
@@ -101,7 +96,7 @@ describe('myrecipes tests', () => {
   })
 
   it('should remove the posts made during testing from the database', async() => {
-    await myRecipe.deleteMany({name: 'test2'});
+    await myRecipes.deleteMany({name: 'test2'});
 
     const res = await request.get('/my-recipes');
     let boo: boolean = true;
@@ -125,6 +120,8 @@ describe('our recipe test', () => {
     const obj = {
       name: 'test3',
       style: 'test',
+      description: 'test',
+      batchSize: 'test',
       ingredients: {
         malts: [],
         hops: [],
@@ -155,7 +152,7 @@ describe('our recipe test', () => {
   })
 
   it('should remove all posts made from the databse', async() => {
-    await beerRecipe.deleteMany({name: 'test3'});
+    await ourRecipes.deleteMany({name: 'test3'});
 
     const res = await request.get('/our-recipes');
     let boo: boolean = true;
@@ -176,9 +173,9 @@ describe('edge cases', () => {
   const request = supertest(app);
 
   afterAll(async() => {
-    await addIngredient.deleteMany({ type: 'hops' });
-    await myRecipe.deleteMany({ style: 'test' });
-    await beerRecipe.deleteMany({ style: 'test' });
+    await Ingredients.deleteMany({ type: 'hops' });
+    await myRecipes.deleteMany({ style: 'test' });
+    await ourRecipes.deleteMany({ style: 'test' });
   })
 
   it('should return false when delete ingredients request has wrong id', async() => {
@@ -237,13 +234,13 @@ describe('security', () => {
   const request = supertest(app);
 
   afterAll(async() => {
-    await addIngredient.deleteMany({ type: 'security' });
+    await Ingredients.deleteMany({ type: 'security' });
   })
 
   it('should not be vunreable to MongoDB query injection', async() => {
     const obj = {
       name: '{"$ne": null}',
-      ammount: '6',
+      amount: '6',
       type: 'security'
     }
 
@@ -256,7 +253,7 @@ describe('security', () => {
   it('should not be vunreable to NoSQL injection', async() => {
     const obj = {
       name: '{"$gt": ""}',
-      ammount: '6',
+      amount: '6',
       type: 'security'
     }
 
@@ -269,7 +266,7 @@ describe('security', () => {
   it('should not be vunreable to Injection of MongoDB specific Operators', async() => {
     const obj = {
       name: '{"$eval": "db.collection.deleteMany({})"}',
-      ammount: '6',
+      amount: '6',
       type: 'security'
     }
 
