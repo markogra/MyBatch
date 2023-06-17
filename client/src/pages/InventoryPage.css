@@ -1,69 +1,54 @@
-.inventoryPage h1 {
+.inventory {
   text-align: center;
   margin-bottom: 30px;
 }
 
-.inventoryPage h2 {
+.inventory h2 {
   margin-bottom: 20px;
 }
-.inventoryPage ul {
+
+.inventory ul {
   list-style-type: none;
 }
 
-.inventoryPage ul li {
+.inventory ul li {
   font-size: 20px;
 }
 
-.container-for-ul-and-form {
+.ingredient-container {
   display: flex;
   justify-content: space-between;
-}
-
-.row1 {
-  display: flex;
-  justify-content: space-around;
   margin-bottom: 30px;
 }
 
-.row2 {
+.ingredient {
   display: flex;
   justify-content: space-around;
-}
-
-.ingredients {
   border: 2px solid #fbb117;
   padding: 20px 40px;
   border-radius: 10px;
-  width: 40%;
 }
 
-.forms select {
+.ingredient select,
+.ingredient input {
   margin-bottom: 30px;
   font-size: 14px;
 }
 
-.forms input {
-  margin-bottom: 30px;
-  font-size: 14px;
-}
-
-.forms button {
+.ingredient button {
   padding: 4px 12px;
   background-color: #fb8b17;
   color: white;
   font-weight: bold;
   border-radius: 6px;
 }
-.deleteButton {
-  margin-left: 20px;
-}
 
-.inventoryPage h1,
-h2 {
+.ingredient h3 {
   color: #fb8b17;
 }
 
-.deleteIcon {
+.fa-trash {
   height: 15px;
   width: 25px;
+  margin-left: 20px;
 }
