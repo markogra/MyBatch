@@ -5,6 +5,7 @@ import { PostedOurRecipe } from '../types';
 export const postOurRecipe = async (req: Request, res: Response): Promise<void> => {
   try {
     const { name, style, description, batchSize, ingredients, instructions} = req.body;
+    
     if(!name || !style || !description || !batchSize || !ingredients || !instructions) {
       res.status(400).json({ message: 'Missing required fields' });;
       return;
@@ -23,6 +24,7 @@ export const postOurRecipe = async (req: Request, res: Response): Promise<void> 
       ingredients,
       instructions,
     });
+
     const savedRecipe: PostedOurRecipe = await newRecipe.save();
     res.status(201).json(savedRecipe);
   } catch(error) {
