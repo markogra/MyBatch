@@ -16,7 +16,7 @@ const ourRecipesSchema = new Schema({
   instructions: [String],
 });
 
-const myRecipeSchema = new Schema({
+const myRecipesSchema = new Schema({
   name: String,
   style: String,
   ingredients: {
@@ -27,4 +27,4 @@ const myRecipeSchema = new Schema({
   instructions: String,
 });
 
-export { ourRecipesSchema, myRecipeSchema };
+export { ourRecipesSchema, myRecipesSchema };
