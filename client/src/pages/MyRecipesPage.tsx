@@ -14,6 +14,14 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
   const [allMyRecipes, setMyRecipes] = useState(myRecipes);
   const [recipeName, setRecipeName] = useState("");
   const [beerStyle, setBeerStyle] = useState("");
+  const [instructions, setInstructions] = useState("");
+  const [hopsName, setHopsName] = useState("");
+  const [hopsQuantity, setHopsQuantity] = useState("");
+  const [maltsName, setMaltsName] = useState("");
+  const [maltsQuantity, setMaltsQuantity] = useState("");
+  const [yeastName, setYeastName] = useState("");
+  const [yeastQuantity, setYeastQuantity] = useState("");
+  const [selectedRecipe, setSelectedRecipe] = useState<MyRecipe | null>(null);
 
   const allHops = new Set();
   const allMalts = new Set();
@@ -31,19 +39,9 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
     });
   }
 
-  const [instructions, setInstructions] = useState("");
-  const [hopsName, setHopsName] = useState("");
-  const [hopsQuantity, setHopsQuantity] = useState("");
-  const [maltsName, setMaltsName] = useState("");
-  const [maltsQuantity, setMaltsQuantity] = useState("");
-  const [yeastName, setYeastName] = useState("");
-  const [yeastQuantity, setYeastQuantity] = useState("");
-  const [selectedRecipe, setSelectedRecipe] = useState<MyRecipe | null>(null);
-
   useEffect(() => {
     setMyRecipes(myRecipes);
   }, [myRecipes]);
-  console.log(allMyRecipes);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -59,24 +57,17 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
     };
     try {
       const savedRecipe = await postMyRecipe(recipeData);
-      console.log(savedRecipe);
       setMyRecipes((prevRecipes) => [...prevRecipes, savedRecipe]);
     } catch (err) {
       console.log(err);
     }
   };
 
-  // const handleRecipeClick = (recipe: MyRecipe) => {
-  //   setSelectedRecipe(recipe);
-  // };
-
   return (
     <div className="container">
       <div className="first-half">
         <div className="my-recipes-form">
-          <h2 style={{ fontFamily: "cursive" }}>
-            Release creativity, create your own recipe
-          </h2>
+          <h2>Release creativity, create your own recipe</h2>
           {/* Form */}
           <form onSubmit={handleSubmit} className="new-recipe-form">
             <div className="left-side">
@@ -85,9 +76,7 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
               <input
                 type="text"
                 value={recipeName}
-                onChange={(e) => {
-                  setRecipeName(e.target.value);
-                }}
+                onChange={(e) => setRecipeName(e.target.value)}
                 required
               ></input>
               <br />
@@ -96,9 +85,7 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
               <input
                 type="text"
                 value={beerStyle}
-                onChange={(e) => {
-                  setBeerStyle(e.target.value);
-                }}
+                onChange={(e) => setBeerStyle(e.target.value)}
                 required
               ></input>
               <br />
@@ -106,9 +93,7 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
               <br />
               <textarea
                 value={instructions}
-                onChange={(e) => {
-                  setInstructions(e.target.value);
-                }}
+                onChange={(e) => setInstructions(e.target.value)}
                 required
               ></textarea>
               <br />
@@ -182,7 +167,6 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
               ></input>
             </div>
           </form>
-          {/* Form */}
         </div>
         <div className="my-recipe-list">
           <h2>Your recipe list</h2>
