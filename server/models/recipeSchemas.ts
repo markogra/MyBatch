@@ -3,7 +3,7 @@ import { maltSchema, hopSchema, ingredientsSchema } from './ingredientsSchemas';
 
 const Schema = mongoose.Schema;
 
-const beerRecipeSchema = new Schema({
+const ourRecipesSchema = new Schema({
   name: String,
   style: String,
   description: String,
@@ -27,4 +27,4 @@ const myRecipeSchema = new Schema({
   instructions: String,
 });
 
-export { beerRecipeSchema, myRecipeSchema };
+export { ourRecipesSchema, myRecipeSchema };

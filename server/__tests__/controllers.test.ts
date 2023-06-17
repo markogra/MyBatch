@@ -1,7 +1,7 @@
 const express = require('express');
 const { router } = require('../router');
 const supertest = require('supertest');
-const { beerRecipe, Ingredients, myRecipe } = require("../models/models");
+const { ourRecipes, Ingredients, myRecipe } = require("../models/models");
 
 describe('Ingredient tests', () => {
 
@@ -152,7 +152,7 @@ describe('our recipe test', () => {
   })
 
   it('should remove all posts made from the databse', async() => {
-    await beerRecipe.deleteMany({name: 'test3'});
+    await ourRecipes.deleteMany({name: 'test3'});
 
     const res = await request.get('/our-recipes');
     let boo: boolean = true;
@@ -175,7 +175,7 @@ describe('edge cases', () => {
   afterAll(async() => {
     await Ingredients.deleteMany({ type: 'hops' });
     await myRecipe.deleteMany({ style: 'test' });
-    await beerRecipe.deleteMany({ style: 'test' });
+    await ourRecipes.deleteMany({ style: 'test' });
   })
 
   it('should return false when delete ingredients request has wrong id', async() => {

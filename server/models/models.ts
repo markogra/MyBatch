@@ -1,11 +1,11 @@
 const mongoose = require('./db');
 import { ingredientsSchema } from './ingredientsSchemas';
-import { beerRecipeSchema, myRecipeSchema } from './recipeSchemas';
+import { ourRecipesSchema, myRecipeSchema } from './recipeSchemas';
 
-const beerRecipe = mongoose.model("beerRecipe", beerRecipeSchema, "ourrecipes");
+const ourRecipes = mongoose.model("beerRecipe", ourRecipesSchema, "ourrecipes");
 
 const Ingredients = mongoose.model("addIngredient", ingredientsSchema);
 
 const myRecipe = mongoose.model("myRecipe", myRecipeSchema, "myrecipes");
 
-export { beerRecipe, Ingredients, myRecipe };
+export { ourRecipes, Ingredients, myRecipe };
