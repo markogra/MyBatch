@@ -7,6 +7,7 @@ export const postMyRecipe = async (req: Request, res: Response): Promise<void> =
     const { name, style, ingredients, instructions } = req.body;
     if(!name || !style || !ingredients || !instructions) {
       res.status(400).json({ message: 'Missing required fields' });;
+      return;
     }
 
     const newRecipe = new myRecipe({
@@ -19,6 +20,6 @@ export const postMyRecipe = async (req: Request, res: Response): Promise<void> =
     res.status(201).json(savedRecipe);
   } catch (error) {
     console.error(error);
-    res.status(500);
+    res.status(500).json({ message: '500, Server Error' });
   }
 };

@@ -8,5 +8,6 @@ export const getMyRecipes = async (req: Request, res: Response): Promise<void> =
     res.status(200).send(response);
   } catch (error) {
     console.error(error);
+    res.status(500).json({ message: '500, Server Error' });
   }
 };

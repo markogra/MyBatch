@@ -6,7 +6,8 @@ export const createIngredients = async (req: Request, res: Response): Promise<vo
   const { name, amount, type } = req.body;
   try {
     if(!name || !amount || !type) {
-      res.status(400).json({ message: 'Missing required fields' });;
+      res.status(400).json({ message: 'Missing required fields' });
+      return;
     }
 
     const cleanedName = name.replace(/{|}/g, '');
@@ -21,6 +22,6 @@ export const createIngredients = async (req: Request, res: Response): Promise<vo
     res.status(201).send(ingredient);
   } catch (error) {
     console.error(error);
-    res.status(500);
+    res.status(500).json({ message: '500, Server Error' });
   }
 };
