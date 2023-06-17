@@ -1,5 +1,5 @@
 const mongoose = require('./db');
-import { maltSchema, hopSchema, addIngredientSchema } from './ingredientsSchemas';
+import { maltSchema, hopSchema, ingredientsSchema } from './ingredientsSchemas';
 
 const Schema = mongoose.Schema;
 
@@ -20,9 +20,9 @@ const myRecipeSchema = new Schema({
   name: String,
   style: String,
   ingredients: {
-    hops: [addIngredientSchema],
-    malts: [addIngredientSchema],
-    yeast: [addIngredientSchema],
+    hops: [ingredientsSchema],
+    malts: [ingredientsSchema],
+    yeast: [ingredientsSchema],
   },
   instructions: String,
 });

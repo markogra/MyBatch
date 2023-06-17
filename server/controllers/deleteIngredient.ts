@@ -1,10 +1,10 @@
-import { addIngredient } from "../models/models";
+import { Ingredients } from "../models/models";
 import { Request, Response } from 'express';
 
 export const deleteIngredient = async (req: Request, res: Response): Promise<void> => {
   try {
     const ingredientId = req.params.id;
-    const ingredient = await addIngredient.findById(ingredientId);
+    const ingredient = await Ingredients.findById(ingredientId);
     await ingredient.deleteOne({ _id: ingredientId });
     res.status(200).json({
       success: true,

@@ -1,7 +1,7 @@
 const express = require('express');
 const { router } = require('../router');
 const supertest = require('supertest');
-const { beerRecipe, addIngredient, myRecipe } = require("../models/models");
+const { beerRecipe, Ingredients, myRecipe } = require("../models/models");
 
 describe('Ingredient tests', () => {
 
@@ -39,7 +39,7 @@ describe('Ingredient tests', () => {
   })
 
   it('should delete the ingredient in the database', async() => {
-    const ingredient = await addIngredient.findOne({ name: 'test' });
+    const ingredient = await Ingredients.findOne({ name: 'test' });
     expect(ingredient.name).toBe('test');
     console.log(1, ingredient._id.toString());
 
@@ -173,7 +173,7 @@ describe('edge cases', () => {
   const request = supertest(app);
 
   afterAll(async() => {
-    await addIngredient.deleteMany({ type: 'hops' });
+    await Ingredients.deleteMany({ type: 'hops' });
     await myRecipe.deleteMany({ style: 'test' });
     await beerRecipe.deleteMany({ style: 'test' });
   })
@@ -234,7 +234,7 @@ describe('security', () => {
   const request = supertest(app);
 
   afterAll(async() => {
-    await addIngredient.deleteMany({ type: 'security' });
+    await Ingredients.deleteMany({ type: 'security' });
   })
 
   it('should not be vunreable to MongoDB query injection', async() => {
