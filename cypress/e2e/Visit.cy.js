@@ -1,5 +1,5 @@
-describe('My First Test', () => {
-  it('Visits MyBatch', () => {
+describe('Full app test', () => {
+  it('works as intended', () => {
     cy.visit('http://localhost:3000/');
 
     cy.contains('Welcome to MyBatch Home Page').should('be.visible');
@@ -21,5 +21,11 @@ describe('My First Test', () => {
     cy.contains('Fuggle 3').should('not.exist');
 
     cy.contains('Our recipes').click();
+
+    cy.contains('Stout').click();
+
+    cy.contains('Recipe instructions').should('be.visible');
+
+    cy.contains('My recipes').click();
   });
 });
