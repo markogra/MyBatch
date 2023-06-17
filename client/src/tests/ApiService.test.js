@@ -1,10 +1,10 @@
-import { render, screen } from "@testing-library/react";
 import {
   createIngredients,
   getAllIngredients,
   getOurRecipes,
   deleteIngredient,
   getMyRecipes,
+  postMyRecipe,
 } from "../utils/ApiService";
 
 describe("API Functions", () => {
@@ -202,5 +202,38 @@ describe("API Functions", () => {
       );
     });
   });
-  // Add tests for other functions: postMyRecipe
+
+  describe("postMyRecipe", () => {
+    it("should send POST request with the recipe data", () => {
+      const recipeData = {
+        name: "My Recipe",
+        ingredients: ["Ingredient 1", "Ingredient 2"],
+      };
+
+      postMyRecipe(recipeData);
+
+      expect(global.fetch).toHaveBeenCalledWith(
+        "http://localhost:3500/my-recipes",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(recipeData),
+        }
+      );
+    });
+
+    it("should log an error if fetch fails", async () => {
+      const recipeData = {
+        name: "My Recipe",
+        ingredients: ["Ingredient 1", "Ingredient 2"],
+      };
+      const mockError = new Error("Fetch failed");
+      global.fetch.mockRejectedValueOnce(mockError);
+      console.log = jest.fn();
+
+      await postMyRecipe(recipeData);
+
+      expect(console.log).toHaveBeenCalledWith(mockError);
+    });
+  });
 });
