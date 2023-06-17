@@ -5,17 +5,9 @@ import { getOurRecipes } from './controllers/getOurRecipes';
 import { getMyRecipes } from './controllers/getMyRecipes';
 import { postMyRecipe } from './controllers/postMyRecipe';
 import { postOurRecipe } from './controllers/postOurRecipe';
-import express, { Request, Response } from 'express';
+import express from 'express';
 
 const router = express.Router();
-
-router.get("/hello", function (req: Request, res: Response) {
-  res.send("Hellooooo Stranger, what's up?");
-});
-
-router.get("/", function (req: Request, res: Response) {
-  res.send("MyBatch express is here");
-});
 
 router.get("/inventory", getAllIngredients);
 router.post("/inventory", createIngredients);
