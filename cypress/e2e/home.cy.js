@@ -4,7 +4,7 @@ describe('homepage', () => {
 
     cy.contains('Welcome to MyBatch Home Page').should('be.visible');
 
-   cy.contains('MyBatch is your ultimate homebrewing companion, designed to assist homebrewers with crafting their perfect brews and managing their ingredient stock.').should('be.visible');
+    cy.contains('MyBatch is your ultimate homebrewing companion, designed to assist homebrewers with crafting their perfect brews and managing their ingredient stock.').should('be.visible');
    
     cy.contains('Explore a vast collection of recipes sourced from experienced homebrewers worldwide or create your own unique recipes from scratch. With MyBatch, the recipe creation process is simplified and streamlined.').should('be.visible');
    
