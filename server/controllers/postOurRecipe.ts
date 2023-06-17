@@ -10,11 +10,16 @@ export const postOurRecipe = async (req: Request, res: Response): Promise<void> 
       return;
     }
 
+    const cleanedName = name.replace(/{|}/g, '');
+    const cleanedStlye = style.replace(/{|}/g, '');
+    const cleanedDescription = description.replace(/{|}/g, '');
+    const cleanedBatchSize = batchSize.replace(/{|}/g, '');
+
     const newRecipe = new beerRecipe({
-      name,
-      style,
-      description,
-      batchSize,
+      name: cleanedName,
+      style: cleanedStlye,
+      description: cleanedDescription,
+      batchSize: cleanedBatchSize,
       ingredients,
       instructions,
     });

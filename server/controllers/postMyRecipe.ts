@@ -10,11 +10,15 @@ export const postMyRecipe = async (req: Request, res: Response): Promise<void> =
       return;
     }
 
+    const cleanedName = name.replace(/{|}/g, '');
+    const cleanedStlye = style.replace(/{|}/g, '');
+    const cleanedInstrctions = instructions.replace(/{|}/g, '');
+
     const newRecipe = new myRecipe({
-      name,
-      style,
+      name: cleanedName,
+      style: cleanedStlye,
       ingredients,
-      instructions,
+      instructions: cleanedInstrctions,
     });
     const savedRecipe: PostedMyRecipe = await newRecipe.save();
     res.status(201).json(savedRecipe);
