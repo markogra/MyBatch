@@ -14,18 +14,18 @@ function HowToBrew() {
       <div className="box">
         <h2 className="title">Gathering Equipment</h2>
         <p className="text">To begin brewing, you'll need some basic equipment. This includes a fermenter, brew kettle, airlock, hydrometer, thermometer, and sanitizing solution. These tools are essential for a successful brewing experience and can be found at local brewing supply stores or online.</p>
-        <a href="https://www.homebrewersassociation.org/how-to-brew/homebrew-equipment/">Find the specific equipment needed here</a>
+        <a className="link" href="https://www.homebrewersassociation.org/how-to-brew/homebrew-equipment/">Find the specific equipment needed here</a>
       </div>
 
       <div className="box">
         <h2 className="title">Recipe Selection</h2>
-        <p className="text">Selecting a recipe is an exciting part of the brewing process. Consider starting with a beer style that suits your taste preferences. Research different recipes and experiment with various malt profiles, hop combinations, and yeast strains. We provide a list of great and begginer friendly recipes in the <a href="http://localhost:3000/our-recipes"> ourRecipes section.</a></p>
+        <p className="text">Selecting a recipe is an exciting part of the brewing process. Consider starting with a beer style that suits your taste preferences. Research different recipes and experiment with various malt profiles, hop combinations, and yeast strains. We provide a list of great and begginer friendly recipes in the <a  href="http://localhost:3000/our-recipes"> ourRecipes section.</a></p>
       </div>
 
       <div className="box">
         <h2 className="title">Sanitization</h2>
         <p className="text">Sanitization is crucial to prevent contamination during the brewing process. Clean and sanitize all your brewing equipment thoroughly before use. Any residual bacteria or unwanted microorganisms can negatively impact the flavor and quality of your beer.</p>
-        <a href="https://blog.homebrewing.org/homebrew-cleaning-and-sanitizing/">Learn more about Sanitization here</a>
+        <a className="link" href="https://blog.homebrewing.org/homebrew-cleaning-and-sanitizing/">Learn more about Sanitization here</a>
       </div>
 
       <div className="box">
@@ -55,7 +55,7 @@ function HowToBrew() {
 
       <div className="box">
         <p className="text">Embarking on the journey of brewing your own beer opens up a world of creativity, flavors, and community. With the right equipment, basic knowledge, and a sense of adventure, you can craft unique beers tailored to your taste. Remember to start with simple recipes and gradually explore more complex techniques. Cheers to the joy of brewing your own beer!</p>
-        <a href="https://www.thehomebrewforum.co.uk/">Join the community!</a>
+        <a className="link" href="https://www.thehomebrewforum.co.uk/">Join the community!</a>
       </div>
     </div>
     
