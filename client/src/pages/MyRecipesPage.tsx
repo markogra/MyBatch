@@ -180,7 +180,7 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
         <div className="my-recipe-list">
           <h2>Your recipe list</h2>
           <ul className="my-recipes">
-            {myRecipes &&
+            {allMyRecipes &&
               allMyRecipes.map((recipe) => (
                 <li
                   className="your-list-li"
