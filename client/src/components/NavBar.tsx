@@ -1,47 +1,29 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
+const navLink = [
+  { to: "/", label: "MyBatch" },
+  { to: "/inventory", label: "Inventory" },
+  { to: "/our-recipes", label: "Our Recipes" },
+  { to: "/my-recipes", label: "My Recipes" },
+];
+
 function NavBar() {
   const location = useLocation();
 
   return (
     <nav className="mainNav">
       <ul>
-        <li>
-          <NavLink
-            to="/"
-            className={location.pathname === "/" ? "active-link" : ""}
-          >
-            MyBatch
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/inventory"
-            className={location.pathname === "/inventory" ? "active-link" : ""}
-          >
-            Inventory
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/our-recipes"
-            className={
-              location.pathname === "/our-recipes" ? "active-link" : ""
-            }
-          >
-            Our recipes
-          </NavLink>
-        </li>
-
-        <li>
-          <NavLink
-            to="/my-recipes"
-            className={location.pathname === "/my-recipes" ? "active-link" : ""}
-          >
-            My recipes
-          </NavLink>
-        </li>
+        {navLink.map((navLink) => (
+          <li key={navLink.to}>
+            <NavLink
+              to={navLink.to}
+              className={location.pathname === navLink.to ? "active-link" : ""}
+            >
+              {navLink.label}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );

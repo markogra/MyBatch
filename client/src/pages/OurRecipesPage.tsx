@@ -1,14 +1,45 @@
 import React, { useState, FC } from "react";
 import "./RecipesPages.css";
 import { BeerRecipe } from "../types/BeerRecipe";
+import { Ingredient } from "../types/Ingredient";
 
 interface OurRecipesPageProps {
   allRecipes: BeerRecipe[];
 }
 
-const OurRecipesPage: FC<OurRecipesPageProps> = ({ allRecipes }) => {
-  const ourRecipes = allRecipes;
+const IngredientList: FC<{
+  title: string;
+  ingredients: Ingredient[];
+}> = ({ title, ingredients }) => {
+  return (
+    <>
+      <h3>{title}</h3>
+      <ul className="ing-ul">
+        {ingredients.map((ingredient) => (
+          <li key={ingredient._id}>
+            {ingredient.name} {ingredient.amount}{" "}
+            {ingredient.time && `Adding time: ${ingredient.time}`}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+};
 
+const InstructionList: FC<{ instructions: string[] }> = ({ instructions }) => {
+  return (
+    <>
+      <h2>Recipe instructions</h2>
+      <ul>
+        {instructions.map((instruction) => (
+          <li key={instruction}>{instruction}</li>
+        ))}
+      </ul>
+    </>
+  );
+};
+
+const OurRecipesPage: FC<OurRecipesPageProps> = ({ allRecipes }) => {
   const [selectedRecipe, setSelectedRecipe] = useState<BeerRecipe | null>(null);
 
   const handleRecipeClick = (recipe: BeerRecipe) => {
@@ -16,56 +47,47 @@ const OurRecipesPage: FC<OurRecipesPageProps> = ({ allRecipes }) => {
   };
 
   return (
-    <div className="our-recipes ">
+    <div className="our-recipes">
       <div className="recipe-list containers">
         <h2 style={{ fontFamily: "cursive" }}>
-          Here are some one our most popular recipes
+          Here are some of our most popular recipes
         </h2>
-        {ourRecipes && (
-          <ul className="ourRecipes">
-            {allRecipes.map((recipe) => (
-              <li
-                key={recipe._id}
-                onClick={() => handleRecipeClick(recipe)}
-                className={selectedRecipe === recipe ? "active-recipe" : ""}
-              >
-                <h3>{recipe.name}</h3>
-                <p>{recipe.description}</p>
-              </li>
-            ))}
-          </ul>
-        )}
+        <ul className="ourRecipes">
+          {allRecipes.map((recipe) => (
+            <li
+              key={recipe._id}
+              onClick={() => handleRecipeClick(recipe)}
+              className={selectedRecipe === recipe ? "active-recipe" : ""}
+            >
+              <h3>{recipe.name}</h3>
+              <p>{recipe.description}</p>
+            </li>
+          ))}
+        </ul>
       </div>
       <div className="recipe-instruction containers">
         <h2>Details</h2>
         {selectedRecipe && (
           <div className="ing-details">
-            <h3>Hops</h3>
-            <ul className="ing-ul">
-              {selectedRecipe.ingredients.hops.map((hop) => (
-                <li key={hop._id}>
-                  {hop.name} {hop.amount} Adding time: {hop.time}
-                </li>
-              ))}
-            </ul>
-            <h3>Yeast</h3>
-            <ul className="ing-ul">
-              <li>{selectedRecipe.ingredients.yeast}</li>
-            </ul>
-            <h3>Malts</h3>
-            <ul className="ing-ul">
-              {selectedRecipe.ingredients.malts.map((malt) => (
-                <li key={malt._id}>
-                  {malt.name} {malt.amount}
-                </li>
-              ))}
-            </ul>
-            <h2>Recipe instructions</h2>
-            <ul>
-              {selectedRecipe.instructions.map((instruction) => (
-                <li key={instruction}>{instruction}</li>
-              ))}
-            </ul>
+            <IngredientList
+              title="Hops"
+              ingredients={selectedRecipe.ingredients.hops as Ingredient[]}
+            />
+            <IngredientList
+              title="Yeast"
+              ingredients={[
+                {
+                  _id: "",
+                  name: selectedRecipe.ingredients.yeast,
+                  amount: "",
+                },
+              ]}
+            />
+            <IngredientList
+              title="Malts"
+              ingredients={selectedRecipe.ingredients.malts as Ingredient[]}
+            />
+            <InstructionList instructions={selectedRecipe.instructions} />
           </div>
         )}
       </div>

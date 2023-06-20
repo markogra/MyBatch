@@ -1,7 +1,7 @@
-import express, {Express} from "express";
-const app:Express = express();
+import express, { Express } from "express";
+const app: Express = express();
 
-const PORT:number = 3500;
+const PORT: number = 3500;
 import { router } from "./router";
 import cors from "cors";
 

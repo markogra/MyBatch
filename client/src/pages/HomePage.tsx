@@ -3,7 +3,7 @@ import "./HomePage.css";
 
 function Homepage() {
   return (
-    <div className="homepage-container">
+    <div className="homepage-container" data-testid="homepage-container">
       <h1 className="homepage-title">Welcome to MyBatch Home Page</h1>
       <h2 className="homepage-description">
         MyBatch is your ultimate homebrewing companion, designed to assist
