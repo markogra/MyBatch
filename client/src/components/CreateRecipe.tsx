@@ -7,7 +7,7 @@ import { InputRecipe } from "../types/InputRecipe";
 interface MyRecipesPageProps {
   myRecipes: MyRecipe[];
   allRecipes: BeerRecipe[];
-  onData: (data: MyRecipe) => void;
+  onData: (data: MyRecipe) => void
 }
 
 const CreateRecipe: FC<MyRecipesPageProps> = ({ allRecipes, onData }) => {
