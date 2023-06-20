@@ -1,0 +1,49 @@
+.header {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .mainNav {
+    display: none;
+  }
+
+  .header {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    text-decoration: none;
+    font-family: arial;
+    font-size: 25px;
+  }
+  
+  .hamburger_menu {
+    cursor: pointer;
+  }
+  
+  .bar {
+    width: 30px;
+    height: 3px;
+    margin-bottom: 5px;
+    background-color: white;
+  }
+  
+  .dropdown_nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .dropdown_list {
+    list-style-type: none;
+    font-size: 40px;
+    margin-top: 20px;
+    font-family: arial;
+  }
+  
+  .dropdown_list_item {
+    text-decoration: none;
+  }
+}
