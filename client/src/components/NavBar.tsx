@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import HamburgerMenu from "./HamburgerMenu";
+import './navbar.css';
 
 const navLink = [
   { to: "/", label: "MyBatch" },
@@ -11,8 +13,8 @@ const navLink = [
 
 function NavBar() {
   const location = useLocation();
-
-  return (
+  return <div>
+    <HamburgerMenu />
     <nav className="mainNav">
       <ul>
         {navLink.map((navLink) => (
@@ -26,8 +28,8 @@ function NavBar() {
           </li>
         ))}
       </ul>
-    </nav>
-  );
+    </nav> 
+  </div>
 }
 
 export default NavBar;

@@ -14,12 +14,12 @@ describe("renders correct navigation links", () => {
 
     const expectedLinks = [
       { to: "/", label: "MyBatch" },
+      { to: "/", label: "MyBatch" },
       { to: "/inventory", label: "Inventory" },
       { to: "/our-recipes", label: "Our Recipes" },
       { to: "/my-recipes", label: "My Recipes" },
       { to: "/how-to-brew", label: "How to Brew"}
     ];
-
     expect(navLinks.length).toBe(expectedLinks.length);
 
     navLinks.forEach((navLink, index) => {
