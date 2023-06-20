@@ -2,6 +2,29 @@
   display: none;
 }
 
+.call_to_action_row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.call_to_action {
+  height: 40px;
+  width: 400px;
+  background-color: crimson;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  margin-bottom: 30px;
+}
+
+.call_to_action_text {
+  text-decoration: none;
+  background-color: crimson;
+  font-size: 25px;
+}
+
 @media (max-width: 800px) {
   .mainNav {
     display: none;

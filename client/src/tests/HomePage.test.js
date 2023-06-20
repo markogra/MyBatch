@@ -1,9 +1,12 @@
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import Homepage from "../pages/HomePage";
 
 describe("Home component", () => {
   it("renders homepage content", () => {
-    render(<Homepage />);
+    render(<MemoryRouter>
+      <Homepage />
+    </MemoryRouter>);
 
     expect(
       screen.getByText("Welcome to MyBatch Home Page")
@@ -25,7 +28,9 @@ describe("Home component", () => {
   });
 
   it("renders homepage container with correct class", () => {
-    render(<Homepage />);
+    render(<MemoryRouter>
+      <Homepage />
+    </MemoryRouter>);
 
     const homepageContainer = screen.getByTestId("homepage-container");
 
