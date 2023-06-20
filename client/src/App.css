@@ -1,9 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@1,300&display=swap");
+
 * {
-  color: #ffffff;
+  color: white;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #322f2f;
+  background-color: rgb(37, 34, 34);
+  font-family: "Libre Franklin", sans-serif;
 }
 
 .navbar {
