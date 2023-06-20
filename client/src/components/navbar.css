@@ -1,5 +1,6 @@
 .header {
   display: none;
+  background-color: rgb(65, 65, 65);
 }
 
 .call_to_action_row {
@@ -34,16 +35,20 @@
     height: 40px;
     display: flex;
     justify-content: space-between;
+    padding: 15px 60px;
   }
   
   .logo {
     text-decoration: none;
     font-family: arial;
     font-size: 25px;
+    background-color: rgb(65, 65, 65);
   }
   
   .hamburger_menu {
+    margin-top: 5px;
     cursor: pointer;
+    background-color: rgb(65, 65, 65);
   }
   
   .bar {

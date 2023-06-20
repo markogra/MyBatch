@@ -6,30 +6,35 @@
   background-color: #322f2f;
 }
 
-.App {
-  margin: 20px 50px;
+.navbar {
+  background-color: rgb(65, 65, 65);
+  height: 60px;
 }
 
 .mainNav {
-  font-size: 1.75em;
-  border-bottom: 2px solid #fbb117;
-  margin-bottom: 30px;
+  font-size: 30px;
+  font-family: arial;
+  margin-bottom: 40px;
+  padding: 15px;
+  
 }
 
 .mainNav ul {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   list-style-type: none;
 }
 
 .mainNav li {
   align-items: stretch;
+  background-color: rgb(65, 65, 65);
 }
 
 .mainNav a {
   cursor: pointer;
   width: 100%;
   text-decoration: none;
+  background-color: rgb(65, 65, 65);
 }
 
 .mainNav a:hover {
@@ -37,5 +42,9 @@
 }
 
 .mainNav .active-link {
-  border-top: 2px solid #fbb117;
+  text-decoration: underline;
+}
+
+.listNav {
+  background-color: rgb(65, 65, 65);
 }

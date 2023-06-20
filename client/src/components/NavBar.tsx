@@ -13,10 +13,10 @@ const navLink = [
 
 function NavBar() {
   const location = useLocation();
-  return <div>
+  return <div className="navbar">
     <HamburgerMenu />
     <nav className="mainNav">
-      <ul>
+      <ul className="listNav">
         {navLink.map((navLink) => (
           <li key={navLink.to}>
             <NavLink
