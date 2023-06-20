@@ -26,21 +26,4 @@ describe("renders correct navigation links", () => {
       expect(navLink.textContent).toBe(expectedLinks[index].label);
     });
   });
-
-  // it('adds "active-link" class to the current location', () => {
-  //   render(
-  //     <BrowserRouter>
-  //       <NavBar />
-  //     </BrowserRouter>
-  //   );
-
-  //   const currentLocation = "/inventory";
-  //   window.history.pushState({}, "Test page", currentLocation);
-
-  //   const activeLink = screen.getByText("Inventory");
-
-  //   console.log(activeLink.classList);
-
-  //   expect(activeLink.classList.contains("active-link")).toBe(true);
-  // });
 });

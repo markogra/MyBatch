@@ -71,27 +71,30 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
           {/* Form */}
           <form onSubmit={handleSubmit} className="new-recipe-form">
             <div className="left-side">
-              <label>Name</label>
+              <label htmlFor="recipeName">Name</label>
               <br />
               <input
+                id="recipeName"
                 type="text"
                 value={recipeName}
                 onChange={(e) => setRecipeName(e.target.value)}
                 required
               ></input>
               <br />
-              <label>Beer Style</label>
+              <label htmlFor="beerStyle">Beer Style</label>
               <br />
               <input
+                id="beerStyle"
                 type="text"
                 value={beerStyle}
                 onChange={(e) => setBeerStyle(e.target.value)}
                 required
               ></input>
               <br />
-              <label>Add Your Instructions here</label>
+              <label htmlFor="instructions">Add Your Instructions here</label>
               <br />
               <textarea
+                id="instructions"
                 value={instructions}
                 onChange={(e) => setInstructions(e.target.value)}
                 required
@@ -103,8 +106,9 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
             </div>
             <div className="right-side">
               <h3>Ingredients</h3>
-              <label>Hops</label>
+              <label htmlFor="hops">Hops</label>
               <select
+                id="hops"
                 value={hopsName}
                 onChange={(e) => setHopsName(e.target.value)}
                 required
@@ -116,16 +120,18 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
                   </option>
                 ))}
               </select>
-              <label>Qty</label>
+              <label htmlFor="hopsQuantity">Qty</label>
               <input
+                id="hopsQuantity"
                 type="text"
                 value={hopsQuantity}
                 onChange={(e) => setHopsQuantity(e.target.value)}
                 required
               ></input>
               <br />
-              <label>Malts</label>
+              <label htmlFor="malts">Malts</label>
               <select
+                id="malts"
                 value={maltsName}
                 onChange={(e) => setMaltsName(e.target.value)}
                 required
@@ -137,16 +143,18 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
                   </option>
                 ))}
               </select>
-              <label>Qty</label>
+              <label htmlFor="maltsQuantity">Qty</label>
               <input
+                id="maltsQuantity"
                 type="text"
                 value={maltsQuantity}
                 onChange={(e) => setMaltsQuantity(e.target.value)}
                 required
               ></input>
               <br />
-              <label>Yeast</label>
+              <label htmlFor="yeast">Yeast</label>
               <select
+                id="yeast"
                 value={yeastName}
                 onChange={(e) => setYeastName(e.target.value)}
                 required
@@ -158,8 +166,9 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
                   </option>
                 ))}
               </select>
-              <label>Qty</label>
+              <label htmlFor="yeastQuantity">Qty</label>
               <input
+                id="yeastQuantity"
                 type="text"
                 value={yeastQuantity}
                 onChange={(e) => setYeastQuantity(e.target.value)}
@@ -171,7 +180,7 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
         <div className="my-recipe-list">
           <h2>Your recipe list</h2>
           <ul className="my-recipes">
-            {allMyRecipes &&
+            {myRecipes &&
               allMyRecipes.map((recipe) => (
                 <li
                   className="your-list-li"

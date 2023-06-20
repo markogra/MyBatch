@@ -57,6 +57,7 @@ const IngredientComponent: FC<IngredientComponentProps> = ({
           <br />
           <select
             id={`${ingredientType}-dd`}
+            data-testid={`select-${ingredientType}`}
             required
             value={selectedIngredient || ""}
             onChange={(e) => setSelectedIngredient(e.target.value)}
@@ -77,7 +78,10 @@ const IngredientComponent: FC<IngredientComponentProps> = ({
             <div key={ingredient._id}>
               <span>{ingredient.name}</span>
               <span>{ingredient.amount}</span>
-              <button onClick={() => handleDelete(ingredient._id)}>
+              <button
+                className="delete-button"
+                onClick={() => handleDelete(ingredient._id)}
+              >
                 <FaTrash />
               </button>
             </div>
