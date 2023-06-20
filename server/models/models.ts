@@ -1,52 +1,11 @@
 const mongoose = require('./db');
+import { ingredientsSchema } from './ingredientsSchemas';
+import { ourRecipesSchema, myRecipesSchema } from './recipeSchemas';
 
-const Schema = mongoose.Schema;
+const ourRecipes = mongoose.model("beerRecipe", ourRecipesSchema, "ourrecipes");
 
-const addIngredientSchema = new Schema({
-  name: String,
-  amount: String,
-  type: String,
-});
+const Ingredients = mongoose.model("addIngredient", ingredientsSchema);
 
-const maltSchema = new Schema({
-  name: String,
-  amount: String,
-});
+const myRecipes = mongoose.model("myRecipe", myRecipesSchema, "myrecipes");
 
-const hopSchema = new Schema({
-  name: String,
-  amount: String,
-  time: String,
-});
-
-const beerRecipeSchema = new Schema({
-  name: String,
-  style: String,
-  description: String,
-  batchSize: String,
-  ingredients: {
-    malts: [maltSchema],
-    hops: [hopSchema],
-    yeast: String,
-  },
-  instructions: [String],
-});
-
-const myRecipeSchema = new Schema({
-  name: String,
-  style: String,
-  ingredients: {
-    hops: [addIngredientSchema],
-    malts: [addIngredientSchema],
-    yeast: [addIngredientSchema],
-  },
-  instructions: String,
-});
-
-const beerRecipe = mongoose.model("beerRecipe", beerRecipeSchema, "ourrecipes");
-
-const addIngredient = mongoose.model("addIngredient", addIngredientSchema);
-
-const myRecipe = mongoose.model("myRecipe", myRecipeSchema, "myrecipes");
-
-export { beerRecipe, addIngredient, myRecipe}
+export { ourRecipes, Ingredients, myRecipes };
