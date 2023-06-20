@@ -16,13 +16,14 @@
   font-family: arial;
   margin-bottom: 40px;
   padding: 15px;
-  
+  background-color: rgb(65, 65, 65);
 }
 
 .mainNav ul {
   display: flex;
   justify-content: space-around;
   list-style-type: none;
+  background-color: rgb(65, 65, 65);
 }
 
 .mainNav li {
