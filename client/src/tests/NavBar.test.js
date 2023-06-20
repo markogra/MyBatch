@@ -17,6 +17,7 @@ describe("renders correct navigation links", () => {
       { to: "/inventory", label: "Inventory" },
       { to: "/our-recipes", label: "Our Recipes" },
       { to: "/my-recipes", label: "My Recipes" },
+      { to: "/how-to-brew", label: "How to Brew"}
     ];
 
     expect(navLinks.length).toBe(expectedLinks.length);

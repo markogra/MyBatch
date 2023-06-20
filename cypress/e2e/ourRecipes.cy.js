@@ -4,15 +4,15 @@ describe('Our Recipes', () => {
   it('renders everyhting on the page', () => {
     cy.visit('http://localhost:3000/');
 
-    cy.contains('Our recipes').click();
+    cy.contains('Our Recipes').click();
 
-    cy.contains('Here are some one our most popular recipes').should('be.visible');
+    cy.contains('Here are some of our most popular recipes').should('be.visible');
 
     cy.contains('Stout').should('be.visible');
 
     cy.contains('A rich and dark beer with flavors of roasted malt, coffee, and chocolate, balanced bitterness, and a creamy mouthfeel.').should('be.visible');
 
-    cy.contains('Stout').click();
+    cy.contains('Stout').as('btn').click();
 
     cy.contains('Details').should('be.visible');
 
