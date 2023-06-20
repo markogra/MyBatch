@@ -14,6 +14,11 @@ const HamburgerMenu = () => {
   const [dropdown, setDropdown] = useState(<></>);
   const [isDown, setIsDown] = useState(false);
 
+  const handleNav = () => {
+    setIsDown(false);
+    setDropdown(<></>)
+  }
+
   const handleClick = () => {
     if (!isDown) {
       setIsDown(true);
@@ -24,7 +29,7 @@ const HamburgerMenu = () => {
           <li key={navLink.to} >
             <NavLink 
               className='dropdown_list_item'
-              to={navLink.to}
+              to={navLink.to} onClick={handleNav}
             >
               {navLink.label}
             </NavLink>
