@@ -1,5 +1,6 @@
 import React, { useEffect, useState, FC } from "react";
 import CreateRecipe from "../components/CreateRecipe";
+import MyRecipeDetails from "../components/MyRecipeDetails";
 import "./RecipesPages.css";
 import { MyRecipe } from "../types/MyRecipe";
 import { BeerRecipe } from "../types/BeerRecipe";
@@ -25,7 +26,7 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
     <div className="container">
       <div className="first-half">
 
-        {<CreateRecipe myRecipes={myRecipes} allRecipes={allRecipes} onData={handleRecipeFromChild} />}
+        <CreateRecipe myRecipes={myRecipes} allRecipes={allRecipes} onData={handleRecipeFromChild} />
 
         <div className="my-recipe-list">
           <h2>Your recipe list</h2>
@@ -47,36 +48,7 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
           </ul>
         </div>
       </div>
-      <div className="my-recipe-details">
-        <h1>Details</h1>
-        {selectedRecipe && (
-          <div>
-            <h2>
-              {selectedRecipe.name}({selectedRecipe.style})
-            </h2>
-
-            <h3>Ingredients:</h3>
-            <ul>
-              {selectedRecipe.ingredients.hops.map((hop, index) => (
-                <li key={index}>
-                  {hop.name}: {hop.amount}
-                </li>
-              ))}
-              {selectedRecipe.ingredients.malts.map((malt, index) => (
-                <li key={index}>
-                  {malt.name}: {malt.amount}
-                </li>
-              ))}
-              <li>
-                Yeast: {selectedRecipe.ingredients.yeast[0].name},{" "}
-                {selectedRecipe.ingredients.yeast[0].amount}
-              </li>
-            </ul>
-            <h3>Instructions:</h3>
-            <p>{selectedRecipe.instructions}</p>
-          </div>
-        )}
-      </div>
+      <MyRecipeDetails selectedRecipe={selectedRecipe}/>
     </div>
   );
 };
