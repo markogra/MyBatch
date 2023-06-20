@@ -1,6 +1,8 @@
 describe('how to brew', () => {
   it('renders the content', () => {
-    cy.visit('http://localhost:3000/how-to-brew');
+    cy.visit('http://localhost:3000');
+
+    cy.contains('How to Brew').click();
 
     cy.contains('How to get Started Brewing your own Beer').should('be.visible');
 
@@ -10,7 +12,9 @@ describe('how to brew', () => {
   })
 
   it('the links work', () => {
-    cy.visit('http://localhost:3000/how-to-brew');
+    cy.visit('http://localhost:3000');
+
+    cy.contains('How to Brew').click();
 
     cy.origin('https://www.homebrewersassociation.org', () => {
       cy.on('uncaught:exception', (e) => {
