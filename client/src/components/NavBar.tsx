@@ -8,7 +8,7 @@ const navLink = [
   { to: "/inventory", label: "Inventory" },
   { to: "/our-recipes", label: "Our Recipes" },
   { to: "/my-recipes", label: "My Recipes" },
-  { to: "/how-to-brew", label: "How to Brew"}
+  { to: "/how-to-brew", label: "How to Brew" },
 ];
 
 function NavBar() {

@@ -42,7 +42,7 @@ const IngredientComponent: FC<IngredientComponentProps> = ({
   return (
     <div className="ingredient-container">
       <div className={`ingredient ${ingredientType}`}>
-        <div>
+        <div className="input-container">
           <label htmlFor={`${ingredientType}-quantity`}>Quantity</label>
           <br />
           <input
@@ -72,12 +72,12 @@ const IngredientComponent: FC<IngredientComponentProps> = ({
           <br />
           <button onClick={handleAddIngredient}>Add</button>
         </div>
-        <div>
+        <div className="ingredients-display">
           <h3>Current {ingredientType}</h3>
           {ingredients.map((ingredient) => (
-            <div key={ingredient._id}>
-              <span>{ingredient.name}</span>
-              <span>{ingredient.amount}</span>
+            <div key={ingredient._id} className="ingredient-id">
+              <span className="ingredient-name">{ingredient.name}</span>
+              <span className="ingredient-amount">{ingredient.amount}</span>
               <button
                 className="delete-button"
                 onClick={() => handleDelete(ingredient._id)}

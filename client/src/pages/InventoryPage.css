@@ -1,54 +1,106 @@
 .inventory {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.inventory h2 {
-  margin-bottom: 20px;
-}
-
-.inventory ul {
-  list-style-type: none;
-}
-
-.inventory ul li {
-  font-size: 20px;
+  background-color: rgb(37 34 34);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .ingredient-container {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 30px;
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  box-sizing: border-box;
 }
 
 .ingredient {
-  display: flex;
-  justify-content: space-around;
-  border: 2px solid #fbb117;
-  padding: 20px 40px;
-  border-radius: 10px;
+  background-color: #414141;
+  padding: 20px;
+  margin: 50px 10px 10px 10px;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease-in-out;
+  box-shadow: rgb(255, 255, 255) 0px 2px 5px -1px,
+    rgb(255, 255, 255) 0px 1px 3px -1px;
 }
 
-.ingredient select,
-.ingredient input {
-  margin-bottom: 30px;
-  font-size: 14px;
+.ingredient:hover {
+  transform: translateY(-10px);
 }
 
-.ingredient button {
-  padding: 4px 12px;
-  background-color: #fb8b17;
+.input-container,
+.ingredients-display,
+label,
+input,
+select,
+h3,
+.ingredient-id,
+.ingredient-name,
+.ingredient-amount {
+  background-color: #414141;
   color: white;
-  font-weight: bold;
-  border-radius: 6px;
+  margin: 5px;
 }
 
-.ingredient h3 {
-  color: #fb8b17;
-}
-
-.fa-trash {
-  height: 15px;
-  width: 25px;
+.delete-button {
   margin-left: 20px;
+}
+
+button {
+  background-color: #ff791f;
+  border-radius: 3px;
+  border: 1px solid #ff791fac;
+  box-shadow: rgba(234, 142, 14, 0.7) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px 0.8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+button:hover,
+button:focus {
+  background-color: #b3d3ea;
+  color: #2c5777;
+}
+
+button:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
+}
+
+button:active {
+  background-color: #a0c7e4;
+  box-shadow: none;
+  color: #2c5777;
+}
+
+.bottom-img {
+  width: 50vh;
+}
+
+@media screen and (min-width: 768px) {
+  .inventory {
+    justify-content: center;
+    max-width: 1200px;
+  }
+
+  .ingredient-container {
+    width: calc(50% - 20px);
+    max-width: 450px;
+  }
 }
