@@ -9,5 +9,12 @@ describe('homepage', () => {
     cy.contains('Explore a vast collection of recipes sourced from experienced homebrewers worldwide or create your own unique recipes from scratch. With MyBatch, the recipe creation process is simplified and streamlined.').should('be.visible');
    
     cy.contains("Unlock your creativity with MyBatch's intuitive interface, where you can experiment with different beer styles, customize instructions, and fine-tune ingredient quantities to achieve the desired flavors and aromas.").should('be.visible');
+
+    cy.contains('Learn How To Brew').click();
+    cy.contains('How to get Started Brewing your own Beer').should('be.visible');
+
+    cy.visit('http://localhost:3000/');
+    cy.contains('Check Out Recipes').click();
+    cy.contains('Here are some of our most popular recipes').should('be.visible');
   })
 })

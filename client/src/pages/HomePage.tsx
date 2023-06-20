@@ -1,4 +1,5 @@
 import React from "react";
+import CallToAction from "../components/CallToAction";
 import "./HomePage.css";
 
 function Homepage() {
@@ -17,6 +18,10 @@ function Homepage() {
           ingredient stock.
         </h2>
       </section>
+      <div className="call_to_action_row">
+        <CallToAction route="/how-to-brew" text="Learn How To Brew" />
+        <CallToAction route="/our-recipes" text="Check Out Recipes" />
+      </div>
       <div className="first">
         <p>
           Explore a vast collection of recipes sourced from experienced
