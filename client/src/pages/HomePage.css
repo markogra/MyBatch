@@ -1,8 +1,8 @@
 .homepage-container {
   margin: 0 auto;
   padding: 20px;
-  background-color: var(--background);
-  height: 100%;
+  background-color: rgb(37, 34, 34);
+  height: auto;
 }
 
 .title {
@@ -76,8 +76,8 @@
 .first p,
 .second p,
 .third p {
-  background-color: var(--light-background);
-  color: var(--text);
+  background-color: #414141;
+  color: white;
   padding: 10px;
   border-radius: 20px;
   box-shadow: rgb(255, 255, 255) 0px 2px 5px -1px,

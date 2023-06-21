@@ -1,5 +1,5 @@
 .inventory {
-  background-color: var(--background);
+  background-color: rgb(37 34 34);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -14,7 +14,7 @@
 }
 
 .ingredient {
-  background-color: var(--light-background);
+  background-color: #414141;
   padding: 20px;
   margin: 50px 10px 10px 10px;
   box-sizing: border-box;
@@ -39,8 +39,8 @@ h3,
 .ingredient-id,
 .ingredient-name,
 .ingredient-amount {
-  background-color: var(--light-background);
-  color: var(--text);
+  background-color: #414141;
+  color: white;
   margin: 5px;
 }
 
@@ -49,7 +49,7 @@ h3,
 }
 
 button {
-  background-color: var(--orange);
+  background-color: #ff791f;
   border-radius: 3px;
   border: 1px solid #ff791fac;
   box-shadow: rgba(234, 142, 14, 0.7) 0 1px 0 0 inset;

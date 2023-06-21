@@ -1,5 +1,7 @@
 .header {
   display: none;
+  background-color: rgb(65, 65, 65);
+  height: 60px;
 }
 
 .call_to_action_row {
@@ -31,19 +33,23 @@
   }
 
   .header {
-    height: 40px;
+    height: 60px;
     display: flex;
     justify-content: space-between;
+    padding: 15px 60px;
   }
   
   .logo {
     text-decoration: none;
     font-family: arial;
     font-size: 25px;
+    background-color: rgb(65, 65, 65);
   }
   
   .hamburger_menu {
+    margin-top: 5px;
     cursor: pointer;
+    background-color: rgb(65, 65, 65);
   }
   
   .bar {
@@ -57,13 +63,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
   }
   
   .dropdown_list {
     list-style-type: none;
     font-size: 40px;
     margin-top: 20px;
+    margin-bottom: 20px;
     font-family: arial;
   }
   
