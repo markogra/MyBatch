@@ -79,7 +79,7 @@ const IngredientComponent: FC<IngredientComponentProps> = ({
               <span className="ingredient-name">{ingredient.name}</span>
               <span className="ingredient-amount">{ingredient.amount}</span>
               <button
-                className="delete-button"
+                className="delete-button" aria-label="Delete"
                 onClick={() => handleDelete(ingredient._id)}
               >
                 <FaTrash />
