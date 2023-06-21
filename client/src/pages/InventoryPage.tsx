@@ -20,9 +20,9 @@ const InventoryPage: FC<InventoryPageProps> = ({ allRecipes }) => {
   const [additional, setAdditional] = useState<string>("");
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
 
-  let allHops = new Set<string>();
-  let allMalts = new Set<string>();
-  let allYeasts = new Set<string>();
+  const allHops = new Set<string>();
+  const allMalts = new Set<string>();
+  const allYeasts = new Set<string>();
 
   allRecipes?.forEach((recipe) => {
     recipe.ingredients.hops.forEach((hop) => allHops.add(hop.name));
