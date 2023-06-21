@@ -8,6 +8,7 @@ import { postOurRecipe } from './controllers/postOurRecipe';
 import express from 'express';
 import { ingredientValidator } from './validators/ingredientValidator';
 import { myRecipeValidator } from './validators/myRecipeValidator';
+import { ourRecipeValidator } from './validators/ourRecipeValidator';
 
 const router = express.Router();
 
@@ -17,6 +18,6 @@ router.delete("/inventory/:id", deleteIngredient);
 router.get("/our-recipes", getOurRecipes);
 router.get("/my-recipes", getMyRecipes);
 router.post("/my-recipes", myRecipeValidator, postMyRecipe);
-router.post('/our-recipes', postOurRecipe);
+router.post('/our-recipes', ourRecipeValidator, postOurRecipe);
 
 export { router };

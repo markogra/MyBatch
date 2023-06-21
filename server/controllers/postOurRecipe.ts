@@ -6,21 +6,11 @@ export const postOurRecipe = async (req: Request, res: Response): Promise<void> 
   try {
     const { name, style, description, batchSize, ingredients, instructions} = req.body;
 
-    if(!name || !style || !description || !batchSize || !ingredients || !instructions) {
-      res.status(400).json({ message: 'Missing required fields' });;
-      return;
-    }
-
-    const cleanedName = name.replace(/{|}/g, '');
-    const cleanedStlye = style.replace(/{|}/g, '');
-    const cleanedDescription = description.replace(/{|}/g, '');
-    const cleanedBatchSize = batchSize.replace(/{|}/g, '');
-
     const newRecipe = new ourRecipes({
-      name: cleanedName,
-      style: cleanedStlye,
-      description: cleanedDescription,
-      batchSize: cleanedBatchSize,
+      name,
+      style,
+      description,
+      batchSize,
       ingredients,
       instructions,
     });
