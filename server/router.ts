@@ -6,11 +6,12 @@ import { getMyRecipes } from './controllers/getMyRecipes';
 import { postMyRecipe } from './controllers/postMyRecipe';
 import { postOurRecipe } from './controllers/postOurRecipe';
 import express from 'express';
+import { ingredientValidator } from './validators/ingredientValidator';
 
 const router = express.Router();
 
 router.get("/inventory", getAllIngredients);
-router.post("/inventory", createIngredients);
+router.post("/inventory", ingredientValidator, createIngredients);
 router.delete("/inventory/:id", deleteIngredient);
 router.get("/our-recipes", getOurRecipes);
 router.get("/my-recipes", getMyRecipes);

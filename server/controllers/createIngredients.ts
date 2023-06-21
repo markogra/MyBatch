@@ -6,19 +6,10 @@ export const createIngredients = async (req: Request, res: Response): Promise<vo
   try {
     const { name, amount, type } = req.body;
 
-    if(!name || !amount || !type) {
-      res.status(400).json({ message: 'Missing required fields' });
-      return;
-    }
-
-    const cleanedName = name.replace(/{|}/g, '');
-    const cleanedAmount = amount.replace(/{|}/g, '');
-    const cleanedType = type.replace(/{|}/g, '');
-
     const ingredient: CreatedIngredient = await Ingredients({
-      name: cleanedName,
-      amount: cleanedAmount,
-      type: cleanedType,
+      name,
+      amount,
+      type,
     }).save();
     res.status(201).send(ingredient);
 
