@@ -1,5 +1,5 @@
 import React, { useState, FC } from "react";
-import "./RecipesPages.css";
+import "./OurRecipesPage.css";
 import { BeerRecipe } from "../types/BeerRecipe";
 import { Ingredient } from "../types/Ingredient";
 
@@ -29,10 +29,12 @@ const IngredientList: FC<{
 const InstructionList: FC<{ instructions: string[] }> = ({ instructions }) => {
   return (
     <>
-      <h2>Recipe instructions</h2>
+      <h2 className="recipe-title">Recipe instructions</h2>
       <ul>
         {instructions.map((instruction) => (
-          <li key={instruction}>{instruction}</li>
+          <li className="instructions" key={instruction}>
+            {instruction}
+          </li>
         ))}
       </ul>
     </>
@@ -49,9 +51,7 @@ const OurRecipesPage: FC<OurRecipesPageProps> = ({ allRecipes }) => {
   return (
     <div className="our-recipes">
       <div className="recipe-list containers">
-        <h2 style={{ fontFamily: "cursive" }}>
-          Here are some of our most popular recipes
-        </h2>
+        <h2>Here are some of our most popular recipes</h2>
         <ul className="ourRecipes">
           {allRecipes.map((recipe) => (
             <li
@@ -59,8 +59,8 @@ const OurRecipesPage: FC<OurRecipesPageProps> = ({ allRecipes }) => {
               onClick={() => handleRecipeClick(recipe)}
               className={selectedRecipe === recipe ? "active-recipe" : ""}
             >
-              <h3>{recipe.name}</h3>
-              <p>{recipe.description}</p>
+              <h3 className="recipe-name">{recipe.name}</h3>
+              <p className="recipe-description">{recipe.description}</p>
             </li>
           ))}
         </ul>

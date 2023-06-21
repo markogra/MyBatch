@@ -78,7 +78,7 @@ button {
 button:hover,
 button:focus {
   background-color: #b3d3ea;
-  color: #2c5777;
+  color: black;
 }
 
 button:focus {
@@ -87,8 +87,8 @@ button:focus {
 
 button:active {
   background-color: #a0c7e4;
+  color: black;
   box-shadow: none;
-  color: #2c5777;
 }
 
 #hops-quantity {

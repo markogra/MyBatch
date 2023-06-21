@@ -1,0 +1,11 @@
+.create-recipe {
+  background-color: var(--light-background) !important;
+}
+
+.my-recipe-list {
+  background-color: var(--light-background) !important;
+}
+
+.my-recipe-details {
+  background-color: var(--light-background) !important;
+}

@@ -17,4 +17,6 @@ letConnect();
 module.exports = mongoose;
 
 //mongodb+srv://kevinstrange:test123@cluster.si3hflc.mongodb.net/MyBatch?retryWrites=true&w=majority
+
 // mongodb://127.0.0.1:27017/mybatch
+
