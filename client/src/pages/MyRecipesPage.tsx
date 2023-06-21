@@ -1,10 +1,10 @@
 import React, { useEffect, useState, FC } from "react";
 import CreateRecipe from "../components/CreateRecipe";
 import MyRecipeDetails from "../components/MyRecipeDetails";
-import "./RecipesPages.css";
 import { MyRecipe } from "../types/MyRecipe";
 import { BeerRecipe } from "../types/BeerRecipe";
 import MyRecipeList from "../components/MyRecipeList";
+import "./MyRecipesPage.css";
 
 interface MyRecipesPageProps {
   myRecipes: MyRecipe[];
@@ -21,21 +21,30 @@ const MyRecipesPage: FC<MyRecipesPageProps> = ({ myRecipes, allRecipes }) => {
 
   const handleRecipeFromChild = (childData: MyRecipe) => {
     setMyRecipes((prevRecipes) => [...prevRecipes, childData]);
-  }
+  };
 
   const handleSelectionFromChild = (childData: MyRecipe) => {
     setSelectedRecipe(childData);
-  }
+  };
 
   return (
     <div className="container">
-      <div className="first-half">
-
-        <CreateRecipe myRecipes={myRecipes} allRecipes={allRecipes} onData={handleRecipeFromChild} />
-
-        <MyRecipeList myRecipes={allMyRecipes} onData={handleSelectionFromChild} />
+      <div className="create-recipe">
+        <CreateRecipe
+          myRecipes={myRecipes}
+          allRecipes={allRecipes}
+          onData={handleRecipeFromChild}
+        />
       </div>
-      <MyRecipeDetails selectedRecipe={selectedRecipe}/>
+      <div className="my-recipe-list">
+        <MyRecipeList
+          myRecipes={allMyRecipes}
+          onData={handleSelectionFromChild}
+        />
+      </div>
+      <div className="my-recipe-details">
+        <MyRecipeDetails selectedRecipe={selectedRecipe} />
+      </div>
     </div>
   );
 };

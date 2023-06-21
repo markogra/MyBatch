@@ -1,5 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@1,300&display=swap");
 
+:root {
+  --background: #252222;
+  --light-background: #414141;
+  --text: #ffffff;
+  --orange: #ff791f;
+}
+
+}
+.App {
+  height: 100%;
+  width: 100%;
+  background-color: var(--background);
+}
+
 * {
   color: white;
   margin: 0;
@@ -45,6 +59,7 @@
 }
 
 .mainNav .active-link {
+
   text-decoration: underline;
 }
 

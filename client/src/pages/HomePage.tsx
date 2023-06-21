@@ -5,7 +5,7 @@ import "./HomePage.css";
 function Homepage() {
   return (
     <div className="homepage-container" data-testid="homepage-container">
-      <section className="title">
+      <div className="title">
         <img
           className="title-img"
           src={require("../Images/Title.png")}
@@ -17,7 +17,7 @@ function Homepage() {
           homebrewers with crafting their perfect brews and managing their
           ingredient stock.
         </h2>
-      </section>
+      </div>
       <div className="call_to_action_row">
         <CallToAction route="/how-to-brew" text="Learn How To Brew" />
         <CallToAction route="/our-recipes" text="Check Out Recipes" />
