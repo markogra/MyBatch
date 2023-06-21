@@ -9,7 +9,7 @@ describe("IngredientComponent", () => {
   let allIngredients;
   let ingredients;
   let addIngredients;
-  let handleDelete;
+  let deleteIngredient;
   let clearSelectedIngredient;
 
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe("IngredientComponent", () => {
     allIngredients = ["ingredients1", "ingredients2"];
     ingredients = [{ _id: "1", name: "test1", amount: "1" }];
     addIngredients = jest.fn();
-    handleDelete = jest.fn();
+    deleteIngredient = jest.fn();
     clearSelectedIngredient = jest.fn();
 
     render(
@@ -30,7 +30,7 @@ describe("IngredientComponent", () => {
         allIngredients={allIngredients}
         ingredients={ingredients}
         addIngredients={addIngredients}
-        handleDelete={handleDelete}
+        deleteIngredient={deleteIngredient}
         clearSelectedIngredient={clearSelectedIngredient}
       />
     );
@@ -49,6 +49,6 @@ describe("IngredientComponent", () => {
   it("should handle delete correctly", () => {
     const deleteButton = document.querySelector(".delete-button");
     fireEvent.click(deleteButton);
-    expect(handleDelete).toHaveBeenCalledWith(ingredients[0]._id);
+    expect(deleteIngredient).toHaveBeenCalledWith(ingredients[0]._id);
   });
 });

@@ -3,7 +3,7 @@ import InventoryPage from "../pages/InventoryPage";
 import {
   createIngredients,
   getAllIngredients,
-  deleteIngredient,
+  deleteIngredientFromDb,
 } from "../utils/ApiService";
 
 jest.mock("../utils/ApiService");
@@ -24,7 +24,7 @@ describe("InventoryPage", () => {
 
     getAllIngredients.mockResolvedValueOnce([]);
     createIngredients.mockImplementation(() => Promise.resolve());
-    deleteIngredient.mockImplementation(() => Promise.resolve());
+    deleteIngredientFromDb.mockImplementation(() => Promise.resolve());
 
     await act(async () => {
       render(<InventoryPage allRecipes={allRecipes} />);
