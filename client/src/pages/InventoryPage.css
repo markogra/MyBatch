@@ -49,10 +49,10 @@ h3,
 }
 
 button {
-  background-color: var(--orange);
+  background-color: crimson;
   border-radius: 3px;
-  border: 1px solid #ff791fac;
-  box-shadow: rgba(234, 142, 14, 0.7) 0 1px 0 0 inset;
+  border: 1px solid crimson;
+  box-shadow: crimson 0 1px 0 0 inset;
   box-sizing: border-box;
   color: var(--text);
   cursor: pointer;
@@ -60,7 +60,9 @@ button {
   font-size: 13px;
   font-weight: 400;
   line-height: 1.15385;
-  margin: 5px;
+  margin: 0;
+  margin-left: 5px;
+  margin-top: 10px;
   outline: none;
   padding: 8px 0.8em;
   position: relative;
@@ -89,6 +91,10 @@ button:active {
   box-shadow: none;
 }
 
+#hops-quantity {
+  margin-bottom: 10px;
+}
+
 .bottom-img {
   width: 50vh;
 }
@@ -104,3 +110,4 @@ button:active {
     max-width: 450px;
   }
 }
+

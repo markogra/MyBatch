@@ -16,26 +16,36 @@ const App: FC = () => {
   const [allRecipes, setAllRecipes] = useState<BeerRecipe[]>([]);
   const [myRecipes, setMyRecipes] = useState<MyRecipe[]>([]);
   useEffect(() => {
-    getOurRecipes().then((fetchedRecipes: BeerRecipe[]) => {
-      setAllRecipes(fetchedRecipes);
-    });
-    getMyRecipes().then((fetchedMyRecipes: MyRecipe[]) => {
-      setMyRecipes(fetchedMyRecipes);
-    });
+    try {
+      getOurRecipes().then((fetchedRecipes: BeerRecipe[]) => {
+        setAllRecipes(fetchedRecipes);
+      });
+    } catch (err) {
+      console.log('Server Error, Failed to Retrieve OurRecipes');
+      console.error(err);
+    }
+    try {
+      getMyRecipes().then((fetchedMyRecipes: MyRecipe[]) => {
+        setMyRecipes(fetchedMyRecipes);
+      });
+    } catch (err) {
+      console.log('Server Error, Failed to Retrieve myRecipes');
+      console.error(err);
+    }
   }, []);
 
   return (
     <div className="App">
-      <NavBar></NavBar>
+      <NavBar />
       <Routes>
         <Route path="/" element={<Homepage></Homepage>}></Route>
         <Route
           path="/inventory"
-          element={<InventoryPage allRecipes={allRecipes}></InventoryPage>}
+          element={<InventoryPage allRecipes={allRecipes} />}
         ></Route>
         <Route
           path="/our-recipes"
-          element={<OurRecipesPage allRecipes={allRecipes}></OurRecipesPage>}
+          element={<OurRecipesPage allRecipes={allRecipes} />}
         ></Route>
         <Route
           path="/my-recipes"
@@ -43,7 +53,7 @@ const App: FC = () => {
             <MyRecipesPage
               allRecipes={allRecipes}
               myRecipes={myRecipes}
-            ></MyRecipesPage>
+            />
           }
         ></Route>
         <Route
