@@ -26,16 +26,16 @@ const App: FC = () => {
 
   return (
     <div className="App">
-      <NavBar></NavBar>
+      <NavBar />
       <Routes>
         <Route path="/" element={<Homepage></Homepage>}></Route>
         <Route
           path="/inventory"
-          element={<InventoryPage allRecipes={allRecipes}></InventoryPage>}
+          element={<InventoryPage allRecipes={allRecipes} />}
         ></Route>
         <Route
           path="/our-recipes"
-          element={<OurRecipesPage allRecipes={allRecipes}></OurRecipesPage>}
+          element={<OurRecipesPage allRecipes={allRecipes} />}
         ></Route>
         <Route
           path="/my-recipes"
@@ -43,7 +43,7 @@ const App: FC = () => {
             <MyRecipesPage
               allRecipes={allRecipes}
               myRecipes={myRecipes}
-            ></MyRecipesPage>
+            />
           }
         ></Route>
         <Route
