@@ -13,7 +13,7 @@ interface IngredientComponentProps {
     quantity: string,
     ingredientType: string
   ) => void;
-  handleDelete: (ingredientId: string) => void;
+  deleteIngredient: (ingredientId: string) => void;
   clearSelectedIngredient: () => void;
 }
 
@@ -24,7 +24,7 @@ const IngredientComponent: FC<IngredientComponentProps> = ({
   allIngredients,
   ingredients,
   addIngredient,
-  handleDelete,
+  deleteIngredient,
   clearSelectedIngredient,
 }) => {
   const [selectedIngredient, setSelectedIngredient] = useState<string | null>(
@@ -80,7 +80,7 @@ const IngredientComponent: FC<IngredientComponentProps> = ({
               <span className="ingredient-amount">{ingredient.amount}</span>
               <button
                 className="delete-button" aria-label="Delete"
-                onClick={() => handleDelete(ingredient._id)}
+                onClick={() => deleteIngredient(ingredient._id)}
               >
                 <FaTrash />
               </button>

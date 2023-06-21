@@ -2,7 +2,7 @@ import React, { useState, useEffect, FC } from "react";
 import {
   createIngredients,
   getAllIngredients,
-  deleteIngredient,
+  deleteIngredientFromDb,
 } from "../utils/ApiService";
 import "./InventoryPage.css";
 import { BeerRecipe } from "../types/BeerRecipe";
@@ -20,9 +20,9 @@ const InventoryPage: FC<InventoryPageProps> = ({ allRecipes }) => {
   const [additional, setAdditional] = useState<string>("");
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
 
-  let allHops = new Set<string>();
-  let allMalts = new Set<string>();
-  let allYeasts = new Set<string>();
+  const allHops = new Set<string>();
+  const allMalts = new Set<string>();
+  const allYeasts = new Set<string>();
 
   allRecipes?.forEach((recipe) => {
     recipe.ingredients.hops.forEach((hop) => allHops.add(hop.name));
@@ -46,8 +46,8 @@ const InventoryPage: FC<InventoryPageProps> = ({ allRecipes }) => {
     setIngredients(allIngredients);
   };
 
-  const handleDelete = async (ingredientId: string) => {
-    await deleteIngredient(ingredientId);
+  const deleteIngredient = async (ingredientId: string) => {
+    await deleteIngredientFromDb(ingredientId);
     refreshIngredients();
   };
 
@@ -84,7 +84,7 @@ const InventoryPage: FC<InventoryPageProps> = ({ allRecipes }) => {
           (ingredient) => ingredient.type === "hops"
         )}
         addIngredient={addIngredient}
-        handleDelete={handleDelete}
+        deleteIngredient={deleteIngredient}
         clearSelectedIngredient={clearSelectedIngredient}
       />
       <IngredientComponent
@@ -96,7 +96,7 @@ const InventoryPage: FC<InventoryPageProps> = ({ allRecipes }) => {
           (ingredient) => ingredient.type === "malts"
         )}
         addIngredient={addIngredient}
-        handleDelete={handleDelete}
+        deleteIngredient={deleteIngredient}
         clearSelectedIngredient={clearSelectedIngredient}
       />
       <IngredientComponent
@@ -108,7 +108,7 @@ const InventoryPage: FC<InventoryPageProps> = ({ allRecipes }) => {
           (ingredient) => ingredient.type === "yeast"
         )}
         addIngredient={addIngredient}
-        handleDelete={handleDelete}
+        deleteIngredient={deleteIngredient}
         clearSelectedIngredient={clearSelectedIngredient}
       />
       <IngredientComponent
@@ -120,7 +120,7 @@ const InventoryPage: FC<InventoryPageProps> = ({ allRecipes }) => {
           (ingredient) => ingredient.type === "additions"
         )}
         addIngredient={addIngredient}
-        handleDelete={handleDelete}
+        deleteIngredient={deleteIngredient}
         clearSelectedIngredient={clearSelectedIngredient}
       />
       <img

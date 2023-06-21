@@ -2,7 +2,7 @@ import {
   createIngredients,
   getAllIngredients,
   getOurRecipes,
-  deleteIngredient,
+  deleteIngredientFromDb,
   getMyRecipes,
   postMyRecipe,
 } from "../utils/ApiService";
@@ -100,7 +100,7 @@ describe("API Functions", () => {
         json: jest.fn().mockResolvedValueOnce({ success: true }),
       });
 
-      await deleteIngredient(ingredientId);
+      await deleteIngredientFromDb(ingredientId);
 
       expect(global.fetch).toHaveBeenCalledWith(
         `http://localhost:3500/inventory/${ingredientId}`,
@@ -117,7 +117,7 @@ describe("API Functions", () => {
       global.fetch.mockRejectedValueOnce(mockError);
       console.error = jest.fn();
 
-      await deleteIngredient(ingredientId);
+      await deleteIngredientFromDb(ingredientId);
 
       expect(console.error).toHaveBeenCalledWith("Error:", mockError);
     });

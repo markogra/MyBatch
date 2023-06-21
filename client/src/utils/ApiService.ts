@@ -37,7 +37,7 @@ export async function getOurRecipes() {
   }
 }
 
-export async function deleteIngredient(ingredientId: string) {
+export async function deleteIngredientFromDb(ingredientId: string) {
   try {
     const response = await fetch(
       `http://localhost:3500/inventory/${ingredientId}`,
