@@ -1,7 +1,8 @@
 .homepage-container {
-  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  background-color: var(--background);
+  height: 100%;
 }
 
 .title {
@@ -28,7 +29,7 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
   width: 80%;
   background-color: transparent;
-  margin-top: -40px;
+  margin-top: -50px;
 }
 
 .homepage-description {
@@ -37,7 +38,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
   width: 80%;
   background-color: transparent;
@@ -52,6 +53,11 @@
 
 .second p {
   margin-bottom: 20px;
+  text-align: right;
+}
+
+.third p {
+  margin-top: 20px;
 }
 
 .first-p-img,
@@ -70,8 +76,8 @@
 .first p,
 .second p,
 .third p {
-  background-color: #fff;
-  color: black;
+  background-color: var(--light-background);
+  color: var(--text);
   padding: 10px;
   border-radius: 20px;
   box-shadow: rgb(255, 255, 255) 0px 2px 5px -1px,

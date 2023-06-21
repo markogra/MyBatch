@@ -1,18 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@1,300&display=swap");
+
+:root {
+  --background: #252222;
+  --light-background: #414141;
+  --text: #ffffff;
+  --orange: #ff791f;
+}
+
 * {
-  color: #ffffff;
+  color: var(--text);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #322f2f;
-}
 
+  font-family: "Libre Franklin", sans-serif;
+}
 .App {
-  margin: 20px 50px;
+  height: 100%;
+  width: 100%;
+  background-color: var(--background);
 }
 
 .mainNav {
   font-size: 1.75em;
-  border-bottom: 2px solid #fbb117;
+  border-bottom: 2px solid var(--orange);
   margin-bottom: 30px;
 }
 
@@ -37,5 +48,5 @@
 }
 
 .mainNav .active-link {
-  border-top: 2px solid #fbb117;
+  border-top: 2px solid var(--orange);
 }
