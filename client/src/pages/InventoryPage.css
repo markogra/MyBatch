@@ -49,10 +49,10 @@ h3,
 }
 
 button {
-  background-color: #ff791f;
+  background-color: crimson;
   border-radius: 3px;
-  border: 1px solid #ff791fac;
-  box-shadow: rgba(234, 142, 14, 0.7) 0 1px 0 0 inset;
+  border: 1px solid crimson;
+  box-shadow: crimson 0 1px 0 0 inset;
   box-sizing: border-box;
   color: white;
   cursor: pointer;
