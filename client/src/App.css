@@ -6,14 +6,18 @@
   background-color: #333;
 }
 
+body {
+  font-size: 16px;
+}
+
 .App {
-  margin: 20px 50px;
+  margin: 1.25rem 2.5rem;
 }
 
 .mainNav {
-  font-size: 1.75em;
+  font-size: 1.75rem;
   border-bottom: 2px solid #fbb117;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
 }
 
 .mainNav ul {
@@ -28,7 +32,6 @@
 
 .mainNav a {
   cursor: pointer;
-  width: 100%;
   text-decoration: none;
 }
 

@@ -1,12 +1,8 @@
 const router = require("express").Router();
 const controller = require("./controllers");
 
-router.get("/hello", function (req, res) {
-  res.send("Hellooooo Stranger, what's up?");
-});
-
 router.get("/", function (req, res) {
-  res.send("MyBatch express is here");
+  res.send("MyBatch server is running");
 });
 
 router.get("/inventory", controller.getAllIngredients);
