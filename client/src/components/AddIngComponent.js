@@ -5,7 +5,7 @@ import {
   deleteIngredient,
 } from "../utils/ApiService";
 import AddIngredientForm from "./AddIngForm";
-import { DeleteButton } from "./mui"
+import { DeleteButton } from "./mui";
 
 export default function AddIngredientComponent({
   type,
@@ -16,14 +16,21 @@ export default function AddIngredientComponent({
   const [ingredients, setIngredients] = useState([]);
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [unit, setUnit] = useState("");
 
   async function addIngredient() {
     try {
-      if (name === "" || quantity === "") {
-        alert("Please enter proper name and quantity");
+      if (name === "" || quantity === "" || unit === "") {
+        alert("Please enter proper name, quantity and unit.");
         return;
       }
-      const newItem = await createIngredients(name, quantity, type);
+      if (!Number(quantity)) {
+        alert("Please enter a proper number in Quantity field");
+        resetForm();
+        return;
+      }
+      const newItem = await createIngredients(name, quantity, type, unit);
+      console.log(name, quantity, type, unit);
       refreshIngredients();
       resetForm();
     } catch (err) {
@@ -34,6 +41,7 @@ export default function AddIngredientComponent({
   function resetForm() {
     setName("");
     setQuantity("");
+    setUnit("");
   }
 
   const refreshIngredients = async () => {
@@ -69,7 +77,8 @@ export default function AddIngredientComponent({
         <ul>
           {ingredients.map((ingredient) => (
             <li key={ingredient._id}>
-              {ingredient.name} {ingredient.amount}
+              {ingredient.name} {ingredient.amount}{" "}
+              {ingredient.unit === "grams" ? "g" : "kg"}
               <DeleteButton onClick={() => handleDelete(ingredient._id)} />
             </li>
           ))}
@@ -84,6 +93,8 @@ export default function AddIngredientComponent({
           allMalts={allMalts}
           allHops={allHops}
           allYeast={allYeast}
+          unit={unit}
+          setUnit={setUnit}
         />
       </div>
     </div>

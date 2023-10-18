@@ -114,7 +114,7 @@ export function DeleteButton({ onClick }) {
   );
 }
 
-export function UnitSelect() {
+export function UnitSelect({ onChange, value }) {
   return (
     <Box sx={{ width: 140 }}>
       <FormControl fullWidth>
@@ -122,10 +122,11 @@ export function UnitSelect() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          // value={age}
+          value={value}
           label="Unit"
-          // onChange={handleChange}
+          onChange={onChange}
         >
+          <MenuItem value="">None</MenuItem>
           <MenuItem value="grams">Grams (g)</MenuItem>
           <MenuItem value="kilograms">Kilograms (kg)</MenuItem>
         </Select>

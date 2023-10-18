@@ -9,7 +9,7 @@ export const getAllIngredients = async () => {
   }
 };
 
-export const createIngredients = (ingName, ingAmount, ingType) =>
+export const createIngredients = (ingName, ingAmount, ingType, ingUnit) =>
   fetch(baseUrl, {
     method: "POST",
     mode: "cors",
@@ -18,6 +18,7 @@ export const createIngredients = (ingName, ingAmount, ingType) =>
       name: ingName,
       amount: ingAmount,
       type: ingType,
+      unit: ingUnit,
     }),
   });
 

@@ -5,6 +5,8 @@ export default function AddIngredientForm({
   setName,
   quantity,
   setQuantity,
+  unit,
+  setUnit,
   addIngredient,
   type,
   allMalts,
@@ -26,7 +28,7 @@ export default function AddIngredientForm({
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
         />
-        <UnitSelect />
+        <UnitSelect value={unit} onChange={(e) => setUnit(e.target.value)} />
       </div>
 
       <AddButton onClick={addIngredient} />
