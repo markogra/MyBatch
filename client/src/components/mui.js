@@ -38,7 +38,7 @@ export function InputField({ value, onChange }) {
     <Box
       component="form"
       sx={{
-        "& > :not(style)": { m: 1, width: "25ch" },
+        "& > :not(style)": { m: 1, width: "12ch" },
       }}
       noValidate
       autoComplete="off"
@@ -111,5 +111,25 @@ export function DeleteButton({ onClick }) {
     <IconButton aria-label="delete" color="primary" onClick={onClick}>
       <DeleteIcon />
     </IconButton>
+  );
+}
+
+export function UnitSelect() {
+  return (
+    <Box sx={{ width: 140 }}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Unit</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          // value={age}
+          label="Unit"
+          // onChange={handleChange}
+        >
+          <MenuItem value="grams">Grams (g)</MenuItem>
+          <MenuItem value="kilograms">Kilograms (kg)</MenuItem>
+        </Select>
+      </FormControl>
+    </Box>
   );
 }

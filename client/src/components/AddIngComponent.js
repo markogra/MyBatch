@@ -5,7 +5,7 @@ import {
   deleteIngredient,
 } from "../utils/ApiService";
 import AddIngredientForm from "./AddIngForm";
-import { DeleteButton } from "./mui";
+import { DeleteButton } from "./mui"
 
 export default function AddIngredientComponent({
   type,

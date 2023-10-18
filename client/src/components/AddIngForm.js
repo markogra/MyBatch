@@ -1,4 +1,4 @@
-import { AddButton, InputField, SelectAutoWidth } from "./mui.js";
+import { AddButton, InputField, SelectAutoWidth, UnitSelect } from "./mui.js";
 
 export default function AddIngredientForm({
   name,
@@ -21,10 +21,14 @@ export default function AddIngredientForm({
         allMalts={allMalts}
         allYeast={allYeast}
       />
-      <InputField
-        value={quantity}
-        onChange={(e) => setQuantity(e.target.value)}
-      />
+      <div className="quantity-unit-line">
+        <InputField
+          value={quantity}
+          onChange={(e) => setQuantity(e.target.value)}
+        />
+        <UnitSelect />
+      </div>
+
       <AddButton onClick={addIngredient} />
     </div>
   );

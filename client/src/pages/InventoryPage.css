@@ -27,6 +27,7 @@ ul li {
   width: 36rem;
   border-radius: 0.7rem;
   height: 18rem;
+  background-color: aliceblue;
 }
 
 .add-ing-component h2 {
@@ -52,4 +53,9 @@ ul li {
 
 .add-ing-component ul::-webkit-scrollbar-track {
   background-color: transparent;
+}
+
+.quantity-unit-line {
+  display: flex;
+  align-items: center;
 }
