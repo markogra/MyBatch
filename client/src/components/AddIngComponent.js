@@ -29,7 +29,8 @@ export default function AddIngredientComponent({
         resetForm();
         return;
       }
-      const newItem = await createIngredients(name, quantity, type, unit);
+      const amountForDB = unit === "kilograms" ? quantity * 1000 : quantity;
+      const newItem = await createIngredients(name, amountForDB, type);
       console.log(name, quantity, type, unit);
       refreshIngredients();
       resetForm();
@@ -77,8 +78,10 @@ export default function AddIngredientComponent({
         <ul>
           {ingredients.map((ingredient) => (
             <li key={ingredient._id}>
-              {ingredient.name} {ingredient.amount}{" "}
-              {ingredient.unit === "grams" ? "g" : "kg"}
+              {ingredient.name}{" "}
+              {ingredient.amount >= 1000
+                ? `${ingredient.amount / 1000} kg`
+                : `${ingredient.amount} g`}
               <DeleteButton onClick={() => handleDelete(ingredient._id)} />
             </li>
           ))}

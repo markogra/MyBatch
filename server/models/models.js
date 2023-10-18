@@ -6,7 +6,6 @@ const addIngredientSchema = new Schema({
   name: String,
   amount: Number,
   type: String,
-  unit: String,
 });
 
 const maltSchema = new Schema({

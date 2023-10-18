@@ -13,7 +13,7 @@ exports.getAllIngredients = async (req, res) => {
 
 exports.createIngredients = async (req, res) => {
   console.log(req.body);
-  const { name, amount, type, unit } = req.body;
+  const { name, amount, type } = req.body;
   try {
     const existingIngredient = await addIngredient.findOne({ name, type });
     console.log(existingIngredient);
@@ -30,7 +30,6 @@ exports.createIngredients = async (req, res) => {
         name,
         amount,
         type,
-        unit,
       }).save();
       res.status(201).send(ingredient);
     }
