@@ -13,14 +13,27 @@ exports.getAllIngredients = async (req, res) => {
 
 exports.createIngredients = async (req, res) => {
   console.log(req.body);
-  const { name, amount, type } = req.body;
+  const { name, amount, type, unit } = req.body;
   try {
-    const ingredient = await addIngredient({
-      name,
-      amount,
-      type,
-    }).save();
-    res.status(201).send(ingredient);
+    const existingIngredient = await addIngredient.findOne({ name, type });
+    console.log(existingIngredient);
+    if (existingIngredient) {
+      // If there is one with the same name and type, update amount
+      console.log("Updating existing ingredient");
+      existingIngredient.amount += Number(amount);
+      console.log(amount);
+      await existingIngredient.save();
+      res.status(200).send(existingIngredient);
+    } else {
+      console.log("Creating new ingredient");
+      const ingredient = await addIngredient({
+        name,
+        amount,
+        type,
+        unit,
+      }).save();
+      res.status(201).send(ingredient);
+    }
   } catch (error) {
     console.log(error);
     res.status(500);
