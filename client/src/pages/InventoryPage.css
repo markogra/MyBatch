@@ -1,16 +1,38 @@
-h1 {
-  text-align: center;
-  margin-bottom: 3rem;
-}
 .inventory-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
-  row-gap: 5rem;
+  row-gap: 3rem;
+  padding-top: 3rem;
+  height: 100vh;
+  background-color: #232122;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
+    url("../img/inventory-img.jpg");
+  background-repeat: no-repeat;
+  background-position: center 35%;
+}
+
+.add-ing-component {
+  position: relative;
+  padding: 2rem;
+  padding-top: 1rem;
+  border: 2px solid #fad2a4;
+  width: 36rem;
+  border-radius: 0.7rem;
+  height: 18rem;
+  background: linear-gradient(rgba(121, 71, 14, 0.801), rgba(48, 28, 6, 0.788));
+}
+
+.add-ing-component img {
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
 }
 
 ul li {
   list-style-type: none;
+  color: #fff;
+  font-size: 1.1rem;
 }
 .ing-component-container {
   display: flex;
@@ -19,15 +41,7 @@ ul li {
 .add-ing-form-container {
   display: flex;
   flex-direction: column;
-}
-.add-ing-component {
-  padding: 2rem;
-  padding-top: 1rem;
-  border: 2px solid #fad2a4;
-  width: 36rem;
-  border-radius: 0.7rem;
-  height: 18rem;
-  background-color: aliceblue;
+  color: #fce8d2;
 }
 
 .add-ing-component h2 {
@@ -58,4 +72,10 @@ ul li {
 .quantity-unit-line {
   display: flex;
   align-items: center;
+}
+
+/* MUI */
+
+.textfield__label {
+  color: #fff !important;
 }

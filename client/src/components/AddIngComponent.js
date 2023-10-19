@@ -6,6 +6,10 @@ import {
 } from "../utils/ApiService";
 import AddIngredientForm from "./AddIngForm";
 import { DeleteButton } from "./mui";
+import hopsImage from "../img/hop.png";
+import extraImage from "../img/extra.png";
+import maltImage from "../img/barley.png";
+import yeastImage from "../img/yeast.png";
 
 export default function AddIngredientComponent({
   type,
@@ -74,6 +78,19 @@ export default function AddIngredientComponent({
   return (
     <div className="add-ing-component">
       <h2>{type}</h2>
+      <img
+        className="ing-img"
+        alt="Hops"
+        src={
+          type === "hops"
+            ? hopsImage
+            : type === "malt"
+            ? maltImage
+            : type === "yeast"
+            ? yeastImage
+            : extraImage
+        }
+      />
       <div className="ing-component-container">
         <ul>
           {ingredients.map((ingredient) => (

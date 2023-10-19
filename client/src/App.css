@@ -1,3 +1,4 @@
+@import "typeface-rufina";
 * {
   color: #fbb117;
   margin: 0;
@@ -8,6 +9,7 @@
 body {
   font-size: 16px;
   background-color: #333;
+  font-family: "Rufina", serif;
 }
 
 .App {
@@ -17,7 +19,6 @@ body {
 .mainNav {
   font-size: 1.75rem;
   border-bottom: 2px solid #fbb117;
-  margin-bottom: 2rem;
 }
 
 .mainNav ul {

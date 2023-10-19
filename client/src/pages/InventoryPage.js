@@ -27,14 +27,11 @@ function InventoryPage({ allRecipes }) {
   const allMalts = extractIngredientNames(allRecipes, "malts");
   const allHops = extractIngredientNames(allRecipes, "hops");
   return (
-    <div>
-      <h1>Inventory</h1>
-      <div className="inventory-container">
-        <AddIngredientComponent type="malt" allMalts={allMalts} />
-        <AddIngredientComponent type="hops" allHops={allHops} />
-        <AddIngredientComponent type="yeast" allYeast={allYeast} />
-        <AddIngredientComponent type="additions" />
-      </div>
+    <div className="inventory-container">
+      <AddIngredientComponent type="malt" allMalts={allMalts} />
+      <AddIngredientComponent type="hops" allHops={allHops} />
+      <AddIngredientComponent type="yeast" allYeast={allYeast} />
+      <AddIngredientComponent type="additions" />
     </div>
   );
 }

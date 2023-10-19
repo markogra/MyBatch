@@ -10,8 +10,10 @@ import {
   MenuItem,
   FormControl,
   Select,
+  styled,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { makeStyles } from "@material-ui/core/styles";
 
 const theme = createTheme({
   palette: {
@@ -23,6 +25,36 @@ const theme = createTheme({
     },
   },
 });
+
+const StyledInput = styled(TextField)`
+  width: 100%;
+  & .MuiOutlinedInput-notchedOutline {
+    border-color: #fad2a4;
+  }
+  &:hover {
+    & .MuiOutlinedInput-notchedOutline {
+      border-color: #fad2a4 !important;
+    }
+  }
+
+  & .Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #f28e1c !important;
+  }
+`;
+
+const StyledSelect = styled(Select)`
+  & .MuiOutlinedInput-notchedOutline {
+    border-color: #fad2a4;
+  }
+
+  &:hover .MuiOutlinedInput-notchedOutline {
+    border-color: #fad2a4 !important;
+  }
+
+  &.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #f28e1c !important;
+  }
+`;
 
 export function AddButton({ onClick }) {
   return (
@@ -43,12 +75,18 @@ export function InputField({ value, onChange }) {
       noValidate
       autoComplete="off"
     >
-      <TextField
+      <StyledInput
         id="outlined-basic"
         label="Quantity"
         variant="outlined"
         value={value}
         onChange={onChange}
+        InputLabelProps={{ className: "textfield__label" }}
+        InputProps={{
+          style: {
+            color: "white",
+          },
+        }}
       />
     </Box>
   );
@@ -69,7 +107,7 @@ export function SelectAutoWidth({
         <InputLabel id="demo-simple-select-autowidth-label">
           {ingName}
         </InputLabel>
-        <Select
+        <StyledSelect
           labelId="demo-simple-select-autowidth-label"
           id="demo-simple-select-autowidth"
           value={value}
@@ -100,7 +138,7 @@ export function SelectAutoWidth({
               ))
             : // Handle other cases if needed
               null}
-        </Select>
+        </StyledSelect>
       </FormControl>
     </div>
   );
@@ -119,7 +157,7 @@ export function UnitSelect({ onChange, value }) {
     <Box sx={{ width: 140 }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Unit</InputLabel>
-        <Select
+        <StyledSelect
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={value}
@@ -129,7 +167,7 @@ export function UnitSelect({ onChange, value }) {
           <MenuItem value="">None</MenuItem>
           <MenuItem value="grams">Grams (g)</MenuItem>
           <MenuItem value="kilograms">Kilograms (kg)</MenuItem>
-        </Select>
+        </StyledSelect>
       </FormControl>
     </Box>
   );
