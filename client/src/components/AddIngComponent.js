@@ -76,7 +76,13 @@ export default function AddIngredientComponent({
   }, []);
 
   return (
-    <div className="add-ing-component">
+    <div
+      className={
+        type === "malt" || type === "hops"
+          ? "add-ing-component first-row"
+          : "add-ing-component"
+      }
+    >
       <h2>{type}</h2>
       <img
         className="ing-img"

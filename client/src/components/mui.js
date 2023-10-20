@@ -13,7 +13,6 @@ import {
   styled,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { makeStyles } from "@material-ui/core/styles";
 
 const theme = createTheme({
   palette: {
@@ -54,6 +53,14 @@ const StyledSelect = styled(Select)`
   &.Mui-focused .MuiOutlinedInput-notchedOutline {
     border-color: #f28e1c !important;
   }
+
+  &.Mui-selected {
+    color: white !important;
+  }
+`;
+
+const ColoredInputLabel = styled(InputLabel)`
+  color: white !important;
 `;
 
 export function AddButton({ onClick }) {
@@ -104,9 +111,9 @@ export function SelectAutoWidth({
   return (
     <div>
       <FormControl sx={{ m: 1, minWidth: 80 }}>
-        <InputLabel id="demo-simple-select-autowidth-label">
+        <ColoredInputLabel id="demo-simple-select-autowidth-label">
           {ingName}
-        </InputLabel>
+        </ColoredInputLabel>
         <StyledSelect
           labelId="demo-simple-select-autowidth-label"
           id="demo-simple-select-autowidth"
@@ -156,13 +163,22 @@ export function UnitSelect({ onChange, value }) {
   return (
     <Box sx={{ width: 140 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Unit</InputLabel>
+        <ColoredInputLabel id="demo-simple-select-label">
+          Unit
+        </ColoredInputLabel>
         <StyledSelect
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={value}
           label="Unit"
           onChange={onChange}
+          MenuProps={{
+            PaperProps: {
+              style: {
+                maxHeight: 200,
+              },
+            },
+          }}
         >
           <MenuItem value="">None</MenuItem>
           <MenuItem value="grams">Grams (g)</MenuItem>
