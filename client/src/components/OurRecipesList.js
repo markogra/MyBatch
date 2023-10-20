@@ -5,7 +5,7 @@ export default function OurRecipesList({
 }) {
   return (
     <div className="recipe-list containers">
-      <h2>Here are some one our most popular recipes</h2>
+      <h2>Some of our most popular recipes</h2>
       <div className="scrollable-list">
         {allRecipes && (
           <ul className="ourRecipes">
