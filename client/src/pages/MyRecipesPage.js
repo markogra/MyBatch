@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./RecipesPages.css";
+import "./myRecipe.css";
 import { postMyRecipe } from "../utils/ApiService";
 
 function MyRecipesPage({ myRecipes, allRecipes }) {
