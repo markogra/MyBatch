@@ -13,6 +13,7 @@ import {
   styled,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import TextareaAutosize from "@mui/material/TextareaAutosize";
 
 const theme = createTheme({
   palette: {
@@ -53,10 +54,6 @@ const StyledSelect = styled(Select)`
   &.Mui-focused .MuiOutlinedInput-notchedOutline {
     border-color: #f28e1c !important;
   }
-
-  &.Mui-selected {
-    color: white !important;
-  }
 `;
 
 const ColoredInputLabel = styled(InputLabel)`
@@ -72,19 +69,19 @@ export function AddButton({ onClick }) {
     </ThemeProvider>
   );
 }
-export function InputField({ value, onChange }) {
+export function InputField({ value, onChange, label, width }) {
   return (
     <Box
       component="form"
       sx={{
-        "& > :not(style)": { m: 1, width: "12ch" },
+        "& > :not(style)": { m: 1, width: { width } },
       }}
       noValidate
       autoComplete="off"
     >
       <StyledInput
         id="outlined-basic"
-        label="Quantity"
+        label={label}
         variant="outlined"
         value={value}
         onChange={onChange}
@@ -186,5 +183,29 @@ export function UnitSelect({ onChange, value }) {
         </StyledSelect>
       </FormControl>
     </Box>
+  );
+}
+
+export function TextArea({ placeholder, value, onChange, className }) {
+  return (
+    <TextareaAutosize
+      className={className}
+      placeholder={placeholder}
+      aria-label={placeholder}
+      value={value}
+      onChange={onChange}
+      minRows={8}
+      maxRows={8}
+      style={{
+        overflowY: "auto",
+        background: "#111",
+        color: "#fce8d2",
+        border: "1px solid #fad2a4",
+        fontSize: "1.2rem",
+        width: "40ch",
+        // padding: "0.5rem",
+        // borderRadius: "1rem",
+      }}
+    />
   );
 }

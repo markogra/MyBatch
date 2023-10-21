@@ -1,86 +1,81 @@
-/* MyRecipes.js Styles  */
 .container {
-  display: flex;
-  justify-content: space-around;
-}
-.first-half {
-  width: 45%;
-  height: 100%;
+  padding-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 4rem;
+  height: 90vh;
 }
 
 .new-recipe-form {
   display: flex;
-  gap: 50px;
+  gap: 4rem;
 }
 
 .my-recipes-form {
   border: 2px solid #fbb117;
-  padding: 10px 15px;
-  height: 450px;
-  margin-bottom: 40px;
-  border-radius: 12px;
-  position: relative;
+  padding: 0.5rem 1rem;
+  margin-bottom: 2rem;
+  border-radius: 0.75rem;
 }
+
+.my-recipes-form h2 {
+  margin: 1rem 0;
+}
+
+.left-side-createRecipe .ing-row {
+  margin-bottom: 2rem;
+}
+
+.left-side-createRecipe .textarea {
+  margin-left: 2.5rem;
+}
+
+.right-side-createRecipe h3 {
+  margin-bottom: 1rem;
+}
+
+.ing-row {
+  display: flex;
+}
+
 .my-recipe-list {
   border: 2px solid #fbb117;
-  height: 250px;
-  padding: 10px 20px;
-  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  overflow-y: scroll;
+  grid-row: 2/3;
 }
 .my-recipe-details {
   border: 2px solid #fbb117;
-  width: 40%;
-  padding: 10px 20px;
-  border-radius: 12px;
-}
-
-.new-recipe-form textarea {
-  width: 400px;
-  height: 250px;
-  font-size: 16px;
+  width: auto;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  grid-row: 1/3;
+  height: 70%;
 }
 
 .my-recipes-form h2 {
   text-align: center;
 }
 .create-recipe-btn {
-  position: absolute;
-  padding: 10px 25px;
-  font-size: 16px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
   background-color: #fb8b17;
   color: white;
-  top: 75%;
-  left: 65%;
-  border-radius: 9px;
+  border-radius: 0.75rem;
+  margin: 1rem 0;
+  width: 100%;
 }
 
-.my-recipes-form label {
-  font-size: 20px;
-}
-.my-recipes-form input {
-  margin-bottom: 10px;
-  font-size: 16px;
-}
-.my-recipes-form h3 {
-  margin-bottom: 30px;
-  margin-top: 20px;
-}
-.my-recipes-form select {
-  margin-bottom: 25px;
-  margin-right: 10px;
-}
-
-.right-side input {
-  width: 80px;
-}
 .ing-ul {
   list-style-type: none;
 }
 
 .your-list-li {
   list-style-type: none;
-  font-size: 20px;
-  margin-top: 10px;
+  font-size: 1.25rem;
+  margin-top: 0.75rem;
   border-bottom: 1px solid white;
 }
 .your-list-li:hover {
@@ -100,12 +95,12 @@
 }
 .my-recipe-details h2,
 h3 {
-  margin-top: 20px;
+  margin-top: 1rem;
   font-family: cursive;
 }
 
 .my-recipe-details li,
 p {
   list-style-type: none;
-  font-size: 130%;
+  font-size: 1.3rem;
 }

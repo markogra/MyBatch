@@ -1,31 +1,7 @@
 import "./InventoryPage.css";
 import AddIngredientComponent from "../components/AddIngComponent";
 
-function InventoryPage({ allRecipes }) {
-  const extractIngredientNames = (recipes, type) => {
-    const allNames = new Set();
-
-    recipes?.forEach((recipe) => {
-      const ingredientsOfType = recipe.ingredients[type];
-
-      if (ingredientsOfType) {
-        if (Array.isArray(ingredientsOfType)) {
-          ingredientsOfType.forEach((ingredient) => {
-            allNames.add(ingredient.name);
-          });
-        } else {
-          // This line is handling yeast
-          allNames.add(ingredientsOfType);
-        }
-      }
-    });
-
-    return Array.from(allNames);
-  };
-
-  const allYeast = extractIngredientNames(allRecipes, "yeast");
-  const allMalts = extractIngredientNames(allRecipes, "malts");
-  const allHops = extractIngredientNames(allRecipes, "hops");
+function InventoryPage({ allHops, allMalts, allYeast }) {
   return (
     <div className="inventory-container">
       <AddIngredientComponent type="malt" allMalts={allMalts} />

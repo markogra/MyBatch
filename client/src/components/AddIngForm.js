@@ -25,6 +25,8 @@ export default function AddIngredientForm({
       />
       <div className="quantity-unit-line">
         <InputField
+          width="12ch"
+          label="Quantity"
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
         />
