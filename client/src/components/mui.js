@@ -123,19 +123,19 @@ export function SelectAutoWidth({
             <em>None</em>
           </MenuItem>
           {type === "malt"
-            ? allMalts.map((option) => (
+            ? allMalts?.map((option) => (
                 <MenuItem key={option} value={option}>
                   {option}
                 </MenuItem>
               ))
             : type === "hops"
-            ? allHops.map((option) => (
+            ? allHops?.map((option) => (
                 <MenuItem key={option} value={option}>
                   {option}
                 </MenuItem>
               ))
             : type === "yeast"
-            ? allYeast.map((option) => (
+            ? allYeast?.map((option) => (
                 <MenuItem key={option} value={option}>
                   {option}
                 </MenuItem>

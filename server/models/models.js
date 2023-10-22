@@ -36,9 +36,9 @@ const myRecipeSchema = new Schema({
   name: String,
   style: String,
   ingredients: {
-    hops: [addIngredientSchema],
-    malts: [addIngredientSchema],
-    yeast: [addIngredientSchema],
+    hops: [{ name: String, amount: Number, unit: String }],
+    malts: [{ name: String, amount: Number, unit: String }],
+    yeast: [{ name: String, amount: Number, unit: String }],
   },
   instructions: String,
 });

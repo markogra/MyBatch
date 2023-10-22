@@ -37,6 +37,7 @@
 
 .ing-row {
   display: flex;
+  align-items: center;
 }
 
 .my-recipe-list {

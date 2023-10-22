@@ -12,17 +12,26 @@ export default function YourRecipeDetails({ selectedRecipe }) {
           <ul>
             {selectedRecipe.ingredients.hops.map((hop, index) => (
               <li key={index}>
-                {hop.name}: {hop.amount}
+                {hop.name}:{" "}
+                {hop.unit === "grams" ? hop.amount : hop.amount / 1000}{" "}
+                {hop.unit === "grams" ? "g" : "kg"}
               </li>
             ))}
             {selectedRecipe.ingredients.malts.map((malt, index) => (
               <li key={index}>
-                {malt.name}: {malt.amount}
+                {malt.name}:{" "}
+                {malt.unit === "grams" ? malt.amount : malt.amount / 1000}{" "}
+                {malt.unit === "grams" ? "g" : "kg"}
               </li>
             ))}
             <li>
-              Yeast: {selectedRecipe.ingredients.yeast[0].name},{" "}
-              {selectedRecipe.ingredients.yeast[0].amount}
+              Yeast: {selectedRecipe.ingredients.yeast[0].name}:{" "}
+              {selectedRecipe.ingredients.yeast[0].unit === "grams"
+                ? selectedRecipe.ingredients.yeast[0].amount
+                : selectedRecipe.ingredients.yeast[0].amount / 1000}{" "}
+              {selectedRecipe.ingredients.yeast[0].unit === "grams"
+                ? "g"
+                : "kg"}
             </li>
           </ul>
           <h3>Instructions:</h3>

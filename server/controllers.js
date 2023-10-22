@@ -79,7 +79,7 @@ exports.getMyRecipes = async (req, res) => {
 };
 
 exports.postMyRecipe = async (req, res) => {
-  console.log(req.body);
+  console.log(req.body.ingredients.hops);
   try {
     const { name, style, ingredients, instructions } = req.body;
     const newRecipe = new myRecipe({
