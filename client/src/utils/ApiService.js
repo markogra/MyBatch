@@ -71,3 +71,21 @@ export async function postMyRecipe(recipeData) {
     console.log(err);
   }
 }
+
+export async function brewRecipe(recipeId) {
+  try {
+    console.log(recipeId);
+    console.log("Clicked on the FE");
+
+    const response = await fetch(`http://localhost:3500/brew`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ recipeId }),
+    });
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
+}

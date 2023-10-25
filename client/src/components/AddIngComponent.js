@@ -52,7 +52,6 @@ export default function AddIngredientComponent({
   const refreshIngredients = async () => {
     try {
       const fetchedIngredients = await getAllIngredients();
-      console.log(fetchedIngredients);
       setIngredients(
         fetchedIngredients.filter((ingredient) => ingredient.type === type)
       );

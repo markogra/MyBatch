@@ -13,6 +13,11 @@ const maltSchema = new Schema({
   amount: String,
 });
 
+const yeastSchema = new Schema({
+  name: String,
+  amount: String,
+});
+
 const hopSchema = new Schema({
   name: String,
   amount: String,
@@ -27,7 +32,7 @@ const beerRecipeSchema = new Schema({
   ingredients: {
     malts: [maltSchema],
     hops: [hopSchema],
-    yeast: String,
+    yeast: [yeastSchema],
   },
   instructions: [String],
 });

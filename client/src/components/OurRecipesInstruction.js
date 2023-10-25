@@ -1,3 +1,5 @@
+import BrewButton from "./BrewButton";
+
 export default function OurRecipesInstruction({ selectedRecipe }) {
   return (
     <div className="recipe-instruction containers">
@@ -14,7 +16,11 @@ export default function OurRecipesInstruction({ selectedRecipe }) {
           </ul>
           <h3>Yeast</h3>
           <ul className="ing-ul">
-            <li>{selectedRecipe.ingredients.yeast}</li>
+            {selectedRecipe.ingredients.yeast.map((yeast) => (
+              <li key={yeast._id}>
+                {yeast.name} {yeast.amount}
+              </li>
+            ))}
           </ul>
           <h3>Malts</h3>
           <ul className="ing-ul">
@@ -30,6 +36,7 @@ export default function OurRecipesInstruction({ selectedRecipe }) {
               <li key={instruction}>{instruction}</li>
             ))}
           </ul>
+          <BrewButton selectedRecipe={selectedRecipe} />
         </div>
       )}
     </div>

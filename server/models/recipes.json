@@ -11,7 +11,7 @@
         { "name": "Saaz", "amount": "20 g", "time": "15 minutes" },
         { "name": "Saaz", "amount": "20 g", "time": "5 minutes" }
       ],
-      "yeast": "Czech Lager"
+      "yeast": [{ "name": "Czech Lager", "amount": "23 g" }]
     },
     "instructions": [
       "Mash the Pilsner malt with hot water at 65°C for 60 minutes.",
@@ -38,7 +38,7 @@
         { "name": "Cascade", "amount": "30 g", "time": "15 minutes" },
         { "name": "Cascade", "amount": "30 g", "time": "5 minutes" }
       ],
-      "yeast": "American Ale"
+      "yeast": [{ "name": "American Ale", "amount": "17 g" }]
     },
     "instructions": [
       "Mash the Pale Malt and Crystal Malt with hot water at 66°C for 60 minutes.",
@@ -67,7 +67,7 @@
         { "name": "Fuggle", "amount": "30 g", "time": "60 minutes" },
         { "name": "Fuggle", "amount": "20 g", "time": "15 minutes" }
       ],
-      "yeast": "English Ale"
+      "yeast": [{ "name": "English Ale", "amount": "35 g" }]
     },
     "instructions": [
       "Mash the Pale Malt, Brown Malt, Chocolate Malt, and Roasted Barley with hot water at 67°C for 60 minutes.",
@@ -94,7 +94,7 @@
         { "name": "Fuggle", "amount": "30 g", "time": "60 minutes" },
         { "name": "Fuggle", "amount": "20 g", "time": "15 minutes" }
       ],
-      "yeast": "English Ale"
+      "yeast": [{ "name": "English Ale", "amount": "40 g" }]
     },
     "instructions": [
       "Mash the Pale Malt, Roasted Barley, Chocolate Malt, and Black Patent Malt with hot water at 67°C for 60 minutes.",
@@ -120,7 +120,7 @@
         { "name": "Cascade", "amount": "30 g", "time": "60 minutes" },
         { "name": "Cascade", "amount": "20 g", "time": "15 minutes" }
       ],
-      "yeast": "American Ale"
+      "yeast": [{ "name": "American Ale", "amount": "28 g" }]
     },
     "instructions": [
       "Mash the Pale Malt, Crystal Malt, and Munich Malt with hot water at 67°C for 60 minutes.",
@@ -145,7 +145,7 @@
         { "name": "Saaz", "amount": "20 g", "time": "60 minutes" },
         { "name": "Saaz", "amount": "10 g", "time": "15 minutes" }
       ],
-      "yeast": "Belgian Witbier"
+      "yeast": [{ "name": "Belgian Witbier", "amount": "50 g" }]
     },
     "instructions": [
       "Mash the Wheat Malt and Pilsner Malt with hot water at 66°C for 60 minutes.",
@@ -171,7 +171,7 @@
         { "name": "Tettnang", "amount": "30 g", "time": "60 minutes" },
         { "name": "Tettnang", "amount": "20 g", "time": "15 minutes" }
       ],
-      "yeast": "Belgian Ale"
+      "yeast": [{ "name": "Belgian Ale", "amount": "57 g" }]
     },
     "instructions": [
       "Mash the Pilsner Malt, Munich Malt, and Special B Malt with hot water at 66°C for 60 minutes.",
@@ -196,7 +196,7 @@
         { "name": "Saaz", "amount": "30 g", "time": "60 minutes" },
         { "name": "Saaz", "amount": "20 g", "time": "15 minutes" }
       ],
-      "yeast": "Belgian Saison"
+      "yeast": [{ "name": "Belgian Saison", "amount": "38 g" }]
     },
     "instructions": [
       "Mash the Pilsner Malt and Munich Malt with hot water at 66°C for 60 minutes.",
@@ -226,7 +226,7 @@
         },
         { "name": "East Kent Goldings", "amount": "20 g", "time": "15 minutes" }
       ],
-      "yeast": "Irish Ale"
+      "yeast": [{ "name": "Irish Ale", "amount": "62 g" }]
     },
     "instructions": [
       "Mash the Pale Malt, Caramel Malt, and Roasted Barley with hot water at 66°C for 60 minutes.",
@@ -252,7 +252,7 @@
         { "name": "Cascade", "amount": "30 g", "time": "60 minutes" },
         { "name": "Cascade", "amount": "20 g", "time": "15 minutes" }
       ],
-      "yeast": "American Ale"
+      "yeast": [{ "name": "American Ale", "amount": "40 g" }]
     },
     "instructions": [
       "Mash the Pale Malt, Crystal Malt, and Chocolate Malt with hot water at 67°C for 60 minutes.",
@@ -283,7 +283,7 @@
         },
         { "name": "East Kent Goldings", "amount": "20 g", "time": "15 minutes" }
       ],
-      "yeast": "Scottish Ale"
+      "yeast": [{ "name": "Scottish Ale", "amount": "35 g" }]
     },
     "instructions": [
       "Mash the Pale Malt, Munich Malt, Crystal Malt, and Peated Malt with hot water at 65°C for 60 minutes.",
@@ -308,7 +308,7 @@
         { "name": "Fuggle", "amount": "30 g", "time": "60 minutes" },
         { "name": "Fuggle", "amount": "20 g", "time": "15 minutes" }
       ],
-      "yeast": "English Ale"
+      "yeast": [{ "name": "English Ale", "amount": "53 g" }]
     },
     "instructions": [
       "Mash the Maris Otter and Crystal Malt with hot water at 67°C for 60 minutes.",
@@ -343,7 +343,7 @@
           "time": "10 minutes"
         }
       ],
-      "yeast": "German Lager"
+      "yeast": [{ "name": "German Lager", "amount": "19 g" }]
     },
     "instructions": [
       "Mash the Munich Malt, Pilsner Malt, Caramel Munich, and Carafa Special II with hot water at 67°C for 60 minutes.",
