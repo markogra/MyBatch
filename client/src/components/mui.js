@@ -198,13 +198,11 @@ export function TextArea({ placeholder, value, onChange, className }) {
       maxRows={8}
       style={{
         overflowY: "auto",
-        background: "#111",
-        color: "#fce8d2",
+        background: "inherit",
+        color: "##fff",
         border: "1px solid #fad2a4",
         fontSize: "1.2rem",
         width: "40ch",
-        // padding: "0.5rem",
-        // borderRadius: "1rem",
       }}
     />
   );
