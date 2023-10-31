@@ -1,5 +1,50 @@
+@import "@fontsource/edu-tas-beginner";
+
+.homepage-container {
+  font-family: "Edu TAS Beginner", cursive;
+  background-color: #282520;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
+    url("../img/homepageImg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .homepage-container h1 {
   text-align: center;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   font-size: 2.5rem;
+}
+
+.homepage-container h2 {
+  text-align: center;
+}
+
+.p-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  justify-items: center;
+  row-gap: 2rem;
+  margin-top: 3rem;
+}
+
+.p-container p {
+  position: relative;
+  width: 50%;
+  font-size: 1.4rem;
+  border: 1px solid #fad2a4;
+  border-radius: 5px;
+  padding: 1.5rem;
+  color: #fff;
+  background: linear-gradient(rgba(121, 71, 14, 0.801), rgba(48, 28, 6, 0.788));
+}
+
+.p-container p:nth-child(2) {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+
+.p-container p:nth-child(3) {
+  grid-column: 1/2;
+  grid-row: 3/4;
 }
