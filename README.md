@@ -9,13 +9,20 @@ MyBatch is a brewing management system that helps homebrewers organize and track
 - **Brewing Process:** Record and monitor the brewing process for each recipe.
 - **Inventory Reduction:** Automatically update your ingredient inventory when brewing.
 
+## Screenshots
+
+    ![Screenshot of inventory page](/client/src/img/screenShotInventory.png)
+    ![Screenshot of homepage](/client/src/img/screenShotHomepage.png)
+    ![Screenshot of OurRecipe page](/client/src/img/screenShotOurRecipes.png)
+    ![Screenshot of MyRecipe page](/client/src/img/screenShotMyRecipes.png)
+
 ## Tech Stack
 
     **MERN**
 
--FrontEnd: React, Material UI, CSS, Jest
--BackEnd: Node.js, Express **MVC**
--Database communiration: MongoDB, Mongoose
+<b>FrontEnd<b/>: React, Material UI, CSS, Jest <br />
+<b>BackEnd<b/>: Node.js, Express **MVC** <br />
+<b>Database<b/>: MongoDB, Mongoose
 
 ## Getting Started
 
