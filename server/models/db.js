@@ -8,6 +8,4 @@ function letsConnect() {
   );
 }
 
-letsConnect();
-
-module.exports = mongoose;
+module.exports = {letsConnect};
