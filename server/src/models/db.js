@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 require('dotenv').config()
 
-function letsConnect() {
+function connectDB() {
   mongoose.connect(
     process.env.DATABASE_URL,
     console.log("Connected to MongoDB")
   );
 }
 
-module.exports = {letsConnect};
+module.exports = {connectDB};
