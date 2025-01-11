@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
+require('dotenv').config()
 
-function letConnect() {
+function letsConnect() {
   mongoose.connect(
-    "mongodb://127.0.0.1:27017/mybatch",
+    process.env.DATABASE_URL,
     console.log("Connected to MongoDB")
   );
 }
 
-letConnect();
+letsConnect();
 
 module.exports = mongoose;

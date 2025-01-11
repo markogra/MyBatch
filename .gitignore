@@ -29,7 +29,7 @@ node_modules
 private
 build
 dist
-.env.local
+.env
 .env.development.local
 .env.test.local
 .env.production.local

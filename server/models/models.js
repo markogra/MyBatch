@@ -1,5 +1,6 @@
 const { mongoose } = require("./db");
 
+
 const Schema = mongoose.Schema;
 
 const addIngredientSchema = new Schema({
