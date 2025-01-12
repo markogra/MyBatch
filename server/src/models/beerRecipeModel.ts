@@ -4,7 +4,7 @@ import { IInventoryItem } from "./inventoryItemModel";
 
 // Define TypeScript interfaces for each of the schemas
 
-interface IBeerRecipe extends Document {
+export interface IBeerRecipe extends Document {
   name: string;
   style: string;
   description: string;
