@@ -1,60 +1,11 @@
-import { BeerRecipe, Ingredient, MyRecipe } from "./models/models"
+import BeerRecipe from "../models/beerRecipeModel";
 import { Request, Response} from "express";
 
-export const getAllIngredients = async (req:Request, res:Response) => {
-  try {
-    const response = await Ingredient.find();
-    res.status(200).send(response);
-  } catch (err) {
-    res.send(err);
-  }
-};
 
-// export const createIngredients = async (req:Request, res:Response) => {
 
-//   const { name, amount, type } = req.body;
 
-//   try {
-//     const existingIngredient = await Ingredient.findOne({ name, type });
-//     console.log(existingIngredient);
-//     if (existingIngredient) {
-//       // If there is one with the same name and type, update amount
-//       console.log("Updating existing ingredient");
-//       existingIngredient.amount += Number(amount);
-//       console.log(amount);
-//       await existingIngredient.save();
-//       res.status(200).send(existingIngredient);
-//     } else {
-//       console.log("Creating new ingredient");
-//       const ingredient = await addIngredient({
-//         name,
-//         amount,
-//         type,
-//       }).save();
-//       res.status(201).send(ingredient);
-//     }
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500);
-//   }
-// };
 
-// export const deleteIngredient = async (req:Request, res:Response) => {
-//   try {
-//     const ingredientId = req.params.id;
-//     const ingredient = await addIngredient.findById(ingredientId);
-//     await ingredient.deleteOne({ _id: ingredientId });
-//     console.log("Item deleted");
-//     res
-//       .status(200)
-//       .json({ success: true, message: "Ingredient deleted successfully" });
-//   } catch (error) {
-//     console.log(error);
-//     res
-//       .status(500)
-//       .json({ success: false, error: "Failed to delete ingredient" });
-//   }
-// };
+
 
 // export const getOurRecipes = async (req:Request, res:Response) => {
 //   try {

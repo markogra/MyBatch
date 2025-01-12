@@ -1,5 +1,5 @@
 import express, { Request,Response } from 'express';
-import {getAllIngredients} from './controllers'
+import { getAllInventoryItems, createInventoryItem ,deleteInventoryItem } from './controllers/inventoryItemController';
 
 const router = express.Router()
 
@@ -7,9 +7,9 @@ router.get("/", function (req:Request, res:Response) {
   res.send("MyBatch server is running");
 });
 
-router.get("/inventory", getAllIngredients);
-// router.post("/inventory", controller.createIngredients);
-// router.delete("/inventory/:id", controller.deleteIngredient);
+router.get("/inventory", getAllInventoryItems);
+router.post("/inventory", createInventoryItem);
+router.delete("/inventory/:id", deleteInventoryItem);
 // router.get("/our-recipes", controller.getOurRecipes);
 // router.get("/my-recipes", controller.getMyRecipes);
 // router.post("/my-recipes", controller.postMyRecipe);
