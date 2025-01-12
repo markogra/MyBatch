@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import { resolve } from 'path';
 import cors from 'cors'
 
-import {connectDB} from './models/db'
+import connectDB from './models/db'
 import router from './router'
 
 dotenv.config({ path: resolve(__dirname, '../.env') });
