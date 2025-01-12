@@ -18,6 +18,6 @@ const inventoryItemSchema = new Schema<IInventoryItem>({
 });
 
 
-const InventoryItem = model<IInventoryItem>("Inventory", inventoryItemSchema);
+const InventoryItem = model<IInventoryItem>("Inventory", inventoryItemSchema, "inventory items" );
 
 export default InventoryItem;

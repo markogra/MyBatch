@@ -2,49 +2,28 @@ import BeerRecipe from "../models/beerRecipeModel";
 import { Request, Response} from "express";
 
 
+export const getAllBeerRecipes = async (req:Request, res:Response) => {
+  try {
+    const allBeerRecipes = await BeerRecipe.find();
+
+    res.status(200).json({
+      status:'Success',
+      results:allBeerRecipes.length,
+      data:allBeerRecipes
+    });
+  } catch(err) {
+    const error = err as Error;
+    res.status(404).json({
+      status:'Fail',
+      message:error.message
+    })
+    
+  }
+};
 
 
 
 
-
-// export const getOurRecipes = async (req:Request, res:Response) => {
-//   try {
-//     const response = await beerRecipe.find();
-
-//     res.status(200).send(response);
-//   } catch (error) {
-//     console.log("ERROR!!!! " + error);
-//   }
-// };
-
-// export const getMyRecipes = async (req:Request, res:Response) => {
-//   try {
-//     const response = await myRecipe.find();
-//     console.log("Response on my recipes");
-//     console.log(response);
-//     res.status(200).send(response);
-//   } catch (error) {
-//     console.log("ERROR!!!! " + error);
-//   }
-// };
-
-// export const postMyRecipe = async (req:Request, res:Response) => {
-//   console.log(req.body.ingredients.hops);
-//   try {
-//     const { name, style, ingredients, instructions } = req.body;
-//     const newRecipe = new myRecipe({
-//       name,
-//       style,
-//       ingredients,
-//       instructions,
-//     });
-//     const savedRecipe = await newRecipe.save();
-//     res.status(201).json(savedRecipe);
-//   } catch (error) {
-//     console.log("ERROR!!! " + error);
-//     res.status(500);
-//   }
-// };
 
 // export const brewRecipe = async (req:Request, res:Response) => {
 //   try {

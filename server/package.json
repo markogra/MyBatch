@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+   "start": "node dist/app.js",
+    "build": "tsc",
+    "dev": "concurrently \"tsc --watch\" \"nodemon dist/app.js\"",
+    "watch": "tsc --watch",
+    "server": "nodemon dist/server.js"
   },
   "keywords": [],
   "author": "",
