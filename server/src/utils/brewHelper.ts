@@ -3,21 +3,23 @@ import { IBeerRecipe } from "../models/beerRecipeModel";
 
 
 export function checkIfEnoughIngredients(
-  recipeIngredients: IBeerRecipe["ingredients"],
+  recipeIngredients: IBeerRecipe['ingredients'],
   inventory: IInventoryItem[]
 ): boolean {
-  const allIngredients = [
+  const allIngredientsNeededForRecipe = [
     ...(recipeIngredients.malts || []),
     ...(recipeIngredients.hops || []),
     ...(recipeIngredients.yeast || []),
   ];
 
-  return allIngredients.every((ingredient) => {
+  console.log(allIngredientsNeededForRecipe)
+
+  return allIngredientsNeededForRecipe.every((ingredient) => {
     const matchingIngredient = inventory.find((inv) => inv.name === ingredient.name);
     if (!matchingIngredient) return false;
 
     const requiredAmount =
-      ingredient.unit === "kg" ? ingredient.amount * 1000 : ingredient.amount;
+      ingredient.amount.slice(-2) === "kg" ? Number(ingredient.amount.slice(0,-3)) * 1000 : Number(ingredient.amount.slice(0,-3));
 
     return matchingIngredient.amount >= requiredAmount;
   });
@@ -29,14 +31,14 @@ export async function reduceIngredients(
   inventory: IInventoryItem[],
   updateInventoryItem: (id: string, updatedAmount: number) => Promise<void>
 ): Promise<void> {
-  const allIngredients = [
+  const allIngredientsNeededForRecipe = [
     ...(recipeIngredients.malts || []),
     ...(recipeIngredients.hops || []),
     ...(recipeIngredients.yeast || []),
   ];
 
-  for (const ingredient of allIngredients) {
-    let requiredAmount = ingredient.unit === "kg" ? ingredient.amount * 1000 : ingredient.amount;
+  for (const ingredient of allIngredientsNeededForRecipe) {
+    let requiredAmount = ingredient.amount.slice(-2) === "kg" ? Number(ingredient.amount.slice(0,-3)) * 1000 : Number(ingredient.amount.slice(0,-3));
 
     for (const inv of inventory.filter((inv) => inv.name === ingredient.name)) {
       if (requiredAmount <= 0) break;

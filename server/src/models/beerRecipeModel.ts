@@ -1,8 +1,13 @@
 import { Schema, model, Document } from "mongoose";
-import { IInventoryItem } from "./inventoryItemModel";
 
 
 // Define TypeScript interfaces for each of the schemas
+
+export interface IIngredientBeerRecipe extends Document {
+  name:string;
+  amount:string;
+  time?:string;
+}
 
 export interface IBeerRecipe extends Document {
   name: string;
@@ -10,12 +15,18 @@ export interface IBeerRecipe extends Document {
   description: string;
   batchSize: string;
   ingredients: {
-    malts: IInventoryItem[];
-    hops: IInventoryItem[];
-    yeast: IInventoryItem[];
+    malts: IIngredientBeerRecipe[];
+    hops: IIngredientBeerRecipe[];
+    yeast: IIngredientBeerRecipe[];
   };
   instructions: string[];
 }
+
+const ingredientBeerRecipeSchema = new Schema<IIngredientBeerRecipe>({
+  name: { type: String, required: true },
+  amount: { type: String, required: true },
+  time: { type: String, required: false }, 
+});
 
 const beerRecipeSchema = new Schema<IBeerRecipe>({
   name: { type: String, required: true },
@@ -23,9 +34,9 @@ const beerRecipeSchema = new Schema<IBeerRecipe>({
   description: { type: String, required: true },
   batchSize: { type: String, required: true },
   ingredients: {
-    malts: [{ type: Schema.Types.ObjectId, ref: "InventoryItem" }],  // Use ObjectId and ref to refer to the Inventory model
-    hops: [{ type: Schema.Types.ObjectId, ref: "InventoryItem" }],    // Same here for hops
-    yeast: [{ type: Schema.Types.ObjectId, ref: "InventoryItem"}],   // Same for yeast
+    malts: [ingredientBeerRecipeSchema], 
+    hops: [ingredientBeerRecipeSchema],   
+    yeast: [ingredientBeerRecipeSchema],   
   },
   instructions: { type: [String], required: true },
 });

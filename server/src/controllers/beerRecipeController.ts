@@ -37,6 +37,7 @@ export const brewRecipe = async (req: Request, res: Response): Promise<Response>
 
     const allInventoryItems = await InventoryItem.find();
     const selectedRecipe = await BeerRecipe.findById(recipeId);
+    console.log(selectedRecipe)
 
     if (!selectedRecipe) {
       return res.status(404).json({
@@ -67,7 +68,7 @@ export const brewRecipe = async (req: Request, res: Response): Promise<Response>
 
     return res.status(200).json({
       status: "success",
-      message: `Recipe "${selectedRecipe.name}" brewed successfully!`,
+      message: `Recipe ${selectedRecipe.name} brewed successfully!`,
     });
   } catch (error) {
     console.error("Error in brewRecipe:", error);
