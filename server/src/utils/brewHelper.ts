@@ -31,26 +31,43 @@ export async function reduceIngredients(
   inventory: IInventoryItem[],
   updateInventoryItem: (id: string, updatedAmount: number) => Promise<void>
 ): Promise<void> {
-  const allIngredientsNeededForRecipe = [
+  const ingredientsRequired = [
     ...(recipeIngredients.malts || []),
     ...(recipeIngredients.hops || []),
     ...(recipeIngredients.yeast || []),
   ];
 
-  for (const ingredient of allIngredientsNeededForRecipe) {
-    let requiredAmount = ingredient.amount.slice(-2) === "kg" ? Number(ingredient.amount.slice(0,-3)) * 1000 : Number(ingredient.amount.slice(0,-3));
+  const aggregatedIngredients: Record<string, number> = {};
 
-    for (const inv of inventory.filter((inv) => inv.name === ingredient.name)) {
-      if (requiredAmount <= 0) break;
+  ingredientsRequired.forEach((ingredient) => {
+    const amount = parseFloat(ingredient.amount.slice(0, -3));  // Get amount without "gr" or "kg"
+    const unit = ingredient.amount.slice(-2); 
 
-      const amountToReduce = Math.min(requiredAmount, inv.amount);
-      requiredAmount -= amountToReduce;
+    const amountInGrams = unit === "kg" ? amount * 1000 : amount;
+
+    if (aggregatedIngredients[ingredient.name]) {
+      aggregatedIngredients[ingredient.name] += amountInGrams;
+    } else {
+      aggregatedIngredients[ingredient.name] = amountInGrams;
+    }
+  });
+
+  for (const [ingredientName, requiredAmount] of Object.entries(aggregatedIngredients)) {
+    let remainingAmountToReduce = requiredAmount;
+
+    const matchingInventoryItems = inventory.filter((inv) => inv.name === ingredientName);
+
+    for (const inv of matchingInventoryItems) {
+      if (remainingAmountToReduce <= 0) break; 
+
+      const amountToReduce = Math.min(remainingAmountToReduce, inv.amount); 
+      remainingAmountToReduce -= amountToReduce; 
 
       await updateInventoryItem(inv._id, inv.amount - amountToReduce);
     }
 
-    if (requiredAmount > 0) {
-      throw new Error(`Not enough of ${ingredient.name} in inventory`);
+    if (remainingAmountToReduce > 0) {
+      throw new Error(`Not enough of ${ingredientName} in inventory. ${remainingAmountToReduce} grams are still needed.`);
     }
   }
 }
