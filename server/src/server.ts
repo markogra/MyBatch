@@ -4,7 +4,7 @@ import { resolve } from 'path';
 import cors from 'cors'
 
 import connectDB from './models/db'
-import router from './router'
+import router from './routes/recipeRoutes'
 
 dotenv.config({ path: resolve(__dirname, '../.env') });
 

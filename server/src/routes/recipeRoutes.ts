@@ -1,7 +1,7 @@
 import express, { Request,Response } from 'express';
-import { getAllInventoryItems, createInventoryItem ,deleteInventoryItem } from './controllers/inventoryItemController';
-import { getAllBeerRecipes, brewRecipe } from './controllers/beerRecipeController';
-import { getAllMyRecipes, createMyRecipe } from './controllers/myRecipeController';
+import { getAllInventoryItems, createInventoryItem ,deleteInventoryItem } from '../controllers/inventoryItemController';
+import { getAllBeerRecipes, brewRecipe } from '../controllers/beerRecipeController';
+import { getAllMyRecipes, createMyRecipe } from '../controllers/myRecipeController';
 
 const router = express.Router()
 
