@@ -1,4 +1,7 @@
 import { Request,Response,NextFunction } from "express";
+import jwt, { JwtPayload }  from 'jsonwebtoken'
+
+
 
 export const signup = async(req:Request,res:Response,next:NextFunction) => {
 
