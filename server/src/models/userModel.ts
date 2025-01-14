@@ -1,4 +1,5 @@
 import mongoose, {Schema,Types, Document} from 'mongoose'
+import bcrypt from 'bcrypt'
 
 export type IUser = Document & {
   name:string;
@@ -10,6 +11,7 @@ export type IUser = Document & {
   passwordResetToken?:string;
   passwordResetExpires?:Date;
   _id: Types.ObjectId;
+  correctPassword(candidatePassword:string, userPassword:string): Promise<boolean>;
 }
 
 const userSchema = new Schema<IUser>({
@@ -57,6 +59,17 @@ const userSchema = new Schema<IUser>({
     type:String
   },
 }, {timestamps:true})
+
+
+userSchema.methods.correctPassword = async function(candidatePassword:string, userPassword:string){
+  try{
+    return await bcrypt.compare(candidatePassword, userPassword)
+
+  }catch(err){
+    console.error('Error comparing passwords: ', err)
+    throw err
+  }
+}
 
 const User = mongoose.model<IUser>('User', userSchema)
 
