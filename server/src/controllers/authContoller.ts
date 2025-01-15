@@ -75,5 +75,11 @@ export const protect = async(req:Request, res:Response, next:NextFunction) => {
 }
 
 export const logout = async(req:Request, res:Response, next:NextFunction) => {
-
+  res.cookie('jwt', 'logout', {
+    expires: new Date(Date.now() + 10 * 1000)
+  })
+  res.status(200).json({
+    status:'success',
+    message:'You have success logged out'
+  })
 }
