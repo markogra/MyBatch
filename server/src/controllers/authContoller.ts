@@ -2,6 +2,7 @@ import { Request,Response,NextFunction } from "express";
 import jwt, { JwtPayload }  from 'jsonwebtoken'
 import User, {IUser} from "../models/userModel";
 import AppError from "../utils/AppError";
+import { verifyToken } from "../utils/authHelper";
 
 type cookieOptions = {
   expires:Date;
@@ -103,8 +104,8 @@ export const login = async(req:Request, res:Response, next:NextFunction) => {
   }
 }
 
-export const protect = async(req:Request, res:Response, next:NextFunction) => {
-
+export const protectRoute = async(req:Request, res:Response, next:NextFunction) => {
+ 
 }
 
 export const logout = async(req:Request, res:Response, next:NextFunction) => {

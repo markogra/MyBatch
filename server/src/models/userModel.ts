@@ -12,6 +12,7 @@ export type IUser = Document & {
   passwordResetExpires?:Date;
   _id: Types.ObjectId;
   correctPassword(candidatePassword:string, userPassword:string): Promise<boolean>;
+  changedPasswordAfter(jwtTimeStamp: number): boolean;
 }
 
 const userSchema = new Schema<IUser>({
@@ -69,6 +70,16 @@ userSchema.methods.correctPassword = async function(candidatePassword:string, us
     console.error('Error comparing passwords: ', err)
     throw err
   }
+}
+
+userSchema.methods.changedPasswordAfter = function(jwtTimeStamp:number):boolean{
+  if(this.passwordChangedAt){
+    const changedTimestamp =  Math.floor(this.passwordChangedAt.getTime() / 1000);
+    console.log(changedTimestamp, jwtTimeStamp)
+
+    return jwtTimeStamp < changedTimestamp
+  }
+  return false;
 }
 
 // hashing pass before saving to DB
