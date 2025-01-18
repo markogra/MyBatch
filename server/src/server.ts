@@ -20,8 +20,8 @@ app.use(express.json({limit:'10kb'}));
 app.use(express.urlencoded({extended:true, limit:'10kb'}))
 app.use(cookieParser());
 
-app.use(recipeRouter);
 app.use(userRouter);
+app.use(recipeRouter);
 
 app.all('*', (req: Request, res: Response, next: NextFunction) => {
   next(new AppError(`Cannot find ${req.originalUrl} on this server!`, 404));

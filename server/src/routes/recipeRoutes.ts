@@ -12,12 +12,13 @@ router.get("/", function (req:Request, res:Response) {
 
 router.get("/our-recipes", getAllBeerRecipes);
 
+router.use(protectRoute)
 
-router.get("/inventory",protectRoute, getAllInventoryItems);
-router.post("/inventory",protectRoute, createInventoryItem);
-router.delete("/inventory/:id",protectRoute, deleteInventoryItem);
-router.get("/my-recipes",protectRoute, getAllMyRecipes);
-router.post("/my-recipes",protectRoute, createMyRecipe);
-router.patch("/brew",protectRoute, brewRecipe);
+router.get("/inventory", getAllInventoryItems);
+router.post("/inventory", createInventoryItem);
+router.delete("/inventory/:id", deleteInventoryItem);
+router.get("/my-recipes", getAllMyRecipes);
+router.post("/my-recipes", createMyRecipe);
+router.patch("/brew", brewRecipe);
 
 export default router;
