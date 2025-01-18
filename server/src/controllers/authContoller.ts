@@ -105,13 +105,53 @@ export const login = async(req:Request, res:Response, next:NextFunction) => {
 }
 
 export const protectRoute = async(req:Request, res:Response, next:NextFunction) => {
- 
+  try {
+    // 1. Getting token and check if it is there
+    let token;
+    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+      token = req.headers.authorization.split(' ')[1];
+    } else if (req.cookies.jwt) {
+      token = req.cookies.jwt;
+    }
+
+    console.log(`token -> ${token}`)
+    if (!token) {
+      console.log('You have no token')
+      return next(new AppError('You are not logged in! Please log in to get access.', 401));
+    }
+
+    // 2. Verify token
+    const decoded = await verifyToken(token, process.env.JWT_SECRET!);
+
+    // If `iat` (issued at) is missing or invalid, throw an error
+    if (!decoded || !decoded.iat) {
+      return next(new AppError('Token is invalid or expired!', 401));
+    }
+
+    // 3. Check if user still exists
+    const freshUser = await User.findById(decoded.id);
+    if (!freshUser) {
+      return next(new AppError('The user belonging to the token no longer exists.', 401));
+    }
+
+    // 4. Check if user changed password after the token was issued
+    if (freshUser.changedPasswordAfter(decoded.iat)) {
+      return next(new AppError('User recently changed password! Please log in again.', 401));
+    }
+
+    // Grant access for the protected route
+    req.user = freshUser; // Add the user to the request object
+    next(); 
+  } catch (err) {
+    next(err)
+  }
 }
 
 export const logout = async(req:Request, res:Response, next:NextFunction) => {
   res.cookie('jwt', 'logout', {
     expires: new Date(Date.now() + 10 * 1000)
   })
+  console.log('You are successfully logged out')
   res.status(200).json({
     status:'success',
     message:'You have success logged out'
