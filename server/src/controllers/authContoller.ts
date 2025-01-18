@@ -1,6 +1,7 @@
 import { Request,Response,NextFunction } from "express";
 import jwt, { JwtPayload }  from 'jsonwebtoken'
 import User, {IUser} from "../models/userModel";
+import AppError from "../utils/AppError";
 
 type cookieOptions = {
   expires:Date;
@@ -67,7 +68,39 @@ export const signup = async(req:Request,res:Response,next:NextFunction) => {
 }
 
 export const login = async(req:Request, res:Response, next:NextFunction) => {
- 
+  try{
+    const {email, password} = req.body
+
+    console.log(email)
+    console.log(password)
+    // 1. Check if email and password exists
+    if(!email || !password){
+      return next(new AppError('Please provide email and password', 400))
+    }
+    // 2.Check if user exists and password is correct 
+    const user = await User.findOne({email}).select('+password')
+
+    console.log('This is user ', user)
+
+    if(!user){
+      return next(new AppError('User cannot be found', 400))
+    }
+
+    
+
+    if(!user || !(await user.correctPassword(password, user.password))) {
+      return next(new AppError('Inccorect email or password', 401))
+    }
+
+    createSendToken(user,201,res)
+
+  }catch(err){
+    const error = err as Error;
+    res.status(400).json({
+        status:'Fail',
+        message:error.message
+    })
+  }
 }
 
 export const protect = async(req:Request, res:Response, next:NextFunction) => {
