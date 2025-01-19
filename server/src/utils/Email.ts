@@ -72,7 +72,7 @@ export default class Email {
   
   }
     async sendWelcome(){
-      await this.send('welcome', 'Welcome to the CopenhagenRent')
+      await this.send('welcome', 'Welcome to the My Batch')
     }
 
     async sendPasswordReset(){

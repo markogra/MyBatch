@@ -3,6 +3,7 @@ import jwt, { JwtPayload }  from 'jsonwebtoken'
 import User, {IUser} from "../models/userModel";
 import AppError from "../utils/AppError";
 import { verifyToken } from "../utils/authHelper";
+import Email from "../utils/Email";
 
 type cookieOptions = {
   expires:Date;
@@ -56,6 +57,9 @@ export const signup = async(req:Request,res:Response,next:NextFunction) => {
       passwordChangedAt:req.body.passwordChangedAt,
       role:req.body.role
     })
+
+    const url = `${req.protocol}://${req.get('host')}/me`;
+    await new Email(newUser,url).sendWelcome()
 
     createSendToken(newUser,201,res)
 
