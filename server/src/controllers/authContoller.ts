@@ -161,3 +161,43 @@ export const logout = async(req:Request, res:Response, next:NextFunction) => {
     message:'You have success logged out'
   })
 }
+
+export const updatePassword = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    // 1. Make sure you have all data in req body
+    if (!req.body.passwordCurrent || !req.body.password || !req.body.passwordConfirm) {
+      return next(new AppError('Please provide all required fields: passwordCurrent, password, passwordConfirm', 400));
+    }
+
+    // 2. Get user from collection
+    const user = await User.findById(req.user!.id).select('+password'); // Await the query to get the actual user document
+
+    // Ensure user exists
+    if (!user) {
+      return next(new AppError('User not found', 404));
+    }
+
+    // 3. Check if the posted current password is correct
+    const isCorrectPassword = await user.correctPassword(req.body.passwordCurrent, user.password);
+    if (!isCorrectPassword) {
+      return next(new AppError('Your current password is incorrect', 401));
+    }
+
+    // 4. If so, update the password
+    user.password = req.body.password;
+    user.passwordConfirm = req.body.passwordConfirm;
+
+    // Save the updated user document
+    await user.save();
+
+    // 5. Log user in and send JWT
+    createSendToken(user, 200, res);
+  } catch (err) {
+    const error = err as Error;
+    res.status(400).json({
+      status: 'Fail',
+      message: error.message,
+    });
+  }
+};
+
