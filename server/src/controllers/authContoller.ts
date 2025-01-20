@@ -4,6 +4,7 @@ import User, {IUser} from "../models/userModel";
 import AppError from "../utils/AppError";
 import { verifyToken } from "../utils/authHelper";
 import Email from "../utils/Email";
+import crypto from 'crypto'
 
 type cookieOptions = {
   expires:Date;
@@ -201,3 +202,40 @@ export const updatePassword = async (req: Request, res: Response, next: NextFunc
   }
 };
 
+export const forgotPassword = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const user = await User.findOne({ email: req.body.email });
+    if (!user) {
+      return next(new AppError('There is no user with that email address', 404));
+    }
+
+    const resetToken = crypto.randomBytes(32).toString('hex');
+
+    user.passwordResetToken = crypto
+      .createHash('sha256')
+      .update(resetToken)
+      .digest('hex');
+
+    user.passwordResetExpires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
+    
+    await user.save();
+
+    const resetURL = `${req.protocol}://${req.get('host')}/resetPassword/${resetToken}`;
+    console.log('Reset URL:', resetURL);
+
+    try {
+      await new Email(user, resetURL).sendPasswordReset();
+      res.status(200).json({
+        status: 'success',
+        message: 'Token sent to email!',
+      });
+    } catch (err) {
+      user.passwordResetToken = undefined;
+      user.passwordResetExpires = undefined;
+      await user.save();
+      return next(new AppError('There was an error sending the email. Try again later!', 500));
+    }
+  } catch (err) {
+    next(err);
+  }
+};
