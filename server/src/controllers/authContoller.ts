@@ -239,3 +239,52 @@ export const forgotPassword = async (req: Request, res: Response, next: NextFunc
     next(err);
   }
 };
+
+export const resetPassword = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    // 1. Get the token from the URL
+    const tokenFromURL = req.params.token;
+    console.log('Plain token from URL:', tokenFromURL);
+
+    // 2. Hash the token from the URL
+    const hashedToken = crypto.createHash('sha256').update(tokenFromURL).digest('hex');
+    console.log('Hashed token for comparison:', hashedToken);
+
+    // 3. Find the user based on the hashed token
+    const user = await User.findOne({
+      passwordResetToken: hashedToken,
+      passwordResetExpires: { $gt: Date.now() }, // Ensure token has not expired
+    });
+
+    if (!user) {
+      console.log('No user found with the given token or token has expired.');
+      return next(new AppError('Token is invalid or has expired', 400));
+    }
+
+    console.log('User found:', user);
+
+    // 4. Proceed with resetting the password
+    if (!req.body.password || !req.body.passwordConfirm) {
+      return next(new AppError('Please provide both password and password confirmation', 400));
+    }
+
+    user.password = req.body.password;
+    user.passwordConfirm = req.body.passwordConfirm;
+    user.passwordResetToken = undefined;
+    user.passwordResetExpires = undefined;
+
+    await user.save();
+
+    // Send JWT and log the user in
+    createSendToken(user, 200, res);
+  } catch (err) {
+    const error = err as Error;
+    console.error('Error in resetPassword:', error.message);
+    res.status(401).json({
+      status: 'fail',
+      message: error.message,
+    });
+  }
+};
+
+
