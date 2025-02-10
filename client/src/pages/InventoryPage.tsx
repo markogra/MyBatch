@@ -1,4 +1,4 @@
-import "./InventoryPage.css";
+import styles from './InventoryPage.module.css'
 import AddIngredientComponent from "../components/AddIngComponent";
 
 function InventoryPage({ allHops, allMalts, allYeast }) {
