@@ -1,16 +1,16 @@
 import React from "react";
-import "./HomePage.css";
+import styles from "./HomePage.module.css"
 
-function Homepage() {
+export default function Homepage() {
   return (
-    <div className="homepage-container">
-      <h1 className="homepage-title">Welcome to MyBatch Home Page</h1>
-      <h2 className="homepage-description">
+    <div className={styles['homepage-container']}>
+      <h1 className={styles['homepage-title']}>Welcome to MyBatch Home Page</h1>
+      <h2 className={styles['homepage-description']}>
         MyBatch is your ultimate homebrewing companion, designed to assist
         homebrewers with crafting their perfect brews and managing their
         ingredient stock.
       </h2>
-      <div className="p-container">
+      <div className={styles['p-container']}>
         <p>
           Explore a vast collection of recipes sourced from experienced
           homebrewers worldwide or create your own unique recipes from scratch.
@@ -32,5 +32,3 @@ function Homepage() {
     </div>
   );
 }
-
-export default Homepage;
