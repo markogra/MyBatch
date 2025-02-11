@@ -6,40 +6,22 @@
   box-sizing: border-box;
 }
 
+#root {
+  max-width: 75rem; 
+  margin: 0 auto; 
+  padding: 2rem; 
+}
+
+@media (max-width: 550px) {
+  #root {
+    padding: 0; 
+  }
+}
+
 body {
   font-size: 16px;
   background-color: #111;
   font-family: "Rufina", serif;
 }
 
-.App {
-  margin: 1.25rem 2.5rem;
-}
 
-.mainNav {
-  font-size: 1.75rem;
-  border-bottom: 2px solid #fbb117;
-}
-
-.mainNav ul {
-  display: flex;
-  justify-content: space-between;
-  list-style-type: none;
-}
-
-.mainNav li {
-  align-items: stretch;
-}
-
-.mainNav a {
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.mainNav a:hover {
-  color: red;
-}
-
-.mainNav .active-link {
-  border-top: 2px solid #fbb117;
-}

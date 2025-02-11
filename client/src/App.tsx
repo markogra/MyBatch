@@ -1,17 +1,17 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import InventoryPage from "./pages/InventoryPage";
-import OurRecipesPage from "./pages/OurRecipesPage";
-import HowToBrew from "./pages/HowToBrewPage";
-import MyRecipesPage from "./pages/MyRecipesPage";
+// import InventoryPage from "./pages/InventoryPage";
+// import OurRecipesPage from "./pages/OurRecipesPage";
+// import HowToBrew from "./pages/HowToBrewPage";
+// import MyRecipesPage from "./pages/MyRecipesPage";
 import Homepage from "./pages/HomePage";
-import { getOurRecipes } from "./utils/ApiService";
-import { useState, useEffect } from "react";
+// import { getOurRecipes } from "./utils/ApiService";
+// import { useState, useEffect } from "react";
 
 function App() {
-  const [allRecipes, setAllRecipes] = useState(null);
-  const [myRecipes, setMyRecipies] = useState([]);
+  // const [allRecipes, setAllRecipes] = useState(null);
+  // const [myRecipes, setMyRecipies] = useState([]);
 
   // const extractIngredientNames = (recipes, type) => {
   //   const allNames = new Set();
@@ -51,7 +51,7 @@ function App() {
       <NavBar></NavBar>
       <Routes>
         <Route path="/" element={<Homepage></Homepage>}></Route>
-        <Route
+        {/* <Route
           path="/inventory"
           element={
             <InventoryPage
@@ -76,7 +76,7 @@ function App() {
               myRecipes={myRecipes}
             ></MyRecipesPage>
           }
-        ></Route>
+        ></Route> */}
       </Routes>
     </div>
   );

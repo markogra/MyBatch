@@ -1,17 +1,22 @@
-import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import MenuIcon from '@mui/icons-material/Menu';
+import styles from './NavBar.module.css'
+import { useState } from "react";
 
 function NavBar() {
-  const location = useLocation();
+
+  const [menuOpen, setMenuOpen] = useState<boolean>(false)
 
   return (
-    <nav className="mainNav">
-      <ul>
+    <nav className={styles.mainNav}>
+      <div className={styles.hamburgerDiv }  onClick={() => setMenuOpen(!menuOpen)}>
+        <MenuIcon className={styles.menuIcon} />
+      </div>
+      <ul  className={menuOpen ? styles.open : ""}>
         <li>
           <NavLink
-            exact
             to="/"
-            className={location.pathname === "/" ? "active-link" : ""}
+            className={({isActive}) => (isActive ? styles.activeLink: '')}
           >
             MyBatch
           </NavLink>
@@ -19,7 +24,7 @@ function NavBar() {
         <li>
           <NavLink
             to="/inventory"
-            className={location.pathname === "/inventory" ? "active-link" : ""}
+            className={({isActive}) => (isActive ? styles.activeLink: '')}
           >
             Inventory
           </NavLink>
@@ -28,7 +33,7 @@ function NavBar() {
           <NavLink
             to="/our-recipes"
             className={
-              location.pathname === "/our-recipes" ? "active-link" : ""
+              ({isActive}) => (isActive ? styles.activeLink: '')
             }
           >
             Our recipes
@@ -38,7 +43,7 @@ function NavBar() {
         <li>
           <NavLink
             to="/my-recipes"
-            className={location.pathname === "/my-recipes" ? "active-link" : ""}
+            className={({isActive}) => (isActive ? styles.activeLink: '')}
           >
             My recipes
           </NavLink>
