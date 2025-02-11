@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./ourRecipes.css";
-import OurRecipesList from "../components/OurRecipesList";
+import OurRecipesList from "../components/OurRecipesList.tsx";
 import OurRecipesInstruction from "../components/OurRecipesInstruction";
 
 export default function OurRecipesPage({ allRecipes }) {

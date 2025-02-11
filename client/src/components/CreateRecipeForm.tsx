@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { InputField, TextArea } from "./mui.js";
 import { postMyRecipe } from "../utils/ApiService.js";
-import IngFormMyRecipe from "../components/IngFormMyRecipe.js";
+import IngFormMyRecipe from "./IngFormMyRecipe.js";
 
 const initialIngState = {
   name: "",

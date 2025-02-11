@@ -12,8 +12,9 @@ import { useState, useEffect } from "react";
 function App() {
   const [allRecipes, setAllRecipes] = useState(null);
   const [myRecipes, setMyRecipies] = useState([]);
-  const extractIngredientNames = (recipes, type) => {
-    const allNames = new Set();
+
+  // const extractIngredientNames = (recipes, type) => {
+  //   const allNames = new Set();
 
     // recipes?.forEach((recipe) => {
     //   const ingredientsOfType = recipe.ingredients[type];
@@ -30,20 +31,20 @@ function App() {
     //   }
     // });
 
-    return Array.from(allNames);
-  };
+    // return Array.from(allNames);
+  // };
 
-  const allYeast = extractIngredientNames(allRecipes, "yeast");
-  const allMalts = extractIngredientNames(allRecipes, "malts");
-  const allHops = extractIngredientNames(allRecipes, "hops");
-  useEffect(() => {
-    getOurRecipes().then((fetchedRecipes) => {
-      setAllRecipes(fetchedRecipes);
-    });
+  // const allYeast = extractIngredientNames(allRecipes, "yeast");
+  // const allMalts = extractIngredientNames(allRecipes, "malts");
+  // const allHops = extractIngredientNames(allRecipes, "hops");
+  // useEffect(() => {
+  //   getOurRecipes().then((fetchedRecipes) => {
+  //     setAllRecipes(fetchedRecipes);
+  //   });
     // getMyRecipes().then((fetchedMyRecipes) => {
     //   setMyRecipies(fetchedMyRecipes);
     // });
-  }, []);
+  // }, []);
 
   return (
     <div className="App">
