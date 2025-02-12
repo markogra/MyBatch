@@ -10,7 +10,7 @@ router.post('/logout', logout)
 router.post('/forgotPassword', forgotPassword)
 router.post('/resetPassword/:token', resetPassword)
 
-router.use(protectRoute)
+// router.use(protectRoute)
 router.patch('/updateMyPass',updatePassword)
 
 

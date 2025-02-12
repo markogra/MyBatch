@@ -1,15 +1,15 @@
-// import styles from './InventoryPage.module.css'
-// import AddIngredientComponent from "../components/AddIngComponent";
+import styles from './InventoryPage.module.css'
+import AddIngredientComponent from "../components/AddIngredientComponent";
 
-// function InventoryPage({ allHops, allMalts, allYeast }) {
-//   return (
-//     <div className="inventory-container">
-//       <AddIngredientComponent type="malt" allMalts={allMalts} />
-//       <AddIngredientComponent type="hops" allHops={allHops} />
-//       <AddIngredientComponent type="yeast" allYeast={allYeast} />
-//       <AddIngredientComponent type="additions" />
-//     </div>
-//   );
-// }
+function InventoryPage() {
+  return (
+    <div className={styles['inventory-container']}>
+      <AddIngredientComponent />
+      <AddIngredientComponent  />
+      <AddIngredientComponent />
+      <AddIngredientComponent />
+    </div>
+  );
+}
 
-// export default InventoryPage;
+export default InventoryPage;
