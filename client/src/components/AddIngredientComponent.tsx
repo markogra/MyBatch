@@ -1,21 +1,28 @@
 import { useState, useEffect, useContext } from "react";
+import styles from '../pages/InventoryPage.module.css'
+import IngredientItem from './IngredientItem'
+
 // import {
 //   // createIngredients,
 //   // getAllIngredients,
 //   // deleteIngredient,
 // } from "../utils/ApiService";
 // import AddIngredientForm from "./AddIngForm";
-// import { DeleteButton } from "./mui";
-import hopsImage from "../img/hop.png";
-import extraImage from "../img/extra.png";
-import maltImage from "../img/barley.png";
-import yeastImage from "../img/yeast.png";
+
+
+
 import { InventoryContext } from "../contexts/InventoryContext";
 
-export default function AddIngredientComponent() {
+type AddIngredientProps = {
+  ingType: string;
+};
+
+export default function AddIngredientComponent({ingType}:AddIngredientProps) {
 
   const {allIngredients} = useContext(InventoryContext)
-  console.log(allIngredients)
+
+  const ingredientName = ingType[0].toUpperCase() + ingType.slice(1)
+
   // const [ingredients, setIngredients] = useState([]);
   // const [name, setName] = useState("");
   // const [quantity, setQuantity] = useState("");
@@ -75,24 +82,18 @@ export default function AddIngredientComponent() {
 
   return (
     <div>
-      <h2> Type </h2>
+      <h2>{ingredientName}</h2>
       <img
-        className="ing-img"
-        alt="Hops"
-        src={hopsImage}
+        className={styles["ing-img"]}
+        alt={ingType}
+        src={`img/${ingType}.png`} 
       />
-      <div className="ing-component-container">
-        {/* <ul>
-          {ingredients.map((ingredient) => (
-            <li key={ingredient._id}>
-              {ingredient.name}{" "}
-              {ingredient.amount >= 1000
-                ? `${ingredient.amount / 1000} kg`
-                : `${ingredient.amount} g`}
-              <DeleteButton onClick={() => handleDelete(ingredient._id)} />
-            </li>
+      <div className={styles["ing-component-container"]}>
+        <ul>
+          {allIngredients.data?.map((ingredient:any) => (
+           <IngredientItem ingredient={ingredient} />
           ))}
-        </ul> */}
+        </ul>
         {/* <AddIngredientForm /> */}
       </div>
     </div>

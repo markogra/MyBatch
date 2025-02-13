@@ -1,6 +1,6 @@
 // import React from "react";
-// import {
-//   IconButton,
+import {
+  IconButton,
 //   createTheme,
 //   ThemeProvider,
 //   Button,
@@ -11,8 +11,8 @@
 //   FormControl,
 //   Select,
 //   styled,
-// } from "@mui/material";
-// import DeleteIcon from "@mui/icons-material/Delete";
+} from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 // import TextareaAutosize from "@mui/material/TextareaAutosize";
 
 // const theme = createTheme({
@@ -60,7 +60,7 @@
 //   color: white !important;
 // `;
 
-// export function AddButton({ onClick }) {
+// export function AddButton({ onClick } : { onClick: () => void }) {
 //   return (
 //     <ThemeProvider theme={theme}>
 //       <Button variant="contained" onClick={onClick}>
@@ -69,7 +69,12 @@
 //     </ThemeProvider>
 //   );
 // }
-// export function InputField({ value, onChange, label, width }) {
+// export function InputField({ value, onChange, label, width }: {
+//   value: string;
+//   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+//   label: string;
+//   width: string | number;
+// }) {
 //   return (
 //     <Box
 //       component="form"
@@ -103,6 +108,13 @@
 //   allMalts,
 //   allHops,
 //   allYeast,
+// }: {
+//   value: string;
+//   onChange: (event: React.ChangeEvent<{ value: unknown }>) => void;
+//   type: string;
+//   allMalts?: string[];
+//   allHops?: string[];
+//   allYeast?: string[];
 // }) {
 //   const ingName = type[0].toUpperCase() + type.slice(1);
 //   return (
@@ -148,15 +160,18 @@
 //   );
 // }
 
-// export function DeleteButton({ onClick }) {
-//   return (
-//     <IconButton aria-label="delete" color="primary" onClick={onClick}>
-//       <DeleteIcon />
-//     </IconButton>
-//   );
-// }
+export function DeleteButton({ onClick }: { onClick: () => void }) {
+  return (
+    <IconButton aria-label="delete" color="primary" onClick={onClick}>
+      <DeleteIcon />
+    </IconButton>
+  );
+}
 
-// export function UnitSelect({ onChange, value }) {
+// export function UnitSelect({ onChange, value }: {
+//   onChange: (event: React.ChangeEvent<{ value: unknown }>) => void;
+//   value: string;
+// }) {
 //   return (
 //     <Box sx={{ width: 140 }}>
 //       <FormControl fullWidth>
