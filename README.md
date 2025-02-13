@@ -11,10 +11,10 @@ MyBatch is a brewing management system that helps homebrewers organize and track
 
 ## Screenshots
 
-![Screenshot of inventory page](./client/src/img/screenShotInventory.jpg)
-![Screenshot of homepage](./client/src/img/screenShotHomepage.jpg)
-![Screenshot of OurRecipe page](./client/src/img/screenShotOurRecipes.jpg)
-![Screenshot of MyRecipe page](./client/src/img/screenShotMyRecipes.jpg)
+![Screenshot of inventory page](./client/public/img/screenShotInventory.jpg)
+![Screenshot of homepage](./client/public/img/screenShotHomepage.jpg)
+![Screenshot of OurRecipe page](./client/public/img/screenShotOurRecipes.jpg)
+![Screenshot of MyRecipe page](./client/public/img/screenShotMyRecipes.jpg)
 
 ## Tech Stack
 
