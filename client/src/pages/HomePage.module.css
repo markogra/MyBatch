@@ -4,7 +4,7 @@
   font-family: "Edu TAS Beginner", cursive;
   background-color: #282520;
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
-    url("../img/homepageImg.jpg");
+    url("../../public/img/homepageImg.jpg");
   background-repeat: no-repeat;
   background-position: center;
   padding:2rem

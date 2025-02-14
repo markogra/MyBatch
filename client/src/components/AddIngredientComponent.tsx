@@ -7,7 +7,7 @@ import IngredientItem from './IngredientItem'
 //   // getAllIngredients,
 //   // deleteIngredient,
 // } from "../utils/ApiService";
-// import AddIngredientForm from "./AddIngForm";
+import AddIngredientForm from "./AddIngredientForm";
 
 
 
@@ -81,7 +81,7 @@ export default function AddIngredientComponent({ingType}:AddIngredientProps) {
   // }, []);
 
   return (
-    <div>
+    <div className={styles["add-ing-component"]}>
       <h2>{ingredientName}</h2>
       <img
         className={styles["ing-img"]}
@@ -91,10 +91,10 @@ export default function AddIngredientComponent({ingType}:AddIngredientProps) {
       <div className={styles["ing-component-container"]}>
         <ul>
           {allIngredients.data?.map((ingredient:any) => (
-           <IngredientItem ingredient={ingredient} />
+           <IngredientItem ingredient={ingredient} key={ingredient.id} />
           ))}
         </ul>
-        {/* <AddIngredientForm /> */}
+        <AddIngredientForm />
       </div>
     </div>
   );

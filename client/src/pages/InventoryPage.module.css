@@ -7,19 +7,18 @@
   height: 100vh;
   background-color: #232122;
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
-    url("../img/inventory-img.jpg");
+    url("../../public/img/inventory-img.jpg");
   background-repeat: no-repeat;
   background-position: center 35%;
 }
 
 .add-ing-component {
   position: relative;
-  padding: 2rem;
-  padding-top: 1rem;
+  padding: 1rem 1.5rem;
   border: 2px solid #fad2a4;
-  width: 36rem;
+  width: 80%;
   border-radius: 0.7rem;
-  height: 18rem;
+  height: 100%;
   background: linear-gradient(rgba(121, 71, 14, 0.801), rgba(48, 28, 6, 0.788));
 }
 
@@ -27,12 +26,13 @@
   position: absolute;
   top: 2rem;
   right: 3rem;
+
 }
 
 ul li {
   list-style-type: none;
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 .ing-component-container {
   display: flex;
@@ -46,18 +46,23 @@ ul li {
 
 .add-ing-component h2 {
   text-transform: capitalize;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
   text-align: center;
 }
 
 .add-ing-component ul {
-  max-height: 13rem;
+  max-height: 10rem;
   overflow-y: auto;
 }
 
 .add-ing-component ul::-webkit-scrollbar {
   width: 0.5rem;
+}
+
+.delete-btn {
+  padding:0;
+  margin-left: 8px;
 }
 
 .add-ing-component ul::-webkit-scrollbar-thumb {
