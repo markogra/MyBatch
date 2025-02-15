@@ -28,7 +28,9 @@ const theme = createTheme({
 });
 
 const StyledInput = styled(TextField)`
-  width: 100%;
+  font-size:0.8rem;
+  flex-grow:1;
+  min-width:0;
   & .MuiOutlinedInput-notchedOutline {
     border-color: #fad2a4;
   }
@@ -70,18 +72,16 @@ export function AddButton({ onClick } : { onClick: () => void }) {
     </ThemeProvider>
   );
 }
-export function InputField({ value, onChange, label, width }: {
+export function InputField({ value, onChange, label, sx={}  }: {
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   label: string;
-  width: string | number;
+  sx?:object
 }) {
   return (
     <Box
       component="form"
-      sx={{
-        "& > :not(style)": { m: 1, width: { width } },
-      }}
+      sx={{ m: 1, minWidth: 0, ...sx }} 
       noValidate
       autoComplete="off"
     >
@@ -93,10 +93,9 @@ export function InputField({ value, onChange, label, width }: {
         onChange={onChange}
         InputLabelProps={{ className: "textfield__label" }}
         InputProps={{
-          style: {
-            color: "white",
-          },
+          style: { color: "white"},
         }}
+        sx={{width:"100%"}}
       />
     </Box>
   );
@@ -105,32 +104,26 @@ export function InputField({ value, onChange, label, width }: {
 export function SelectAutoWidth({
   value,
   onChange,
-
 }: {
   value: string;
   onChange: (event: SelectChangeEvent<unknown>) => void
-
 }) {
   return (
-    <div>
-      <FormControl sx={{ m: 1, minWidth: 80 }}>
+      <FormControl sx={{ m: 1, width:'97%'}}>
         <ColoredInputLabel id="demo-simple-select-autowidth-label">
-          IngName
+          Ingredient name ...
         </ColoredInputLabel>
         <StyledSelect
           labelId="demo-simple-select-autowidth-label"
           id="demo-simple-select-autowidth"
           value={value}
           onChange={(event) => onChange(event)}
-          autoWidth
         >
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          
         </StyledSelect>
       </FormControl>
-    </div>
   );
 }
 
@@ -142,13 +135,13 @@ export function DeleteButton({ onClick }: { onClick: () => void }) {
   );
 }
 
-export function UnitSelect({ onChange, value }: {
+export function UnitSelect({ onChange, value, sx = {} }: {
   onChange: (event: SelectChangeEvent<unknown>) => void;
   value: string;
+  sx?:object
 }) {
   return (
-    <Box sx={{ width: 140 }}>
-      <FormControl fullWidth>
+      <FormControl sx={{ flex: "1 1 30%", minWidth: "50px" }}>
         <ColoredInputLabel id="demo-simple-select-label">
           Unit
         </ColoredInputLabel>
@@ -171,7 +164,6 @@ export function UnitSelect({ onChange, value }: {
           <MenuItem value="kilograms">Kilograms (kg)</MenuItem>
         </StyledSelect>
       </FormControl>
-    </Box>
   );
 }
 

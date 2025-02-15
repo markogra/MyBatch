@@ -4,7 +4,6 @@
   justify-items: center;
   row-gap: 3rem;
   padding-top: 3rem;
-  height: 100vh;
   background-color: #232122;
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
     url("../../public/img/inventory-img.jpg");
@@ -39,8 +38,8 @@ ul li {
   font-size: 0.9rem;
 }
 .ing-component-container {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 .add-ing-form-container {
   display: flex;
@@ -81,7 +80,10 @@ ul li {
 
 .quantity-unit-line {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
+  gap:8px
 }
 
 .first-row {

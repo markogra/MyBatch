@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { addNewIngredient } from "../utils/ApiService";
+import styles from '../pages/InventoryPage.module.css'
 import { 
   AddButton, 
   InputField, 
@@ -14,29 +15,28 @@ export default function AddIngredientForm() {
   const [ingUnit, setIngUnit] = useState('')
 
   return (
-    <div className="add-ing-form-container">
-      <SelectAutoWidth
-        value={ingName}
-        onChange={(e:any) => setIngName(e.target.value)}
-     
-      />
-      <div className="quantity-unit-line">
+    <div className={styles["add-ing-form-container"]}>
+      <div className={styles['first-row-form']}>
+        <SelectAutoWidth
+          value={ingName}
+          onChange={(e:any) => setIngName(e.target.value)}
+        />
+      </div>
+
+      <div className={styles["quantity-unit-line"]}>
         <InputField
-          width="12ch"
+          sx={{ flex: "1 1 70%", minWidth: "70px"}}
           label="Quantity"
           value={ingQuantity}
           onChange={(e) => setIngQuantity(e.target.value)}
         />
         <UnitSelect
+         sx={{ flex: "1 1 30%", minWidth: "50px"}}
          value={ingUnit} 
          onChange={(e:any) => setIngUnit(e.target.value)} 
          />
       </div>
-
-      <AddButton 
-
-      onClick={()=>{addNewIngredient(ingName, ingQuantity, ingUnit)}} 
-      />
+      <AddButton onClick={()=>{addNewIngredient(ingName, ingQuantity, ingUnit)}} />
     </div>
   )
 }
