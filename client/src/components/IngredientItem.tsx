@@ -1,4 +1,5 @@
 import { DeleteButton } from "./mui";
+import styles from '../pages/InventoryPage.module.css'
 
 export default function IngredientItem({ingredient}:any) {
   return (

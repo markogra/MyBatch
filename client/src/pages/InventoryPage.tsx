@@ -4,8 +4,8 @@ import styles from './InventoryPage.module.css'
 function InventoryPage() {
   return (
     <div className={styles['inventory-container']}>
-      <AddIngredientComponent ingType='malts' />
-      <AddIngredientComponent ingType='hops' />
+      <AddIngredientComponent ingType='malt' />
+      <AddIngredientComponent ingType='hop' />
       <AddIngredientComponent ingType='yeast' />
       <AddIngredientComponent ingType='extra' />
     </div>

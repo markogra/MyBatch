@@ -1,25 +1,26 @@
-const baseUrl = "http://localhost:3500/inventory";
+const baseUrl = "http://localhost:3500";
 
-// export const getAllIngredients = async () => {
-//   try {
-//     const response = await fetch(baseUrl);
-//     return response.json();
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+export const getAllIngredients = async () => {
+  try {
+    const response = await fetch(`${baseUrl}/inventory`);
+    return response.json();
+  } catch (err) {
+    const error = err as Error
+    console.error(error.message)
+  }
+};
 
-// export const createIngredients = (ingName, ingAmount, ingType) =>
-//   fetch(baseUrl, {
-//     method: "POST",
-//     mode: "cors",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({
-//       name: ingName,
-//       amount: ingAmount,
-//       type: ingType,
-//     }),
-//   });
+export const addNewIngredient = (ingName:any, ingAmount:any, ingType:string) =>
+  fetch(`${baseUrl}/inventory`, {
+    method: "POST",
+    mode: "cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: ingName,
+      amount: ingAmount,
+      type: ingType,
+    }),
+  });
 
 // export async function getOurRecipes() {
 //   try {
@@ -30,19 +31,19 @@ const baseUrl = "http://localhost:3500/inventory";
 //   }
 // }
 
-// export async function deleteIngredient(ingredientId) {
-//   fetch("http://localhost:3500/inventory/" + ingredientId, {
-//     method: "DELETE",
-//     mode: "cors",
-//   })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       console.log(data);
-//     })
-//     .catch((error) => {
-//       console.error("Error:", error);
-//     });
-// }
+export async function deleteIngredient(ingredientId:any) {
+  fetch(`${baseUrl}/inventory/` + ingredientId, {
+    method: "DELETE",
+    mode: "cors",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
 
 // export const getMyRecipes = async () => {
 //   try {

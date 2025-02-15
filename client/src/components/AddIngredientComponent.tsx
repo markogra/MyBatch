@@ -2,14 +2,13 @@ import { useState, useEffect, useContext } from "react";
 import styles from '../pages/InventoryPage.module.css'
 import IngredientItem from './IngredientItem'
 
-// import {
-//   // createIngredients,
-//   // getAllIngredients,
-//   // deleteIngredient,
-// } from "../utils/ApiService";
+import {
+  addNewIngredient,
+  getAllIngredients,
+  deleteIngredient,
+} from "../utils/ApiService";
+
 import AddIngredientForm from "./AddIngredientForm";
-
-
 
 import { InventoryContext } from "../contexts/InventoryContext";
 
@@ -82,16 +81,20 @@ export default function AddIngredientComponent({ingType}:AddIngredientProps) {
 
   return (
     <div className={styles["add-ing-component"]}>
-      <h2>{ingredientName}</h2>
-      <img
-        className={styles["ing-img"]}
-        alt={ingType}
-        src={`img/${ingType}.png`} 
-      />
+      <div className={styles["ing-title"]}>
+        <h2>{ingredientName}</h2>
+        <img
+          className={styles["ing-img"]}
+          alt={ingType}
+          src={`img/${ingType}.png`} 
+          />
+      </div>
       <div className={styles["ing-component-container"]}>
         <ul>
-          {allIngredients.data?.map((ingredient:any) => (
-           <IngredientItem ingredient={ingredient} key={ingredient.id} />
+        {allIngredients.data
+          ?.filter((ingredient: any) => ingredient.type === ingType)
+          .map((ingredient: any) => (
+            <IngredientItem ingredient={ingredient} key={ingredient.id} />
           ))}
         </ul>
         <AddIngredientForm />

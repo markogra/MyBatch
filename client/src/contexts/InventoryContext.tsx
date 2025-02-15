@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
+import {getAllIngredients, addNewIngredient, deleteIngredient} from '../utils/ApiService'
 
 interface InventoryContextType {
   allIngredients: any;
@@ -19,8 +20,10 @@ function InventoryProvider({children}: InventoryProviderProps){
   useEffect(() => {
     const fetchInventory = async () => {
       try {
-        const response = await fetch('http://localhost:3500/inventory');
-        const allIngredients = await response.json();
+        // const response = await fetch('http://localhost:3500/inventory');
+        // const allIngredients = await response.json();
+
+        const allIngredients = await getAllIngredients()
         console.log(allIngredients);
         setAllIngredients(allIngredients)
       } catch (err) {

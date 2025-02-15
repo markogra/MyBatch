@@ -22,11 +22,15 @@
   background: linear-gradient(rgba(121, 71, 14, 0.801), rgba(48, 28, 6, 0.788));
 }
 
-.add-ing-component img {
-  position: absolute;
-  top: 2rem;
-  right: 3rem;
+.ing-title {
+  display: flex;
+  justify-content: space-around;
+  gap:10px
+}
 
+.add-ing-component img {
+  height: 35px;
+  width: 35px;
 }
 
 ul li {
@@ -63,6 +67,7 @@ ul li {
 .delete-btn {
   padding:0;
   margin-left: 8px;
+
 }
 
 .add-ing-component ul::-webkit-scrollbar-thumb {
