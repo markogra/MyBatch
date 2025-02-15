@@ -141,7 +141,7 @@ export function UnitSelect({ onChange, value, sx = {} }: {
   sx?:object
 }) {
   return (
-      <FormControl sx={{ flex: "1 1 30%", minWidth: "50px" }}>
+      <FormControl sx={{ flex: "1 1 30%", minWidth: "50px", padding:'5px' }}>
         <ColoredInputLabel id="demo-simple-select-label">
           Unit
         </ColoredInputLabel>

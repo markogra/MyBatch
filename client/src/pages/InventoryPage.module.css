@@ -99,3 +99,60 @@ ul li {
 .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
   color: white;
 }
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .inventory-container {
+    padding: 1.5rem;
+  }
+
+  .add-ing-component {
+    width: 100%;
+  }
+
+  .quantity-unit-line {
+    flex-direction: column;
+    /* gap: 2px; */
+  }
+}
+
+@media (max-width: 768px) {
+  .inventory-container {
+    padding: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  .add-ing-component {
+    width: 100%;
+  }
+
+  .quantity-unit-line {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .inventory-container {
+    padding: 1rem;
+  }
+
+  .add-ing-component {
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .ing-title {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .quantity-unit-line {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .add-ing-component h2 {
+    font-size: 1.2rem;
+  }
+}
