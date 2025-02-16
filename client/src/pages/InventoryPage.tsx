@@ -1,13 +1,29 @@
+import { useContext } from "react";
 import AddIngredientComponent from "../components/AddIngredientComponent";
 import styles from './InventoryPage.module.css'
+import Spinner from "../components/Spinner";
+import { InventoryContext } from "../contexts/InventoryContext";
+
 
 function InventoryPage() {
+
+  const {loading} = useContext(InventoryContext)
+
+
   return (
     <div className={styles['inventory-container']}>
-      <AddIngredientComponent ingType='malt' />
-      <AddIngredientComponent ingType='hop' />
-      <AddIngredientComponent ingType='yeast' />
-      <AddIngredientComponent ingType='extra' />
+      {
+        loading ? (
+          <Spinner />
+        ) :
+        <>   
+          <AddIngredientComponent ingType='malt' />
+          <AddIngredientComponent ingType='hop' />
+          <AddIngredientComponent ingType='yeast' />
+          <AddIngredientComponent ingType='extra' />
+        </>
+      }
+      
     </div>
   );
 }
