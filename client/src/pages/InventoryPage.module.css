@@ -112,7 +112,6 @@ ul li {
 
   .quantity-unit-line {
     flex-direction: column;
-    /* gap: 2px; */
   }
 }
 

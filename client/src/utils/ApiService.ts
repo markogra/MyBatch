@@ -10,7 +10,7 @@ export const getAllIngredients = async () => {
   }
 };
 
-export const addNewIngredient = (ingName:any, ingAmount:any, ingType:string) =>
+export const addNewIngredient = (ingName:any, ingAmount:any, ingType:string, ingUnit:string) =>
   fetch(`${baseUrl}/inventory`, {
     method: "POST",
     mode: "cors",
@@ -19,17 +19,19 @@ export const addNewIngredient = (ingName:any, ingAmount:any, ingType:string) =>
       name: ingName,
       amount: ingAmount,
       type: ingType,
+      unit: ingUnit 
     }),
   });
 
-// export async function getOurRecipes() {
-//   try {
-//     const response = await fetch("http://localhost:3500/our-recipes");
-//     return response.json();
-//   } catch (err) {
-//     console.log(err);
-//   }
-// }
+export async function getOurRecipes() {
+  try {
+    const response = await fetch("http://localhost:3500/our-recipes");
+    return response.json();
+  } catch (err) {
+    const error = err as Error
+    console.error(error.message);
+  }
+}
 
 export async function deleteIngredient(ingredientId:any) {
   fetch(`${baseUrl}/inventory/` + ingredientId, {

@@ -46,6 +46,7 @@
     width: 40%;
     background-color: #111;
     padding: 1rem;
+    z-index: 9999;
   }
   .mainNav ul li {
     margin-bottom: 1rem;

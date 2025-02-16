@@ -91,13 +91,12 @@ export default function AddIngredientComponent({ingType}:AddIngredientProps) {
       </div>
       <div className={styles["ing-component-container"]}>
         <ul>
-        {allIngredients.data
-          ?.filter((ingredient: any) => ingredient.type === ingType)
+        {allIngredients?.filter((ingredient: any) => ingredient.type === ingType)
           .map((ingredient: any) => (
             <IngredientItem ingredient={ingredient} key={ingredient.id} />
           ))}
         </ul>
-        <AddIngredientForm />
+        <AddIngredientForm ingType={ingType} />
       </div>
     </div>
   );

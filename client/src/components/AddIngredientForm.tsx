@@ -9,7 +9,12 @@ import {
 } from "./mui";
 import { InventoryContext } from "../contexts/InventoryContext.js";
 
-export default function AddIngredientForm() {
+type AddIngredientProps = {
+  ingType: string;
+};
+
+export default function AddIngredientForm({ingType}:AddIngredientProps) {
+  
   const [ingName, setIngName] = useState('')
   const [ingQuantity, setIngQuantity] = useState('')
   const [ingUnit, setIngUnit] = useState('')
@@ -36,7 +41,7 @@ export default function AddIngredientForm() {
          onChange={(e:any) => setIngUnit(e.target.value)} 
          />
       </div>
-      <AddButton onClick={()=>{addNewIngredient(ingName, ingQuantity, ingUnit)}} />
+      <AddButton onClick={()=>{addNewIngredient(ingName, ingQuantity, ingUnit, ingType)}} />
     </div>
   )
 }
