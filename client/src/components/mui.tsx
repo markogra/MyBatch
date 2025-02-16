@@ -104,9 +104,11 @@ export function InputField({ value, onChange, label, sx={}  }: {
 export function SelectAutoWidth({
   value,
   onChange,
+  children
 }: {
   value: string;
   onChange: (event: SelectChangeEvent<unknown>) => void
+  children:React.ReactNode
 }) {
   return (
       <FormControl sx={{ m: 1, width:'97%'}}>
@@ -122,6 +124,7 @@ export function SelectAutoWidth({
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
+          {children}
         </StyledSelect>
       </FormControl>
   );

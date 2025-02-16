@@ -53,7 +53,7 @@ function InventoryProvider({children}: InventoryProviderProps){
         const recipesData = await getOurRecipes()
         
         setAllIngredients(ingredientsData.data || [])
-        setAllOurRecipes(recipesData || [])
+        setAllOurRecipes(recipesData.data || [])
 
       } catch (err) {
         const error = err as Error;
@@ -67,6 +67,8 @@ function InventoryProvider({children}: InventoryProviderProps){
     fetchInventory();
   
   }, []);
+
+
 
   const contextValue = useMemo(
     () => ({ allIngredients, allOurRecipes, loading, error }),

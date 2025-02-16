@@ -7,7 +7,8 @@ import {
   SelectAutoWidth,
   UnitSelect 
 } from "./mui";
-import { InventoryContext } from "../contexts/InventoryContext.js";
+import { InventoryContext } from "../contexts/InventoryContext";
+import { MenuItem } from "@mui/material";
 
 type AddIngredientProps = {
   ingType: string;
@@ -19,13 +20,36 @@ export default function AddIngredientForm({ingType}:AddIngredientProps) {
   const [ingQuantity, setIngQuantity] = useState('')
   const [ingUnit, setIngUnit] = useState('')
 
+    const allMalts = ["Pilsner Malt","Pale Malt","Crystal Malt","Brown Malt","Chocolate Malt","Roasted Barley","Black Patent Malt","Munich Malt","Wheat Malt","Special B Malt","Maris Otter","Caramel Munich","Carafa Special II","Peated Malt"]
+    const allHops = ["Saaz","Cascade","Fuggle","Tettnang","East Kent Goldings","Hallertauer Mittelfrüh"]
+    const allYeast = ["Czech Lager","American Ale","English Ale","Belgian Witbier","Belgian Ale","Belgian Saison","Irish Ale","Scottish Ale","German Lager"]
+    const allExtra = ["Honey", "Coriander", "Ginger", "Vanilla", "Coffee", "Cocoa", "Chili", "Berries", "Tea", "Herbs"]
+
+  const ingredientOptions =
+    ingType === "malt"
+      ? allMalts
+      : ingType === "hop"
+      ? allHops
+      : ingType === "yeast"
+      ? allYeast
+      : ingType === 'extra'
+      ? allExtra
+      : [];
+
   return (
     <div className={styles["add-ing-form-container"]}>
       <div className={styles['first-row-form']}>
         <SelectAutoWidth
           value={ingName}
           onChange={(e:any) => setIngName(e.target.value)}
-        />
+        >
+          {ingredientOptions.map((ing) => {
+          return ( 
+            <MenuItem key={ing} value={ing}>
+              {ing}
+            </MenuItem>)
+          })}
+        </SelectAutoWidth>
       </div>
 
       <div className={styles["quantity-unit-line"]}>
