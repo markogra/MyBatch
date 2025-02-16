@@ -65,7 +65,10 @@ export default function AddIngredientForm({ingType}:AddIngredientProps) {
          onChange={(e:any) => setIngUnit(e.target.value)} 
          />
       </div>
-      <AddButton onClick={()=>{addNewIngredient(ingName, ingQuantity, ingUnit, ingType)}} />
+      <AddButton onClick={()=>{
+        addNewIngredient(ingName, ingQuantity, ingUnit, ingType)
+      }
+        } />
     </div>
   )
 }

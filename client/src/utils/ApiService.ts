@@ -10,18 +10,32 @@ export const getAllIngredients = async () => {
   }
 };
 
-export const addNewIngredient = (ingName:any, ingAmount:any, ingType:string, ingUnit:string) =>
-  fetch(`${baseUrl}/inventory`, {
-    method: "POST",
-    mode: "cors",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
+export const addNewIngredient = async (ingName:any, ingAmount:any, ingType:any, ingUnit:any) =>{
+
+  try{
+    const response = await fetch(`${baseUrl}/inventory`, {
+      method: "POST",
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
       name: ingName,
       amount: ingAmount,
       type: ingType,
       unit: ingUnit 
     }),
-  });
+    })
+
+    if (!response.ok) {
+      throw new Error(`Failed to add ingredient: ${response.status} ${response.statusText}`);
+    }
+
+    return await response.json();
+
+  }catch(err){
+    const error = err as Error
+    console.error(error.message)
+  }
+}
 
 export async function getOurRecipes() {
   try {
