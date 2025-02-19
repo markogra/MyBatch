@@ -1,35 +1,10 @@
-import { createContext, ReactNode, useEffect, useState, useMemo } from "react";
+import { createContext, useEffect, useState, useMemo } from "react";
 import {getAllIngredients, addNewIngredient, deleteIngredient, getOurRecipes} from '../utils/ApiService'
-
-interface Ingredient {
-  name: string;
-  amount: number;
-  unit: string;
-  type: string;
-}
-
-interface Recipe {
-  name: string;
-  style: string;
-  description: string;
-  batchSize: string;
-  ingredients: object;
-  instructions: string[];
-}
-
-interface InventoryContextType {
-  allIngredients: Ingredient[];
-  allOurRecipes: Recipe[];
-  loading: boolean;
-  error: string | null;
-}
-
-interface InventoryProviderProps {
-  children: ReactNode;
-}
-
+import {InventoryContextType, InventoryProviderProps, Recipe, Ingredient} from '../types'
+ 
 const InventoryContext = createContext<InventoryContextType>({
   allIngredients: [],
+  setAllIngredients: () => {},
   allOurRecipes: [],
   loading: false,
   error: null,
@@ -48,12 +23,11 @@ function InventoryProvider({children}: InventoryProviderProps){
       setLoading(true)
       setError(null)
       try {
-    
         const ingredientsData = await getAllIngredients()
-        const recipesData = await getOurRecipes()
+        // const recipesData = await getOurRecipes()
         
         setAllIngredients(ingredientsData.data || [])
-        setAllOurRecipes(recipesData.data || [])
+        // setAllOurRecipes(recipesData.data || [])
 
       } catch (err) {
         const error = err as Error;
@@ -70,10 +44,18 @@ function InventoryProvider({children}: InventoryProviderProps){
 
 
 
-  const contextValue = useMemo(
-    () => ({ allIngredients, allOurRecipes, loading, error }),
-    [allIngredients, allOurRecipes, loading, error]
-  );
+  // const contextValue = useMemo(
+  //   () => ({ allIngredients, setAllIngredients, allOurRecipes, loading, error }),
+  //   [allIngredients, allOurRecipes, loading, error]
+  // );
+
+  const contextValue = {
+  allIngredients,
+  setAllIngredients,
+  allOurRecipes,
+  loading,
+  error
+};
 
   return (
     <InventoryContext.Provider value={contextValue}>

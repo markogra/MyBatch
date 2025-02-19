@@ -10,19 +10,21 @@ export const getAllIngredients = async () => {
   }
 };
 
-export const addNewIngredient = async (ingName:any, ingAmount:any, ingType:any, ingUnit:any) =>{
+export const addNewIngredient = async (ingName:string, ingAmount:any, ingType:string, ingUnit:string) =>{
 
   try{
+    const requestBody = {
+      name:ingName,
+      amount:ingAmount,
+      type:ingType,
+      unit:ingUnit
+    }
+
     const response = await fetch(`${baseUrl}/inventory`, {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-      name: ingName,
-      amount: ingAmount,
-      type: ingType,
-      unit: ingUnit 
-    }),
+      body: JSON.stringify(requestBody)
     })
 
     if (!response.ok) {
@@ -37,6 +39,21 @@ export const addNewIngredient = async (ingName:any, ingAmount:any, ingType:any, 
   }
 }
 
+export async function deleteIngredient(ingredientId:any) {
+  try {
+    const response = await  fetch(`${baseUrl}/inventory/${ingredientId}`, {
+    method: "DELETE",
+    mode: "cors",
+  })
+
+    return await response.json()
+
+  } catch (err) {
+      const error = err as Error
+      console.error(error.message);
+    }
+}
+
 export async function getOurRecipes() {
   try {
     const response = await fetch("http://localhost:3500/our-recipes");
@@ -45,20 +62,6 @@ export async function getOurRecipes() {
     const error = err as Error
     console.error(error.message);
   }
-}
-
-export async function deleteIngredient(ingredientId:any) {
-  fetch(`${baseUrl}/inventory/` + ingredientId, {
-    method: "DELETE",
-    mode: "cors",
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
 }
 
 // export const getMyRecipes = async () => {

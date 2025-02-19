@@ -16,6 +16,7 @@ type AddIngredientProps = {
 
 export default function AddIngredientForm({ingType}:AddIngredientProps) {
   
+  const {setAllIngredients} = useContext(InventoryContext)
   const [ingName, setIngName] = useState('')
   const [ingQuantity, setIngQuantity] = useState('')
   const [ingUnit, setIngUnit] = useState('')
@@ -35,6 +36,17 @@ export default function AddIngredientForm({ingType}:AddIngredientProps) {
       : ingType === 'extra'
       ? allExtra
       : [];
+
+  const handleAddIngredient = async() => {
+    const newIngredient = await addNewIngredient(ingName, Number(ingQuantity), ingType, ingUnit)
+    console.log("new ingredient ", newIngredient.newIngredient)
+
+    if(newIngredient.newIngredient){
+      setAllIngredients((prevIngredients )=>{
+        return [...prevIngredients, newIngredient.newIngredient]
+      })
+    }
+  }
 
   return (
     <div className={styles["add-ing-form-container"]}>
@@ -65,10 +77,7 @@ export default function AddIngredientForm({ingType}:AddIngredientProps) {
          onChange={(e:any) => setIngUnit(e.target.value)} 
          />
       </div>
-      <AddButton onClick={()=>{
-        addNewIngredient(ingName, ingQuantity, ingUnit, ingType)
-      }
-        } />
+      <AddButton onClick={handleAddIngredient} />
     </div>
   )
 }

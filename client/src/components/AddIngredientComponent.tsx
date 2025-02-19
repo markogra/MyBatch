@@ -93,7 +93,7 @@ export default function AddIngredientComponent({ingType}:AddIngredientProps) {
         <ul>
         {allIngredients?.filter((ingredient: any) => ingredient.type === ingType)
           .map((ingredient: any) => (
-            <IngredientItem ingredient={ingredient} key={ingredient.id} />
+            <IngredientItem ingredient={ingredient} key={ingredient._id} />
           ))}
         </ul>
         <AddIngredientForm ingType={ingType} />
