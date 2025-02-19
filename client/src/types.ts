@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 
 export interface Ingredient {
+  _id:string
   name: string;
   amount: number;
   unit: string;
