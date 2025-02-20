@@ -1,7 +1,7 @@
-import DeleteButton from './mui/DeleteButton';
-import {deleteIngredient} from '../utils/ApiService'
+import DeleteButton from '../mui/DeleteButton';
+import {deleteIngredient} from '../../utils/ApiService'
 import { useContext } from "react";
-import { InventoryContext } from "../contexts/InventoryContext";
+import { InventoryContext } from "../../contexts/InventoryContext";
 
 
 export default function IngredientItem({ingredient}:any) {

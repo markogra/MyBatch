@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import AddIngredientComponent from "../components/AddIngredientComponent";
+import AddIngredientComponent from "../components/layout/AddIngredientComponent";
 import styles from './InventoryPage.module.css'
-import Spinner from "../components/Spinner";
+import Spinner from "../components/ui/Spinner";
 import { InventoryContext } from "../contexts/InventoryContext";
 
 

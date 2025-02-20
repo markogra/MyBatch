@@ -3,7 +3,7 @@ import "./App.css";
 import { useState, useEffect } from "react"
 import { InventoryProvider } from "./contexts/InventoryContext";
 import { Route, Routes } from "react-router-dom";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/layout/NavBar";
 import InventoryPage from "./pages/InventoryPage";
 // import OurRecipesPage from "./pages/OurRecipesPage";
 // import HowToBrew from "./pages/HowToBrewPage";

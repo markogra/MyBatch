@@ -1,20 +1,10 @@
-import { useState, useEffect, useContext } from "react";
-import styles from '../pages/InventoryPage.module.css'
-import IngredientItem from './IngredientItem'
+import { useContext } from "react";
+import styles from '../../pages/InventoryPage.module.css'
+import IngredientItem from '../inventory/IngredientItem'
+import AddIngredientForm from "../inventory/AddIngredientForm";
+import { AddIngredientProps } from "../../types";
 
-import {
-  addNewIngredient,
-  getAllIngredients,
-  deleteIngredient,
-} from "../utils/ApiService";
-
-import AddIngredientForm from "./AddIngredientForm";
-
-import { InventoryContext } from "../contexts/InventoryContext";
-
-type AddIngredientProps = {
-  ingType: string;
-};
+import { InventoryContext } from "../../contexts/InventoryContext";
 
 export default function AddIngredientComponent({ingType}:AddIngredientProps) {
 

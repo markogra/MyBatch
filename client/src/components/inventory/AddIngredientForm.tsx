@@ -1,21 +1,16 @@
 import { useContext, useState } from "react";
-import { addNewIngredient } from "../utils/ApiService";
-import { AddIngredientProps } from "../types";
-import styles from '../pages/InventoryPage.module.css'
-import { 
-  // AddButton, 
-  // InputField, 
-  // SelectAutoWidth,
-  // UnitSelect 
-} from "./mui";
-import AddButton from "./mui/AddButton";
-import InputField from "./mui/InputField";
-import SelectAutoWidth  from "./mui/SelectAutoWidth";
-import  UnitSelect  from "./mui/UnitSelect";
-
-import { InventoryContext } from "../contexts/InventoryContext";
+import { addNewIngredient } from "../../utils/ApiService";
+import { AddIngredientProps } from "../../types";
+import styles from '../../pages/InventoryPage.module.css'
+// **** MUI  *****
+import AddButton from "../mui/AddButton";
+import InputField from "../mui/InputField";
+import SelectAutoWidth  from "../mui/SelectAutoWidth";
+import  UnitSelect  from "../mui/UnitSelect";
+// ****************
+import { InventoryContext } from "../../contexts/InventoryContext";
 import { MenuItem } from "@mui/material";
-import calcAmount from "../utils/calcAmount";
+import calcAmount from "../../utils/calcAmount";
 
 
 
