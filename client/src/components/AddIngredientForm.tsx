@@ -9,6 +9,7 @@ import {
 } from "./mui";
 import { InventoryContext } from "../contexts/InventoryContext";
 import { MenuItem } from "@mui/material";
+import calcAmount from "../utils/calcAmount";
 
 type AddIngredientProps = {
   ingType: string;
@@ -16,7 +17,7 @@ type AddIngredientProps = {
 
 export default function AddIngredientForm({ingType}:AddIngredientProps) {
   
-  const {setAllIngredients} = useContext(InventoryContext)
+  const {allIngredients, setAllIngredients} = useContext(InventoryContext)
   const [ingName, setIngName] = useState('')
   const [ingQuantity, setIngQuantity] = useState('')
   const [ingUnit, setIngUnit] = useState('')
@@ -37,16 +38,32 @@ export default function AddIngredientForm({ingType}:AddIngredientProps) {
       ? allExtra
       : [];
 
-  const handleAddIngredient = async() => {
-    const newIngredient = await addNewIngredient(ingName, Number(ingQuantity), ingType, ingUnit)
-    console.log("new ingredient ", newIngredient.newIngredient)
-
-    if(newIngredient.newIngredient){
-      setAllIngredients((prevIngredients )=>{
-        return [...prevIngredients, newIngredient.newIngredient]
-      })
-    }
+  const resetForm = () => {
+    setIngName("");
+    setIngQuantity("");
+    setIngUnit("");
   }
+
+  const handleAddIngredient = async () => {
+    const { exists, newAmount } = calcAmount(allIngredients, ingName, Number(ingQuantity), ingUnit);
+  
+    if (exists) {
+      setAllIngredients((prevIngredients) =>
+        prevIngredients.map((ing) =>
+          ing.name === ingName ? { ...ing, amount: newAmount } : ing
+        )
+      );
+      console.log("Updated ingredient amount!");
+    } else {
+      const newIngredient = await addNewIngredient(ingName, newAmount, ingType, ingUnit);
+      
+      if (newIngredient.newIngredient) {
+        setAllIngredients((prevIngredients) => [...prevIngredients, newIngredient.newIngredient]);
+      }
+    }
+  
+    resetForm();
+  };
 
   return (
     <div className={styles["add-ing-form-container"]}>

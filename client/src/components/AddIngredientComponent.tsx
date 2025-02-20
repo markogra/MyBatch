@@ -22,11 +22,6 @@ export default function AddIngredientComponent({ingType}:AddIngredientProps) {
 
   const ingredientName = ingType[0].toUpperCase() + ingType.slice(1)
 
-  // const [ingredients, setIngredients] = useState([]);
-  // const [name, setName] = useState("");
-  // const [quantity, setQuantity] = useState("");
-  // const [unit, setUnit] = useState("");
-
   // async function addIngredient() {
   //   try {
   //     if (name === "" || quantity === "" || unit === "") {
@@ -48,36 +43,8 @@ export default function AddIngredientComponent({ingType}:AddIngredientProps) {
   //   }
   // }
 
-  // function resetForm() {
-  //   setName("");
-  //   setQuantity("");
-  //   setUnit("");
-  // }
+  
 
-  // const refreshIngredients = async () => {
-  //   try {
-  //     const fetchedIngredients = await getAllIngredients();
-  //     setIngredients(
-  //       fetchedIngredients.filter((ingredient) => ingredient.type === type)
-  //     );
-  //   } catch (error) {
-  //     console.error("Error:", error);
-  //   }
-  // };
-  // const handleDelete = async (ingredientId) => {
-  //   try {
-  //     await deleteIngredient(ingredientId);
-  //     setIngredients((prevIngredients) =>
-  //       prevIngredients.filter((ingredient) => ingredient._id !== ingredientId)
-  //     );
-  //   } catch (error) {
-  //     console.error("Error:", error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   refreshIngredients();
-  // }, []);
 
   return (
     <div className={styles["add-ing-component"]}>

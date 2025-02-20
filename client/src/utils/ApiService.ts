@@ -39,7 +39,7 @@ export const addNewIngredient = async (ingName:string, ingAmount:any, ingType:st
   }
 }
 
-export async function deleteIngredient(ingredientId:any) {
+export const deleteIngredient = async(ingredientId:any) => {
   try {
     const response = await  fetch(`${baseUrl}/inventory/${ingredientId}`, {
     method: "DELETE",

@@ -44,18 +44,10 @@ function InventoryProvider({children}: InventoryProviderProps){
 
 
 
-  // const contextValue = useMemo(
-  //   () => ({ allIngredients, setAllIngredients, allOurRecipes, loading, error }),
-  //   [allIngredients, allOurRecipes, loading, error]
-  // );
-
-  const contextValue = {
-  allIngredients,
-  setAllIngredients,
-  allOurRecipes,
-  loading,
-  error
-};
+  const contextValue = useMemo(
+    () => ({ allIngredients, setAllIngredients, allOurRecipes, loading, error }),
+    [allIngredients, allOurRecipes, loading, error]
+  );
 
   return (
     <InventoryContext.Provider value={contextValue}>

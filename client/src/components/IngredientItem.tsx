@@ -1,5 +1,4 @@
 import { DeleteButton } from "./mui";
-import styles from '../pages/InventoryPage.module.css'
 import {deleteIngredient} from '../utils/ApiService'
 import { useContext } from "react";
 import { InventoryContext } from "../contexts/InventoryContext";
@@ -20,7 +19,6 @@ export default function IngredientItem({ingredient}:any) {
     }
   }
 
-
   return (
     <li key={ingredient._id}>
       {ingredient.name}{" "}
@@ -28,8 +26,6 @@ export default function IngredientItem({ingredient}:any) {
         ? `${ingredient.amount / 1000} kg`
         : `${ingredient.amount} g`}
       <DeleteButton onClick={handleDelete}
-       
-      
         />
   </li>
   )
