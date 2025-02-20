@@ -22,30 +22,6 @@ export default function AddIngredientComponent({ingType}:AddIngredientProps) {
 
   const ingredientName = ingType[0].toUpperCase() + ingType.slice(1)
 
-  // async function addIngredient() {
-  //   try {
-  //     if (name === "" || quantity === "" || unit === "") {
-  //       alert("Please enter proper name, quantity and unit.");
-  //       return;
-  //     }
-  //     if (!Number(quantity)) {
-  //       alert("Please enter a proper number in Quantity field");
-  //       resetForm();
-  //       return;
-  //     }
-  //     const amountForDB = unit === "kilograms" ? quantity * 1000 : quantity;
-  //     const newItem = await createIngredients(name, amountForDB, type);
-  //     console.log(name, quantity, type, unit);
-  //     refreshIngredients();
-  //     resetForm();
-  //   } catch (err) {
-  //     console.error("Error:", err);
-  //   }
-  // }
-
-  
-
-
   return (
     <div className={styles["add-ing-component"]}>
       <div className={styles["ing-title"]}>

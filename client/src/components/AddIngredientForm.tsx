@@ -1,19 +1,23 @@
 import { useContext, useState } from "react";
 import { addNewIngredient } from "../utils/ApiService";
+import { AddIngredientProps } from "../types";
 import styles from '../pages/InventoryPage.module.css'
 import { 
-  AddButton, 
-  InputField, 
-  SelectAutoWidth,
-  UnitSelect 
+  // AddButton, 
+  // InputField, 
+  // SelectAutoWidth,
+  // UnitSelect 
 } from "./mui";
+import AddButton from "./mui/AddButton";
+import InputField from "./mui/InputField";
+import SelectAutoWidth  from "./mui/SelectAutoWidth";
+import  UnitSelect  from "./mui/UnitSelect";
+
 import { InventoryContext } from "../contexts/InventoryContext";
 import { MenuItem } from "@mui/material";
 import calcAmount from "../utils/calcAmount";
 
-type AddIngredientProps = {
-  ingType: string;
-};
+
 
 export default function AddIngredientForm({ingType}:AddIngredientProps) {
   
@@ -46,6 +50,11 @@ export default function AddIngredientForm({ingType}:AddIngredientProps) {
 
   const handleAddIngredient = async () => {
     const { exists, newAmount } = calcAmount(allIngredients, ingName, Number(ingQuantity), ingUnit);
+
+    if(ingName==='' || ingUnit === '' || isNaN(Number(ingQuantity))){
+      alert('Please select name and unit, and add number as quantity')
+      return
+    }
   
     if (exists) {
       setAllIngredients((prevIngredients) =>

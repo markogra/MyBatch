@@ -1,4 +1,4 @@
-import { DeleteButton } from "./mui";
+import DeleteButton from './mui/DeleteButton';
 import {deleteIngredient} from '../utils/ApiService'
 import { useContext } from "react";
 import { InventoryContext } from "../contexts/InventoryContext";
