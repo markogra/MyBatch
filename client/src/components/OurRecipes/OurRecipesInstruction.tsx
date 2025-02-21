@@ -14,25 +14,26 @@ export default function OurRecipesInstruction() {
       {selectedRecipe && (
         <div className={styles["ing-details"]}>
           <h3>Hops</h3>
+          
           <ul className={styles["ing-ul"]}>
-            {selectedRecipe.ingredients.hops.map((hop) => (
-              <li key={hop.name}>
+            {selectedRecipe.ingredients?.hops?.map((hop, i) => (
+              <li key={i}>
                 {hop.name} {hop.amount} Adding time: {hop.time}
               </li>
             ))}
           </ul>
           <h3>Yeast</h3>
           <ul className={styles["ing-ul"]}>
-            {selectedRecipe.ingredients.yeast.map((yeast) => (
-              <li key={yeast.name}>
+            {selectedRecipe.ingredients.yeast.map((yeast, i) => (
+              <li key={i}>
                 {yeast.name} {yeast.amount}
               </li>
             ))}
           </ul>
           <h3>Malts</h3>
           <ul className={styles["ing-ul"]}>
-            {selectedRecipe.ingredients.malts.map((malt) => (
-              <li key={malt.name}>
+            {selectedRecipe.ingredients.malts.map((malt, i) => (
+              <li key={i}>
                 {malt.name} {malt.amount}
               </li>
             ))}
