@@ -1,3 +1,4 @@
+import React from "react";
 import { createContext, useEffect, useState, useMemo } from "react";
 import {getAllIngredients, addNewIngredient, deleteIngredient, getOurRecipes} from '../utils/ApiService'
 import {InventoryContextType, InventoryProviderProps, Recipe, Ingredient} from '../types'
@@ -8,6 +9,9 @@ const InventoryContext = createContext<InventoryContextType>({
   allOurRecipes: [],
   loading: false,
   error: null,
+  selectedRecipe: {} as Recipe,
+  setSelectedRecipe: () => {}
+
 });
 
 function InventoryProvider({children}: InventoryProviderProps){
@@ -16,6 +20,7 @@ function InventoryProvider({children}: InventoryProviderProps){
   const [allOurRecipes, setAllOurRecipes] = useState<Recipe[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
+  const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
 
 
   useEffect(() => {
@@ -24,10 +29,10 @@ function InventoryProvider({children}: InventoryProviderProps){
       setError(null)
       try {
         const ingredientsData = await getAllIngredients()
-        // const recipesData = await getOurRecipes()
+        const recipesData = await getOurRecipes()
         
         setAllIngredients(ingredientsData.data || [])
-        // setAllOurRecipes(recipesData.data || [])
+        setAllOurRecipes(recipesData.data || [])
 
       } catch (err) {
         const error = err as Error;
@@ -45,8 +50,8 @@ function InventoryProvider({children}: InventoryProviderProps){
 
 
   const contextValue = useMemo(
-    () => ({ allIngredients, setAllIngredients, allOurRecipes, loading, error }),
-    [allIngredients, allOurRecipes, loading, error]
+    () => ({ allIngredients, setAllIngredients, allOurRecipes, loading, error, selectedRecipe, setSelectedRecipe }),
+    [allIngredients, allOurRecipes, loading, error, selectedRecipe, setSelectedRecipe]
   );
 
   return (

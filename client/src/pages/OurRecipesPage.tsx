@@ -1,23 +1,14 @@
-// import { useState } from "react";
-// import "./ourRecipes.css";
-// import OurRecipesList from "../components/OurRecipesList.tsx";
-// import OurRecipesInstruction from "../components/OurRecipesInstruction";
+import { useState } from "react";
+import styles from './ourRecipes.module.css'
+import OurRecipesList from "../components/OurRecipes/OurRecipesList";
+import OurRecipesInstruction from "../components/OurRecipes/OurRecipesInstruction";
 
-// export default function OurRecipesPage({ allRecipes }) {
-//   const [selectedRecipe, setSelectedRecipe] = useState(null);
+export default function OurRecipesPage() {
 
-//   const handleRecipeClick = (recipe) => {
-//     setSelectedRecipe(recipe);
-//   };
-
-//   return (
-//     <div className="our-recipes ">
-//       <OurRecipesList
-//         allRecipes={allRecipes}
-//         handleRecipeClick={handleRecipeClick}
-//         selectedRecipe={selectedRecipe}
-//       />
-//       <OurRecipesInstruction selectedRecipe={selectedRecipe} />
-//     </div>
-//   );
-// }
+  return (
+    <div className={styles["our-recipes"]}>
+      <OurRecipesList />
+      <OurRecipesInstruction />
+    </div>
+  );
+}

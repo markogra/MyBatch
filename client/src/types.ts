@@ -8,12 +8,25 @@ export interface Ingredient {
   type: string;
 }
 
+export interface IngredientDetail {
+  name: string;
+  amount: string;
+  time?: string;
+}
+
+export interface RecipeIngredients {
+  malts: IngredientDetail[];
+  hops: IngredientDetail[];
+  yeast: IngredientDetail[];
+}
+
 export interface Recipe {
+  _id: string;
   name: string;
   style: string;
   description: string;
   batchSize: string;
-  ingredients: object;
+  ingredients: RecipeIngredients;
   instructions: string[];
 }
 
@@ -23,6 +36,8 @@ export interface InventoryContextType {
   allOurRecipes: Recipe[];
   loading: boolean;
   error: string | null;
+  selectedRecipe:Recipe | null;
+  setSelectedRecipe: React.Dispatch<React.SetStateAction<Recipe | null>>;
 }
 
 export interface InventoryProviderProps {

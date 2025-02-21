@@ -1,11 +1,10 @@
 import "./App.css";
 
-import { useState, useEffect } from "react"
 import { InventoryProvider } from "./contexts/InventoryContext";
 import { Route, Routes } from "react-router-dom";
 import NavBar from "./components/layout/NavBar";
 import InventoryPage from "./pages/InventoryPage";
-// import OurRecipesPage from "./pages/OurRecipesPage";
+import OurRecipesPage from "./pages/OurRecipesPage";
 // import HowToBrew from "./pages/HowToBrewPage";
 // import MyRecipesPage from "./pages/MyRecipesPage";
 import Homepage from "./pages/HomePage";
@@ -37,9 +36,7 @@ function App() {
   //   return Array.from(allNames);
   // };
 
-  // const allYeast = extractIngredientNames(allRecipes, "yeast");
-  // const allMalts = extractIngredientNames(allRecipes, "malts");
-  // const allHops = extractIngredientNames(allRecipes, "hops");
+  
   // useEffect(() => {
   //   getOurRecipes().then((fetchedRecipes) => {
   //     setAllRecipes(fetchedRecipes);
@@ -61,13 +58,13 @@ function App() {
             element={
               <InventoryPage />
             }
-            ></Route>
+            />
           
-        {/* <Route
-          path="/our-recipes"
-          element={<OurRecipesPage allRecipes={allRecipes}></OurRecipesPage>}
-        ></Route>
         <Route
+          path="/our-recipes"
+          element={<OurRecipesPage />}
+        />
+        {/* <Route
           path="/my-recipes"
           element={
             <MyRecipesPage
